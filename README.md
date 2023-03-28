@@ -133,16 +133,18 @@ export * from './components'
  */
 export function compInstall(app: App, config: { prefix: 'pvue' }) {
   const that = this as any
-  const name = that.name
+  let name = that.name
   if (!(name && typeof name === 'string')) {
     throw new Error('组件必须有name属性')
   }
+  name = name.toLocaleLowerCase()
   // 前缀
   const prefix = config && config.hasOwnProperty('prefix') ? config.prefix : 'pvue'
   const upperPrefix = prefix.slice(0, 1).toUpperCase() + prefix.slice(1)
   // 大写的名字
   const upperName = name
     .split('-')
+    .filter((item: string) => !!item)
     .map((str: string) => {
       return str.slice(0, 1).toUpperCase() + str.slice(1)
     })
