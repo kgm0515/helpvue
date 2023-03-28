@@ -61,10 +61,10 @@ packages:
 创建：`src/button/index.ts`
 
 ```ts
-import type { Plugin } from 'vue'
+import type { Plugin, App } from 'vue'
 import { compInstall } from '../index'
 import Component from './index.vue'
-Component.install = compInstall.bind(Component)
+Component.install = (app: App, config: { prefix: 'pvue' }) => compInstall(app, config, Component)
 export default Component as typeof Component & Plugin
 ```
 
@@ -72,9 +72,9 @@ export default Component as typeof Component & Plugin
 
 ```html
 <template>
-    <button :disabled="disabled" :class="getClass()">
-      <span class="nice-button__content"><slot/></span>
-    </button>
+  <button :disabled="disabled" :class="getClass()">
+    <span class="pvue-button__content"><slot/></span>
+  </button>
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
@@ -124,16 +124,15 @@ export default defineComponent({
 import type { App } from 'vue'
 import * as components from './components'
 export * from './components'
-
 /**
  * 创建组件通用的install方法
  * @param app vue实例
  * @param config 配置对象
+ * @param comps 某一个组件
  * @returns
  */
-export function compInstall(app: App, config: { prefix: 'pvue' }) {
-  const that = this as any
-  let name = that.name
+export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
+  let name = comps.name
   if (!(name && typeof name === 'string')) {
     throw new Error('组件必须有name属性')
   }
@@ -150,7 +149,7 @@ export function compInstall(app: App, config: { prefix: 'pvue' }) {
     })
     .join('')
   const nameList = [`${prefix}-${name}`, `${upperPrefix}${upperName}`]
-  nameList.forEach((str) => app.component(str, that))
+  nameList.forEach((str) => app.component(str, comps))
   return app
 }
 

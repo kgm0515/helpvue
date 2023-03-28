@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App, Component, ComputedOptions, MethodOptions } from 'vue'
 import * as components from './components'
 export * from './components'
 
@@ -6,11 +6,11 @@ export * from './components'
  * 创建组件通用的install方法
  * @param app vue实例
  * @param config 配置对象
+ * @param comps 某一个组件
  * @returns
  */
-export function compInstall(app: App, config: { prefix: 'pvue' }) {
-  const that = this as any
-  let name = that.name
+export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
+  let name = comps.name
   if (!(name && typeof name === 'string')) {
     throw new Error('组件必须有name属性')
   }
@@ -20,13 +20,14 @@ export function compInstall(app: App, config: { prefix: 'pvue' }) {
   const upperPrefix = prefix.slice(0, 1).toUpperCase() + prefix.slice(1)
   // 大写的名字
   const upperName = name
-    .split('-').filter((item:string) => !!item)
+    .split('-')
+    .filter((item: string) => !!item)
     .map((str: string) => {
       return str.slice(0, 1).toUpperCase() + str.slice(1)
     })
     .join('')
   const nameList = [`${prefix}-${name}`, `${upperPrefix}${upperName}`]
-  nameList.forEach((str) => app.component(str, that))
+  nameList.forEach((str) => app.component(str, comps))
   return app
 }
 
