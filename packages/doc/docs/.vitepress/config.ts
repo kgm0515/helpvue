@@ -1,4 +1,5 @@
 import { DefaultTheme, defineConfig } from 'vitepress'
+import utilsSidebar from './_utilsSidebar'
 
 /**
  * 顶部导航栏
@@ -42,7 +43,8 @@ const sidebar: DefaultTheme.Sidebar = {
         { text: '简介', link: '/utils/' },
         { text: '快速上手', link: '/utils/quick' }
       ]
-    }
+    },
+    ...utilsSidebar
   ]
 }
 

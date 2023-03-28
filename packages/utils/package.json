@@ -20,9 +20,8 @@
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "start": "serve",
-    "doc": "npx typedoc",
-    "publish": "npm publish",
-    "genJson": "cd ./typedoc && npm run genJson"
+    "doc": "cd ./typedoc && npm run doc",
+    "publish": "npm publish"
   },
   "license": "ISC",
   "devDependencies": {
@@ -31,6 +30,8 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
     "rollup-plugin-clear": "^2.0.7",
     "serve": "^14.2.0",
     "tslib": "^2.5.0",

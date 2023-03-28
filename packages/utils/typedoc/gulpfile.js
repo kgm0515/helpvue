@@ -1,6 +1,8 @@
 const TypeDoc = require('typedoc')
 const path = require('path')
 const fs = require('fs')
+const rename = require('gulp-rename')
+const { src, dest, series } = require('gulp')
 
 // 指定代码入口
 const entries = [rootPath('./src/index.ts'), rootPath('./src/example.ts')]
@@ -33,20 +35,22 @@ async function resolveConfig(jsonDir) {
     module.children.forEach((sub) => {
       // 类、接口、类型、函数作为二级导航
       if (sub.kindString === 'Class') {
-        moduleConfig.items.push({ text: `Class:${sub.name}`, link: getClassPath(module.name, sub.name) })
+        moduleConfig.items.push({ text: `类: ${sub.name}`, link: getClassPath(module.name, sub.name) })
       } else if (sub.kindString === 'Interface') {
-        moduleConfig.items.push({ text: `Interface:${sub.name}`, link: getInterfacePath(module.name, sub.name) })
+        moduleConfig.items.push({ text: `接口: ${sub.name}`, link: getInterfacePath(module.name, sub.name) })
       } else if (sub.kindString === 'Type alias') {
-        moduleConfig.items.push({ text: `Type:${sub.name}`, link: getTypePath(module.name, sub.name) })
+        moduleConfig.items.push({ text: `类型: ${sub.name}`, link: getTypePath(module.name, sub.name) })
       } else if (sub.kindString === 'Function') {
-        moduleConfig.items.push({ text: `Function:${sub.name}`, link: getFunctionPath(module.name, sub.name) })
+        moduleConfig.items.push({ text: `函数: ${sub.name}`, link: getFunctionPath(module.name, sub.name) })
+      } else if (sub.kindString === 'Variable') {
+        moduleConfig.items.push({ text: `常量: ${sub.name}`, link: getVariablesPath(module.name, sub.name) })
       }
     })
     result.push(moduleConfig)
   })
 
-  // 转换成的导航数据输出到 doc/utilsSidebar.ts
-  await fs.promises.writeFile(path.join(__dirname, 'utilsSidebar.ts'), `export default ${JSON.stringify(result)}`, 'utf8')
+  // 转换成的侧边栏数据输出到 doc/_utilsSidebar.js
+  await fs.promises.writeFile(path.join(__dirname, '_utilsSidebar.js'), `export default ${JSON.stringify(result)}`, 'utf8')
 }
 
 function transformModuleName(name) {
@@ -58,19 +62,23 @@ function getModulePath(name) {
 }
 
 function getClassPath(moduleName, className) {
-  return path.join('/utils/classes', `${transformModuleName(moduleName)}.${className}`).replace(/\\/g, '/')
+  return path.join('/utils/classes', `${transformModuleName(moduleName)}-${className}`).replace(/\\/g, '/')
 }
 
 function getInterfacePath(moduleName, interfaceName) {
-  return path.join('/utils/interfaces', `${transformModuleName(moduleName)}.${interfaceName}`).replace(/\\/g, '/')
+  return path.join('/utils/interfaces', `${transformModuleName(moduleName)}-${interfaceName}`).replace(/\\/g, '/')
 }
 
 function getTypePath(moduleName, typeName) {
-  return path.join('/utils/types', `${transformModuleName(moduleName)}.${typeName}`).replace(/\\/g, '/')
+  return path.join('/utils/types', `${transformModuleName(moduleName)}-${typeName}`).replace(/\\/g, '/')
 }
 
 function getFunctionPath(moduleName, functionName) {
-  return path.join('/utils/functions', `${transformModuleName(moduleName)}.${functionName}`).replace(/\\/g, '/')
+  return path.join('/utils/functions', `${transformModuleName(moduleName)}-${functionName}`).replace(/\\/g, '/')
+}
+
+function getVariablesPath(moduleName, functionName) {
+  return path.join('/utils/variables', `${transformModuleName(moduleName)}-${functionName}`).replace(/\\/g, '/')
 }
 
 // 主函数
@@ -108,4 +116,31 @@ async function main() {
   }
 }
 
-main().catch(console.error)
+// 生成文档
+const genFile = async (cb) => {
+  await main().catch(console.error)
+  cb()
+}
+// 拷贝文件
+const copyUtils = () => {
+  return src(path.join(__dirname, './utils/**/*.md'))
+    .pipe(
+      rename(function (path) {
+        // Returns a completely new object, make sure you return all keys needed!
+        return {
+          dirname: path.dirname,
+          basename: path.basename.split('.').join('-'),
+          extname: path.extname
+        }
+      })
+    )
+    .pipe(dest(path.join(__dirname, '../../doc/docs/utils/')))
+}
+// 拷贝文件
+const copySidebar = () => {
+  return src(path.join(__dirname, './_utilsSidebar.js')).pipe(dest(path.join(__dirname, '../../doc/docs/.vitepress/')))
+}
+
+module.exports = {
+  genDocument: series(genFile, copyUtils, copySidebar)
+}

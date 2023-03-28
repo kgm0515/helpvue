@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "genJson": "node ./typedoc.js"
+    "doc": "gulp genDocument"
   }
 }
