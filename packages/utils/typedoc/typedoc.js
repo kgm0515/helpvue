@@ -2,6 +2,9 @@ const TypeDoc = require('typedoc')
 const path = require('path')
 const fs = require('fs')
 
+// 指定代码入口
+const entries = [rootPath('./src/index.ts'), rootPath('./src/example.ts')]
+
 // 根目录
 function rootPath(...args) {
   return path.join(__dirname, '..', ...args)
@@ -42,8 +45,8 @@ async function resolveConfig(jsonDir) {
     result.push(moduleConfig)
   })
 
-  // 转换成的导航数据输出到 doc/apidocConfig.json
-  await fs.promises.writeFile(path.join(__dirname, 'apidocConfig.json'), JSON.stringify(result), 'utf8')
+  // 转换成的导航数据输出到 doc/utilsSidebar.ts
+  await fs.promises.writeFile(path.join(__dirname, 'utilsSidebar.ts'), `export default ${JSON.stringify(result)}`, 'utf8')
 }
 
 function transformModuleName(name) {
@@ -51,23 +54,23 @@ function transformModuleName(name) {
 }
 
 function getModulePath(name) {
-  return path.join('/docs/modules', `${transformModuleName(name)}`).replace(/\\/g, '/')
+  return path.join('/utils/modules', `${transformModuleName(name)}`).replace(/\\/g, '/')
 }
 
 function getClassPath(moduleName, className) {
-  return path.join('/docs/classes', `${transformModuleName(moduleName)}.${className}`).replace(/\\/g, '/')
+  return path.join('/utils/classes', `${transformModuleName(moduleName)}.${className}`).replace(/\\/g, '/')
 }
 
 function getInterfacePath(moduleName, interfaceName) {
-  return path.join('/docs/interfaces', `${transformModuleName(moduleName)}.${interfaceName}`).replace(/\\/g, '/')
+  return path.join('/utils/interfaces', `${transformModuleName(moduleName)}.${interfaceName}`).replace(/\\/g, '/')
 }
 
 function getTypePath(moduleName, typeName) {
-  return path.join('/docs/types', `${transformModuleName(moduleName)}.${typeName}`).replace(/\\/g, '/')
+  return path.join('/utils/types', `${transformModuleName(moduleName)}.${typeName}`).replace(/\\/g, '/')
 }
 
 function getFunctionPath(moduleName, functionName) {
-  return path.join('/docs/functions', `${transformModuleName(moduleName)}.${functionName}`).replace(/\\/g, '/')
+  return path.join('/utils/functions', `${transformModuleName(moduleName)}.${functionName}`).replace(/\\/g, '/')
 }
 
 // 主函数
@@ -79,8 +82,6 @@ async function main() {
   app.options.addReader(new TypeDoc.TSConfigReader())
 
   // 指定代码入口
-  const entries = [rootPath('src/index.ts'), rootPath('src/example.ts')]
-
   // 指定 TypeDoc 配置项
   app.bootstrap({
     entryPoints: entries,
@@ -93,7 +94,7 @@ async function main() {
 
   if (project) {
     // 输出产物位置
-    const outputDir = path.join(__dirname, 'dist')
+    const outputDir = path.join(__dirname, 'utils')
 
     // 生成文档内容
     await app.generateDocs(project, outputDir)

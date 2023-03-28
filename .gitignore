@@ -6,4 +6,5 @@
 /**/dist
 /packages/pvue/types
 /packages/doc/public
-/packages/utils/docs
+/packages/utils/typedoc/utils
+/packages/utils/typedoc/utilsSidebar.js
