@@ -51,7 +51,7 @@ export default defineConfig({
   title: '帮助文档',
   description: '用于辅助vue开发的工具库和组件库',
   lang: 'cn-ZH',
-  base: '/helpvue/',
+  base: '/helpvue/', // 公共基础路径，打包或所有资源会添加这个路径
   lastUpdated: true,
   ignoreDeadLinks: true,
   outDir: '../public',
@@ -78,10 +78,10 @@ export default defineConfig({
     outlineTitle: 'On this page',
     socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
     lastUpdatedText: 'Updated Date',
-    editLink: {
-      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
-      text: 'Edit this page on GitHub'
-    },
+    // editLink: {
+    //   pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
+    //   text: 'Edit this page on GitHub'
+    // },
     nav,
     sidebar,
     footer: {

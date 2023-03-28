@@ -2,6 +2,8 @@
 
 vue 组件库，工具库
 
+文档地址：`https://kgm0515.github.io/helpvue/`
+
 ## 为什么使用 pnpm
 
 - 包安装速度极快
@@ -59,13 +61,11 @@ packages:
 创建：`src/button/index.ts`
 
 ```ts
-import type { App, Plugin } from 'vue'
-import Button from './index.vue'
-Button.install = (app: App) => {
-  app.component(Button.name, Button)
-  return app
-}
-export default Button as typeof Button & Plugin
+import type { Plugin } from 'vue'
+import { compInstall } from '../index'
+import Component from './index.vue'
+Component.install = compInstall.bind(Component)
+export default Component as typeof Component & Plugin
 ```
 
 创建：`src/button/index.vue`
@@ -79,7 +79,7 @@ export default Button as typeof Button & Plugin
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 export default defineComponent({
-  name: 'PvueButton',
+  name: 'button',
   props: {
     type: {
       type: String as PropType<'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'>,
@@ -124,8 +124,36 @@ export default defineComponent({
 import type { App } from 'vue'
 import * as components from './components'
 export * from './components'
+
+/**
+ * 创建组件通用的install方法
+ * @param app vue实例
+ * @param config 配置对象
+ * @returns
+ */
+export function compInstall(app: App, config: { prefix: 'pvue' }) {
+  const that = this as any
+  const name = that.name
+  if (!(name && typeof name === 'string')) {
+    throw new Error('组件必须有name属性')
+  }
+  // 前缀
+  const prefix = config && config.hasOwnProperty('prefix') ? config.prefix : 'pvue'
+  const upperPrefix = prefix.slice(0, 1).toUpperCase() + prefix.slice(1)
+  // 大写的名字
+  const upperName = name
+    .split('-')
+    .map((str: string) => {
+      return str.slice(0, 1).toUpperCase() + str.slice(1)
+    })
+    .join('')
+  const nameList = [`${prefix}-${name}`, `${upperPrefix}${upperName}`]
+  nameList.forEach((str) => app.component(str, that))
+  return app
+}
+
 export default {
-  install(app: App, config: any) {
+  install(app: App, config: { prefix: 'pvue' }) {
     for (const keyName in components) {
       const Comp = (components as any)[keyName]
       if (Comp.install) app.use(Comp, config)
@@ -332,24 +360,17 @@ cd -
 
 ```js
 const shell = require('shelljs')
-// const path = require('path')
-// const fs = require('fs')
-
 if (!shell.which('git')) {
   shell.echo('Sorry, this script requires git')
   shell.exit(1)
 }
-// if (!fs.existsSync(path.join(__dirname, '../', 'packages/doc/dist'))) {
 if (shell.exec('npm run build').code !== 0) {
   shell.echo('Error: npm run build 打包失败')
   shell.exit(1)
 } else {
   shell.echo('Success: npm run build 打包成功...')
 }
-// }
-
-shell.cd('packages/doc/dist')
-
+shell.cd('packages/doc/public')
 // 报错：仓库可能已经被初始化了
 if (shell.exec('git init').code !== 0) {
   shell.echo('Error: git init 执行失败')

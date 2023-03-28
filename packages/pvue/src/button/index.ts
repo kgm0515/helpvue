@@ -1,9 +1,7 @@
-import type { App, Plugin } from 'vue'
-import Button from './index.vue'
+import type { Plugin } from 'vue'
+import { compInstall } from '../index'
+import Component from './index.vue'
 
-Button.install = (app: App) => {
-  app.component(Button.name, Button)
-  return app
-}
+Component.install = compInstall.bind(Component)
 
-export default Button as typeof Button & Plugin
+export default Component as typeof Component & Plugin

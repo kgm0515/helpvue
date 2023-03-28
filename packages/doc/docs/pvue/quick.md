@@ -50,3 +50,31 @@ import '@helpvue/pvue/dist/style/base.css' // 基础样式
 import '@helpvue/pvue/dist/style/theme/button.css'
 createApp(App).use(Button).mount('#app')
 ```
+
+### 组件前缀
+
+默认前缀为`prev`, 如`button`的使用方式如下
+
+```vue
+<!-- 方式1 -->
+<PrevButton>按钮</PrevButton>
+<!-- 方式2 -->
+<prev-button>按钮</prev-button>
+```
+
+### 自定义组件前缀
+
+我们可以自定义前缀
+
+```ts
+createApp(App).use(Pvue, { prefix: 'p' }).mount('#app')
+```
+
+如`button`的使用方式如下
+
+```vue
+<!-- 方式1 -->
+<PButton>按钮</PButton>
+<!-- 方式2 -->
+<p-button>按钮</p-button>
+```

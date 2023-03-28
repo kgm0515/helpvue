@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent, PropType } from 'vue'
   export default defineComponent({
-    name: 'PvueButton',
+    name: 'button',
     props: {
       // 按钮类型
       type: {
