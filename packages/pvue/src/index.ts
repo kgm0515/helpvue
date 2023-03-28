@@ -13,8 +13,7 @@ export const appConfig = { prefix: 'pvue' }
  * @returns
  */
 export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
-  // 修改appConfig的值
-  Object.assign(appConfig, config || {})
+  Object.assign(appConfig, config || {}) // 修改appConfig的值
   let name = comps.name
   if (!(name && typeof name === 'string')) {
     throw new Error('组件必须有name属性')

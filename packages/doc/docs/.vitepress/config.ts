@@ -5,9 +5,16 @@ import { DefaultTheme, defineConfig } from 'vitepress'
  */
 const nav: DefaultTheme.NavItem[] = [
   { text: 'pc组件库', link: '/pvue/' },
-  { text: 'utils工具库', link: '/utils/' }
-  /** 顶部导航下拉菜单按如下方式 */
-  // { text: '下拉菜单', items: [ { text: 'Item A', link: '/item-1' }, { text: 'Item B', link: '/item-2' } ] }
+  { text: 'utils工具库', link: '/utils/' },
+  {
+    text: '项目指引',
+    items: [
+      { text: '指引', link: '/guide/' },
+      { text: '使用markdown', link: '/guide/markdown' },
+      { text: '使用vue', link: '/guide/useVue' },
+      { text: '加载资源', link: '/guide/loadResource' }
+    ]
+  }
 ]
 
 /** 左侧侧边栏 */
