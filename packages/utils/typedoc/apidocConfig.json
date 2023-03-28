@@ -1,0 +1,22 @@
+[
+  {
+    "text": "example",
+    "items": [
+      { "text": "example", "link": "/docs/modules/example" },
+      { "text": "Class:MyClass", "link": "/docs/classes/example.MyClass" },
+      { "text": "Interface:MyInterface", "link": "/docs/interfaces/example.MyInterface" },
+      { "text": "Type:MyType", "link": "/docs/types/example.MyType" },
+      { "text": "Function:isOk", "link": "/docs/functions/example.isOk" },
+      { "text": "Function:myFunction", "link": "/docs/functions/example.myFunction" }
+    ]
+  },
+  {
+    "text": "index",
+    "items": [
+      { "text": "index", "link": "/docs/modules/index" },
+      { "text": "Function:handleAdd", "link": "/docs/functions/index.handleAdd" },
+      { "text": "Function:handleMinus", "link": "/docs/functions/index.handleMinus" },
+      { "text": "Function:hello", "link": "/docs/functions/index.hello" }
+    ]
+  }
+]

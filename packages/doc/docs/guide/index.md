@@ -500,8 +500,8 @@ npm install @rollup/plugin-terser -D
 # @rollup/plugin-typescript ： Rollup和Typescript之间的无缝集成。
 # 在 rollup.config.js 中配置该插件
 ## import typescript from '@rollup/plugin-typescript';
-## export default {input: './main.ts',plugins: [typescript(/*{ plugin options }*/)]}
-## export default {input: './main.ts',plugins: [typescript({exclude: "node_modules/**",typescript: require("typescript"),})]}
+## export default {input: './index.ts',plugins: [typescript(/*{ plugin options }*/)]}
+## export default {input: './index.ts',plugins: [typescript({exclude: "node_modules/**",typescript: require("typescript"),})]}
 npm install @rollup/plugin-typescript typescript tslib -D
 
 # @rollup/plugin-json 用来引入json文件
@@ -526,7 +526,7 @@ npm i rollup-plugin-clear -D
 # 在modules/index.ts中编写文档注释
 ## /** 当前函数库版本 */
 ## export const version: string = "1.0.0";
-# 在package.json中添加生成文档的命令 : {"doc": "npx typedoc src/main.ts"}
+# 在package.json中添加生成文档的命令 : {"doc": "npx typedoc src/index.ts"}
 ## 运行npm run doc命令生成文档，文档将生成在docs目录，可以通过gitpage展示文档。
 npm install typedoc -g
 ```
@@ -580,7 +580,7 @@ const pkg = {
 export default [
   // browser-friendly UMD build
   {
-    input: './src/main.ts',
+    input: './src/index.ts',
     output: [
       // { name: "HelpUtils", file: pkg.browser, format: "umd" },
       { name: 'HelpUtils', file: pkg.iife, format: 'iife', sourcemap: false }
@@ -600,7 +600,7 @@ export default [
     ]
   },
   {
-    input: './src/main.ts',
+    input: './src/index.ts',
     external: ['vue'], // 指出哪些模块需要被视为外部引入, 'vue'库不打包
     output: [
       { file: pkg.main, format: 'cjs' },
@@ -638,7 +638,7 @@ export default [
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "start": "serve",
-    "doc": "npx typedoc src/main.ts",
+    "doc": "npx typedoc src/index.ts",
     "publish": "npm publish"
   }
 }
@@ -648,4 +648,38 @@ export default [
 
 ### 工具库文档生成
 
-执行命令打包: `npm run doc`
+<!-- typedoc: https://typedoc.org/tags/alpha/ -->
+<!-- typedoc&vitepress: https://zhuanlan.zhihu.com/p/577159570 -->
+
+创建配置文件: `./packages/utils/typedoc.json`
+
+```json
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src/index.ts"],
+  "out": "./docs"
+}
+```
+
+修改文件：`./packages/utils/package.json`
+
+```json
+{
+  "scripts": {
+    "doc": "npx typedoc"
+  }
+}
+```
+
+执行命令打包工具库文档: `npm run doc`
+
+### 将 typedoc 文档接入 vitepress
+
+将.html 转为.md 文件, 安装插件:
+
+```sh
+npm install typedoc -D
+npm i -D typedoc-plugin-markdown # 将.html 转为.md 文件
+```
+
+再次执行命令 `npm run doc`，发现 docs 目录中都是.md 文件了

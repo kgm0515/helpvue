@@ -1,4 +1,4 @@
-export { handleMinus } from './minus'
+export { handleMinus } from './libs/minus'
 
 /**
  * 打招呼

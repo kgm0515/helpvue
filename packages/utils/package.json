@@ -20,8 +20,9 @@
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "start": "serve",
-    "doc": "npx typedoc src/main.ts",
-    "publish": "npm publish"
+    "doc": "npx typedoc",
+    "publish": "npm publish",
+    "genJson": "cd ./typedoc && npm run genJson"
   },
   "license": "ISC",
   "devDependencies": {
@@ -33,6 +34,8 @@
     "rollup-plugin-clear": "^2.0.7",
     "serve": "^14.2.0",
     "tslib": "^2.5.0",
+    "typedoc": "^0.23.28",
+    "typedoc-plugin-markdown": "^3.14.0",
     "typescript": "^5.0.2"
   }
 }

@@ -18,7 +18,7 @@ const pkg = {
 export default [
   // browser-friendly UMD build
   {
-    input: './src/main.ts',
+    input: './src/index.ts',
     output: [
       // { name: "HelpUtils", file: pkg.browser, format: "umd" },
       { name: 'HelpUtils', file: pkg.iife, format: 'iife', sourcemap: false }
@@ -38,7 +38,7 @@ export default [
     ]
   },
   {
-    input: './src/main.ts',
+    input: './src/index.ts',
     external: ['vue'], // 指出哪些模块需要被视为外部引入, 'vue'库不打包
     output: [
       { file: pkg.main, format: 'cjs' },
