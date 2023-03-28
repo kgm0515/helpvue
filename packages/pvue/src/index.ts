@@ -2,6 +2,9 @@ import type { App, Component, ComputedOptions, MethodOptions } from 'vue'
 import * as components from './components'
 export * from './components'
 
+// 从外部传入的配置对象
+export const appConfig = { prefix: 'pvue' }
+
 /**
  * 创建组件通用的install方法
  * @param app vue实例
@@ -10,6 +13,8 @@ export * from './components'
  * @returns
  */
 export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
+  // 修改appConfig的值
+  Object.assign(appConfig, config || {})
   let name = comps.name
   if (!(name && typeof name === 'string')) {
     throw new Error('组件必须有name属性')

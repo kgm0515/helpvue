@@ -403,7 +403,7 @@ shell.cd('-')
     "dev:doc": "cd ./packages/doc && pnpm docs:dev",
     "build": "npm run build:pvue && npm run build:doc",
     "build:pvue": "cd ./packages/pvue && pnpm i && pnpm build",
-    "build:doc": "cd ./packages/doc && pnpm i && docs:build",
+    "build:doc": "cd ./packages/doc && pnpm i && pnpm docs:build",
     "publish": "npm run publish:ui && npm run publish:cli",
     "publish:pvue": "cd ./packages/pvue && pnpm publish",
     "deploy:doc": "node ./scripts/deploySite.js"

@@ -16,9 +16,7 @@ const nav: DefaultTheme.NavItem[] = [
   // }
 ]
 
-/**
- * 左侧侧边栏
- */
+/** 左侧侧边栏 */
 const sidebar: DefaultTheme.Sidebar = {
   '/pvue': [
     {
@@ -53,14 +51,15 @@ export default defineConfig({
   lang: 'cn-ZH',
   base: '/helpvue/', // 公共基础路径，打包或所有资源会添加这个路径
   lastUpdated: true,
+  cleanUrls: true, // 路由路径不需要带.html后缀
   ignoreDeadLinks: true,
   outDir: '../public',
   head: [
-    // ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }]
-    // would render: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    ['meta', { name: 'theme-color', content: '#3c8772' }]
+    // [ 'script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' } ]
+    // ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }] /** would render: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> */
   ],
   // srcDir: './docs', // 文档根目录, vitepress dev docs 默认就是docs
-  cleanUrls: true, // 路由路径不需要带.html后缀
   // 路径重写
   rewrites: {
     // 'packages/pkg-a/src/pkg-a-code.md': 'pkg-a/pkg-a-code.md',
@@ -76,22 +75,19 @@ export default defineConfig({
     siteTitle: '帮助文档',
     outline: [1, 3],
     outlineTitle: 'On this page',
-    socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/kgm0515/helpvue' }],
     lastUpdatedText: 'Updated Date',
-    // editLink: {
-    //   pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
-    //   text: 'Edit this page on GitHub'
-    // },
+    editLink: {
+      pattern: 'https://github.com/kgm0515/helpvue/tree/main/packages/doc/docs/:path',
+      text: 'Edit this page on GitHub'
+    },
     nav,
     sidebar,
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Evan You'
-    },
-    docFooter: {
-      prev: '上一页',
-      next: '下一页'
+      copyright: 'Copyright © 2023-present Evan You'
     }
+    // docFooter: { prev: '上一页', next: '下一页' }
     // carbonAds: { code: 'your-carbon-code', placement: 'your-carbon-placement' }
   }
 })
