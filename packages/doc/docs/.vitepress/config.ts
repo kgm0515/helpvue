@@ -7,13 +7,7 @@ const nav: DefaultTheme.NavItem[] = [
   { text: 'pc组件库', link: '/pvue/' },
   { text: 'utils工具库', link: '/utils/' }
   /** 顶部导航下拉菜单按如下方式 */
-  // {
-  //   text: '下拉菜单',
-  //   items: [
-  //     { text: 'Item A', link: '/item-1' },
-  //     { text: 'Item B', link: '/item-2' },
-  //   ]
-  // }
+  // { text: '下拉菜单', items: [ { text: 'Item A', link: '/item-1' }, { text: 'Item B', link: '/item-2' } ] }
 ]
 
 /** 左侧侧边栏 */
@@ -55,15 +49,13 @@ export default defineConfig({
   ignoreDeadLinks: true,
   outDir: '../public',
   head: [
-    ['meta', { name: 'theme-color', content: '#3c8772' }]
+    ['meta', { name: 'theme-color', content: '#3c8772' }],
+    ['link', { rel: 'shortcut icon', href: '/helpvue/favicon.ico', crossorigin: '' }]
     // [ 'script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' } ]
-    // ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }] /** would render: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> */
   ],
   // srcDir: './docs', // 文档根目录, vitepress dev docs 默认就是docs
   // 路径重写
   rewrites: {
-    // 'packages/pkg-a/src/pkg-a-code.md': 'pkg-a/pkg-a-code.md',
-    // 'packages/pkg-b/src/pkg-b-code.md': 'pkg-b/pkg-b-code.md',
     // 'components/:pkg/:page': ':pkg/:page'
   },
   markdown: {
