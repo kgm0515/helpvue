@@ -1,0 +1,75 @@
+// 定义文字大小变量
+@fontSize-small: 12px;
+@fontSize-middle: 14px;
+@fontSize-large: 16px;
+
+// 定义图标大小变量
+@is-small: 16px;
+@is-middle: 18px;
+@is-large: 20px;
+
+// 定义颜色变量
+@color-body: #fff;
+@color-text: #333;
+@color-primary: #3a7afe;
+@color-info: #00afef;
+@color-success: #00c48f;
+@color-warning: #ff9f00;
+@color-danger: #f44336;
+@color-disabled: #e0e0e0;
+@color-text-disabled: #aaa;
+
+:root {
+  // 定义文字大小
+  --fontSize-small: @fontSize-small;
+  --fontSize-middle: @fontSize-middle;
+  --fontSize-large: @fontSize-large;
+  // 定义图标大小
+  --is-small: @is-small;
+  --is-middle: @is-middle;
+  --is-large: @is-large;
+  // 定义颜色
+  --color-body: @color-body;
+  --color-text: @color-text;
+  --color-primary: @color-primary;
+  --color-info: @color-info;
+  --color-success: @color-success;
+  --color-warning: @color-warning;
+  --color-danger: @color-danger;
+  --color-disabled: @color-disabled;
+  --color-text-disabled: @color-text-disabled;
+}
+.pvue {
+  &--box {
+    box-sizing: border-box;
+    * {
+      box-sizing: border-box;
+    }
+  }
+  &--relative {
+    position: relative;
+  }
+  &--absolute {
+    position: absolute;
+  }
+  &--hidden {
+    overflow: hidden;
+  }
+  &--block {
+    display: block;
+  }
+  &--inline-block {
+    display: inline-block;
+  }
+  &--flex {
+    display: flex;
+  }
+  &--inline-flex {
+    display: inline-flex;
+  }
+  &--ellipsis {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

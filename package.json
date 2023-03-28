@@ -1,0 +1,26 @@
+{
+  "name": "helpvue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:doc": "cd ./packages/doc && pnpm docs:dev",
+    "build": "npm run build:pvue && npm run build:doc",
+    "build:pvue": "cd ./packages/pvue && pnpm i && pnpm build",
+    "build:doc": "cd ./packages/doc && pnpm i && pnpm docs:build",
+    "publish": "npm run publish:ui && npm run publish:cli",
+    "publish:pvue": "cd ./packages/pvue && pnpm publish",
+    "deploy:doc": "node ./scripts/deploySite.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "shelljs": "^0.8.5",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  }
+}
