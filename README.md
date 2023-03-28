@@ -316,13 +316,13 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
-git push -f git@github.com:kgm0515/nicevue.git main:gh-pages
+git push -f git@github.com:kgm0515/helpvue.git main:gh-pages
 cd -
 ```
 
 打开 gitbash，执行命令`sh ./scripts/deploySite.sh`
 
-部署完毕，打开浏览器`https://kgm0515.github.io/nicevue/`
+部署完毕，打开浏览器`https://kgm0515.github.io/helpvue/`
 
 ### node 脚本部署组件库文档
 
@@ -366,8 +366,8 @@ if (shell.exec('git commit -m "deploy"').code !== 0) {
   shell.echo('Error: git commit -m "deploy"  执行失败')
   shell.exit(1)
 }
-if (shell.exec('git push -f git@github.com:kgm0515/nicevue.git main:gh-pages').code !== 0) {
-  shell.echo('Error: git push -f git@github.com:kgm0515/nicevue.git main:gh-pages 执行失败')
+if (shell.exec('git push -f git@github.com:kgm0515/helpvue.git main:gh-pages').code !== 0) {
+  shell.echo('Error: git push -f git@github.com:kgm0515/helpvue.git main:gh-pages 执行失败')
   shell.exit(1)
 }
 shell.cd('-')
@@ -391,4 +391,4 @@ shell.cd('-')
 
 命令行运行 `npm run deploy:doc`
 
-部署完毕，打开浏览器`https://kgm0515.github.io/nicevue/`
+部署完毕，打开浏览器`https://kgm0515.github.io/helpvue/`

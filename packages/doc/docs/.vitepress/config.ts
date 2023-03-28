@@ -51,7 +51,7 @@ export default defineConfig({
   title: '帮助文档',
   description: '用于辅助vue开发的工具库和组件库',
   lang: 'cn-ZH',
-  base: '/',
+  base: '/helpvue/',
   lastUpdated: true,
   ignoreDeadLinks: true,
   outDir: '../public',
