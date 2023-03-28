@@ -535,7 +535,7 @@ npm install typedoc -g
 
 初始化生成 tsconfig.json: `tsc --init`
 
-修改 tsconfig.json
+修改文件：`./packages/utils/tsconfig.json`
 
 ```json
 /**
@@ -555,8 +555,97 @@ npm install typedoc -g
 "moduleResolution": "node",
 ```
 
-### rollup.config.js
+### roolup 配置
+
+创建文件: `./packages/utils/rollup.config.js`
 
 ```js
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import terser from '@rollup/plugin-terser'
+import json from '@rollup/plugin-json'
+import rollupTypescript from '@rollup/plugin-typescript'
+import typescript from 'typescript'
+import clear from 'rollup-plugin-clear'
+// 自己写的roll插件-虚拟模块
+import virtualModule from './plugins/rollup-plugin-virtual-module.js'
 
+const production = !process.env.ROLLUP_WATCH
+const pkg = {
+  main: './dist/index.cjs.js',
+  module: './dist/index.esm.js',
+  browser: './dist/index.umd.js',
+  iife: './dist/index.iife.js'
+}
+export default [
+  // browser-friendly UMD build
+  {
+    input: './src/main.ts',
+    output: [
+      // { name: "HelpUtils", file: pkg.browser, format: "umd" },
+      { name: 'HelpUtils', file: pkg.iife, format: 'iife', sourcemap: false }
+    ],
+    plugins: [
+      clear({ targets: ['dist'] }),
+      json(),
+      virtualModule(),
+      rollupTypescript({
+        // include: "src/**/*.ts",
+        exclude: 'node_modules/**',
+        typescript: typescript
+      }),
+      resolve(), // so Rollup can find `vue`
+      commonjs(), // so Rollup can convert `vue` to an ES module
+      production && terser({ maxWorkers: 4 })
+    ]
+  },
+  {
+    input: './src/main.ts',
+    external: ['vue'], // 指出哪些模块需要被视为外部引入, 'vue'库不打包
+    output: [
+      { file: pkg.main, format: 'cjs' },
+      { file: pkg.module, format: 'es' }
+    ],
+    plugins: [
+      clear({ targets: ['dist'] }),
+      json(),
+      virtualModule(),
+      rollupTypescript({
+        // include: "src/**/*.ts",
+        exclude: 'node_modules/**',
+        typescript: typescript
+      })
+    ]
+  }
+]
 ```
+
+修改文件：`./packages/utils/package.json`
+
+```json
+{
+  "name": "@helpvue/utils",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/main.d.ts",
+  "files": ["dist", "src", "package.json"],
+  "keywords": ["@helpvue/utils", "js工具库"],
+  "author": "kgm0515 <498413945@qq.com>",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "start": "serve",
+    "doc": "npx typedoc src/main.ts",
+    "publish": "npm publish"
+  }
+}
+```
+
+执行命令打包: `npm run dev`
+
+### 工具库文档生成
+
+执行命令打包: `npm run doc`

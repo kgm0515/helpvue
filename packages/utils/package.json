@@ -17,10 +17,11 @@
   ],
   "author": "kgm0515 <498413945@qq.com>",
   "scripts": {
-    "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "serve dist",
-    "doc": "npx typedoc src/main.ts"
+    "build": "rollup -c",
+    "start": "serve",
+    "doc": "npx typedoc src/main.ts",
+    "publish": "npm publish"
   },
   "license": "ISC",
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "rollup-plugin-clear": "^2.0.7",
+    "serve": "^14.2.0",
     "tslib": "^2.5.0",
     "typescript": "^5.0.2"
   }
