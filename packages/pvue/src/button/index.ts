@@ -1,5 +1,5 @@
 import type { Plugin, App } from 'vue'
-import { compInstall, IAppConfig } from '../index'
+import { compInstall, IAppConfig } from '../helper'
 import Component from './index.vue'
 
 Component.install = (app: App, config?: IAppConfig) => compInstall(app, config || {}, Component)
