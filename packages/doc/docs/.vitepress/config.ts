@@ -57,8 +57,8 @@ export default defineConfig({
   outDir: '../public',
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
-    ['link', { rel: 'shortcut icon', href: '/helpvue/favicon.ico', crossorigin: '' }]
-    // [ 'script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' } ]
+    ['link', { rel: 'shortcut icon', href: '/helpvue/favicon.ico', crossorigin: '' }],
+    ['script', { src: '/helpvue/onload.js' }]
   ],
   // srcDir: './docs', // 文档根目录, vitepress dev docs 默认就是docs
   // 路径重写
