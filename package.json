@@ -1,16 +1,17 @@
 {
-  "name": "helpvue",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "root",
+  "private": true,
   "scripts": {
     "dev:doc": "cd ./packages/doc && pnpm docs:dev",
     "deploy:doc": "node ./scripts/deploySite.js",
-    "build": "npm run build:pvue && npm run build:doc",
-    "build:pvue": "cd ./packages/pvue && pnpm i && pnpm build",
-    "build:doc": "cd ./packages/doc && pnpm i && pnpm docs:build",
-    "publish": "npm run publish:ui && npm run publish:cli",
-    "publish:pvue": "cd ./packages/pvue && pnpm publish"
+    "build": "pnpm i && pnpm build:pvue && pnpm build:utils && pnpm build:utils:doc && pnpm build:doc",
+    "build:doc": "cd ./packages/doc && pnpm docs:build",
+    "build:pvue": "cd ./packages/pvue && pnpm build",
+    "build:utils": "cd ./packages/utils && pnpm build",
+    "build:utils:doc": "cd ./packages/utils && pnpm doc",
+    "publish": "pnpm publish:pvue && pnpm publish:utils",
+    "publish:pvue": "cd ./packages/pvue && pnpm publish",
+    "publish:utils": "cd ./packages/utils && pnpm publish"
   },
   "keywords": [],
   "author": "",

@@ -673,9 +673,7 @@ export default [
 
 执行命令打包工具库文档: `npm run doc`
 
-### 将 typedoc 文档接入 vitepress
-
-将.html 转为.md 文件, 安装插件:
+将.html 转为.md 文件, 安装插件: typedoc-plugin-markdown
 
 ```sh
 npm install typedoc -D
@@ -683,3 +681,110 @@ npm i -D typedoc-plugin-markdown # 将.html 转为.md 文件
 ```
 
 再次执行命令 `npm run doc`，发现 docs 目录中都是.md 文件了
+
+### 接入 vitepress 文档库
+
+> **_思路_**: 调用'typedoc'插件的 api 生成.md 文档，同时生成匹配的侧边栏 json 格式目录。创建 gulp 文件，把.md 文档和侧边栏目录拷贝到 vitepress 文档目录下
+
+- 安装 gulp: `npm install gulp -D`
+
+- 创建目录: './packages/utils/typedoc'
+
+- 初始化文件: './packages/utils/typedoc/packages.json'
+
+```json
+{
+  "name": "utils-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "doc": "gulp genDocument"
+  }
+}
+```
+
+- 初始化文件: './packages/utils/typedoc/gulpfile.js'
+
+```js
+const TypeDoc = require('typedoc')
+const path = require('path')
+const fs = require('fs')
+const rename = require('gulp-rename')
+const { src, dest, series } = require('gulp')
+
+// 调用'typedoc'插件的api生成文档
+async function main() {
+  // ...
+}
+// 生成文档
+const genFile = async (cb) => {
+  await main().catch(console.error)
+  cb()
+}
+// 拷贝文件
+const copyUtils = () => {
+  return src(path.join(__dirname, './utils/**/*.md'))
+    .pipe(
+      rename(function (path) {
+        // Returns a completely new object, make sure you return all keys needed!
+        return {
+          dirname: path.dirname,
+          basename: path.basename.split('.').join('-'),
+          extname: path.extname
+        }
+      })
+    )
+    .pipe(dest(path.join(__dirname, '../../doc/docs/utils/')))
+}
+// 拷贝文件
+const copySidebar = () => {
+  return src(path.join(__dirname, './_utilsSidebar.js')).pipe(dest(path.join(__dirname, '../../doc/docs/.vitepress/')))
+}
+
+module.exports = {
+  genDocument: series(genFile, copyUtils, copySidebar)
+}
+```
+
+修改文件：`./packages/utils/package.json`
+
+```json
+{
+  "scripts": {
+    "doc": "cd ./typedoc && pnpm doc"
+  }
+}
+```
+
+**执行命令`pnpm doc`，就完成了文档打包和目录生成，并拷贝到了对应的 vitepress 目录**
+
+### 命令组合
+
+修改文件: './package.json'
+
+```json
+{
+  "scripts": {
+    "dev:doc": "cd ./packages/doc && pnpm docs:dev",
+    "deploy:doc": "node ./scripts/deploySite.js",
+    "build": "pnpm i && pnpm build:pvue && pnpm build:utils && pnpm build:utils:doc && pnpm build:doc",
+    "build:doc": "cd ./packages/doc && pnpm docs:build",
+    "build:pvue": "cd ./packages/pvue && pnpm build",
+    "build:utils": "cd ./packages/utils && pnpm build",
+    "build:utils:doc": "cd ./packages/utils && pnpm doc",
+    "publish": "pnpm publish:pvue && pnpm publish:utils",
+    "publish:pvue": "cd ./packages/pvue && pnpm publish",
+    "publish:utils": "cd ./packages/utils && pnpm publish"
+  }
+}
+```
+
+在根目录启动开发文档：
+
+- `pnpm build:utils:doc`
+- `pnpm dev:doc`
+
+在根目录部署开发文档：
+
+- `pnpm deploy:doc`

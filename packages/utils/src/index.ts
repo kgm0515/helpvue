@@ -1,2 +1,2 @@
 export * from './libs/calc'
-export * as example from './libs/example'
+export * as exam from './libs/exam'

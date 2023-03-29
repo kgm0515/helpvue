@@ -1,6 +1,7 @@
 {
-  "name": "@helpvue/utils-docs",
+  "name": "utils-docs",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "scripts": {
     "doc": "gulp genDocument"

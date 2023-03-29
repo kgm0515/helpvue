@@ -6,5 +6,13 @@
 /**/dist
 /packages/pvue/types
 /packages/doc/public
+/packages/doc/docs/utils/classes
+/packages/doc/docs/utils/functions
+/packages/doc/docs/utils/interfaces
+/packages/doc/docs/utils/modules
+/packages/doc/docs/utils/types
+/packages/doc/docs/utils/variables
+/packages/doc/docs/utils/README.md
+/packages/doc/docs/utils/modules.md
 /packages/utils/typedoc/utils
-/packages/utils/typedoc/utilsSidebar.js
+/packages/utils/typedoc/_utilsSidebar.js

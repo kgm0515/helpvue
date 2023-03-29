@@ -43,15 +43,15 @@ async function resolveConfig(jsonDir) {
       module.children.forEach((sub) => {
         // 类、接口、类型、函数作为二级导航
         if (sub.kindString === 'Class') {
-          moduleConfig.items.push({ text: `Class: ${module.name}.${sub.name}`, link: getClassPath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `Class: ${sub.name}`, link: getClassPath(module.name, sub.name) })
         } else if (sub.kindString === 'Interface') {
-          moduleConfig.items.push({ text: `Interface: ${module.name}.${sub.name}`, link: getInterfacePath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `Interface: ${sub.name}`, link: getInterfacePath(module.name, sub.name) })
         } else if (sub.kindString === 'Type alias') {
-          moduleConfig.items.push({ text: `Type: ${module.name}.${sub.name}`, link: getTypePath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `Type: ${sub.name}`, link: getTypePath(module.name, sub.name) })
         } else if (sub.kindString === 'Function') {
-          moduleConfig.items.push({ text: `Function: ${module.name}.${sub.name}`, link: getFunctionPath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `Function: ${sub.name}`, link: getFunctionPath(module.name, sub.name) })
         } else if (sub.kindString === 'Variable') {
-          moduleConfig.items.push({ text: `Variable: ${module.name}.${sub.name}`, link: getVariablesPath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `Variable: ${sub.name}`, link: getVariablesPath(module.name, sub.name) })
         }
       })
     }
