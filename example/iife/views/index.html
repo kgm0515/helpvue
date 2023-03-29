@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3.2.3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="./@helpvue/pvue/dist/style/index.css" />
-    <script src="./@helpvue/pvue/dist/index.umd.js"></script>
+    <script src="./@helpvue/pvue/dist/index.iife.js"></script>
     <script src="./@helpvue/utils/dist/index.iife.js"></script>
   </head>
   <body>
@@ -24,9 +24,20 @@
             return { count, handleAdd: () => count.value++ }
           }
         })
-          .use(Pvue.default)
+          .use(Pvue.Button, { prefix: 'pvue' })
           .mount('#app')
       }
+      // window.onload = function () {
+      //   console.log(Pvue)
+      //   const vm = Vue.createApp({
+      //     setup() {
+      //       const count = Vue.ref(0)
+      //       return { count, handleAdd: () => count.value++ }
+      //     }
+      //   })
+      //     .use(Pvue.default)
+      //     .mount('#app')
+      // }
     </script>
   </body>
 </html>
