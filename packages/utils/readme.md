@@ -1,8 +1,3 @@
----
-title: 测试 Markdown 语法
-lang: en-US
----
-
 # 快速开始
 
 ## 介绍

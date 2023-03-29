@@ -20,4 +20,4 @@
 
 #### Defined in
 
-libs/example.ts:63
+[libs/example.ts:63](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L63)

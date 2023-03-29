@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [exam](../modules/exam.md) / MyInterface
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / MyInterface
 
 # Interface: MyInterface
 
-[exam](../modules/exam.md).MyInterface
+[example](../modules/example.md).MyInterface
 
 接口
 
@@ -10,8 +10,8 @@
 
 ### Properties
 
-- [key1](exam.MyInterface.md#key1)
-- [key2](exam.MyInterface.md#key2)
+- [key1](example.MyInterface.md#key1)
+- [key2](example.MyInterface.md#key2)
 
 ## Properties
 

@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [exam](../modules/exam.md) / MyType
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / MyType
 
 # Type alias: MyType
 
-[exam](../modules/exam.md).MyType
+[example](../modules/example.md).MyType
 
 Ƭ **MyType**: ``1`` \| ``2`` \| ``3`` \| ``4``
 

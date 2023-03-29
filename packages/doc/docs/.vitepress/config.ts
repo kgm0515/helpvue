@@ -1,9 +1,7 @@
 import { DefaultTheme, defineConfig } from 'vitepress'
 import utilsSidebar from './_utilsSidebar'
 
-/**
- * 顶部导航栏
- */
+/** 顶部导航栏 */
 const nav: DefaultTheme.NavItem[] = [
   { text: 'pc组件库', link: '/pvue/' },
   { text: 'utils工具库', link: '/utils/' },
@@ -41,7 +39,7 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         { text: '简介', link: '/utils/' },
-        { text: '快速上手', link: '/utils/quick' }
+        { text: '快速上手', link: '/utils/README' }
       ]
     },
     ...utilsSidebar

@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [exam](../modules/exam.md) / MyClass
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / MyClass
 
 # Class: MyClass
 
-[exam](../modules/exam.md).MyClass
+[example](../modules/example.md).MyClass
 
 类
 
@@ -10,17 +10,17 @@
 
 ### Constructors
 
-- [constructor](exam.MyClass.md#constructor)
+- [constructor](example.MyClass.md#constructor)
 
 ### Properties
 
-- [prop1](exam.MyClass.md#prop1)
+- [prop1](example.MyClass.md#prop1)
 
 ### Methods
 
-- [privateMethod1](exam.MyClass.md#privatemethod1)
-- [publicMethod](exam.MyClass.md#publicmethod)
-- [staticMethod1](exam.MyClass.md#staticmethod1)
+- [privateMethod1](example.MyClass.md#privatemethod1)
+- [publicMethod](example.MyClass.md#publicmethod)
+- [staticMethod1](example.MyClass.md#staticmethod1)
 
 ## Constructors
 

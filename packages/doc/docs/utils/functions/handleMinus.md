@@ -19,4 +19,4 @@
 
 #### Defined in
 
-libs/calc.ts:7
+[libs/calc.ts:7](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/calc.ts#L7)

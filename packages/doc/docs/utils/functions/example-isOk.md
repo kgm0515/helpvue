@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [exam](../modules/exam.md) / isOk
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / isOk
 
 # Function: isOk
 
-[exam](../modules/exam.md).isOk
+[example](../modules/example.md).isOk
 
 ▸ **isOk**(`eventName`): `string`
 

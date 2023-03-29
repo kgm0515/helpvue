@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [exam](../modules/exam.md) / myName
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / myName
 
 # Variable: myName
 
-[exam](../modules/exam.md).myName
+[example](../modules/example.md).myName
 
 • `Const` **myName**: ``"kgm"``
 

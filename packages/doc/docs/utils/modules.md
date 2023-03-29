@@ -6,7 +6,7 @@
 
 ### Namespaces
 
-- [exam](modules/exam.md)
+- [example](modules/example.md)
 
 ### Functions
 
