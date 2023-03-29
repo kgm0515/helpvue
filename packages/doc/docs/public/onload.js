@@ -6,7 +6,13 @@ document.addEventListener(
   (e) => {
     const allParents = [...e.composedPath().slice(0, -8)]
     const alink = allParents.find((item) => item.nodeName === 'A')
-    if (alink) alink.href = alink.href.replace('.', '-')
+    if (alink) {
+      const parts = alink.href.split('/')
+      if (parts.length > 4) {
+        parts[parts.length - 1] = parts[parts.length - 1].replace('.', '-')
+      }
+      alink.href = parts.join('/')
+    }
   },
   true
 )
