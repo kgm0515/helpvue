@@ -1,4 +1,4 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / handleMinus
+[@helpvue/utils](../README.md) / handleMinus
 
 # Function: handleMinus
 
@@ -19,4 +19,4 @@
 
 #### Defined in
 
-[libs/calc.ts:7](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/calc.ts#L7)
+[libs/calc.ts:7](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/calc.ts#L7)

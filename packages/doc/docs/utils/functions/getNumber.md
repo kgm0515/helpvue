@@ -1,4 +1,4 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / getNumber
+[@helpvue/utils](../README.md) / getNumber
 
 # Function: getNumber
 
@@ -18,4 +18,4 @@
 
 #### Defined in
 
-[libs/calc.ts:23](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/calc.ts#L23)
+[libs/calc.ts:23](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/calc.ts#L23)

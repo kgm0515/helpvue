@@ -1,4 +1,4 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / myFunction
+[@helpvue/utils](../README.md) / [example](../modules/example.md) / myFunction
 
 # Function: myFunction
 
@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[libs/example.ts:63](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L63)
+[libs/example.ts:63](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L63)

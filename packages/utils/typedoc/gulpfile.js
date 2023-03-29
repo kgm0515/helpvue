@@ -21,7 +21,6 @@ async function resolveConfig(jsonDir) {
   if (!data.children || data.children.length <= 0) {
     return
   }
-  console.log(data, '==========')
   data.children.forEach((module) => {
     let moduleConfig = {}
     if (!['Module', 'Namespace'].includes(module.kindString)) {
@@ -103,6 +102,7 @@ async function main() {
   // 指定 TypeDoc 配置项
   app.bootstrap({
     entryPoints: entries,
+    readme: 'none',
     tsconfig: rootPath('tsconfig.json'),
     plugin: ['typedoc-plugin-markdown'],
     allReflectionsHaveOwnDocument: true

@@ -1,30 +1,15 @@
-@helpvue/utils / [Exports](modules.md)
+@helpvue/utils
 
-# 快速开始
+# @helpvue/utils
 
-## 介绍
+## Table of contents
 
-这里为您介绍常见开发模式下接入工具库的最基本方式。
+### Namespaces
 
-## 安装
+- [example](modules/example.md)
 
-### script 标签引入
+### Functions
 
-```html
-<div id="app"></div>
-<script src="./node_modules/@helpvue/utils/dist/index.iife.js"></script>
-<script>
-  // ...
-</script>
-```
-
-### Webpack/Vite 使用
-
-安装：`npm i @helpvue/utils -S`
-
-全局引入
-
-```ts
-import helpUtils from '@helpvue/utils'
-console.log(helpUtils)
-```
+- [getNumber](functions/getNumber.md)
+- [handleAdd](functions/handleAdd.md)
+- [handleMinus](functions/handleMinus.md)

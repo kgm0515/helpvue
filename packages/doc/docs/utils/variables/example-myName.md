@@ -1,4 +1,4 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / myName
+[@helpvue/utils](../README.md) / [example](../modules/example.md) / myName
 
 # Variable: myName
 
@@ -10,4 +10,4 @@
 
 #### Defined in
 
-[libs/example.ts:11](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L11)
+[libs/example.ts:11](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L11)

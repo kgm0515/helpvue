@@ -39,7 +39,7 @@ const sidebar: DefaultTheme.Sidebar = {
       collapsed: false,
       items: [
         { text: '简介', link: '/utils/' },
-        { text: '快速上手', link: '/utils/README' }
+        { text: '概览', link: '/utils/README' }
       ]
     },
     ...utilsSidebar

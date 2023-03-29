@@ -1,4 +1,4 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / example
+[@helpvue/utils](../README.md) / example
 
 # Namespace: example
 

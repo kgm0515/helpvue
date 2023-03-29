@@ -1,4 +1,4 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / MyClass
+[@helpvue/utils](../README.md) / [example](../modules/example.md) / MyClass
 
 # Class: MyClass
 
@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[libs/example.ts:30](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L30)
+[libs/example.ts:30](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L30)
 
 ## Properties
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[libs/example.ts:27](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L27)
+[libs/example.ts:27](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L27)
 
 ## Methods
 
@@ -69,7 +69,7 @@
 
 #### Defined in
 
-[libs/example.ts:49](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L49)
+[libs/example.ts:49](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L49)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[libs/example.ts:54](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L54)
+[libs/example.ts:54](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L54)
 
 ___
 
@@ -116,4 +116,4 @@ ___
 
 #### Defined in
 
-[libs/example.ts:39](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L39)
+[libs/example.ts:39](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L39)

@@ -1,4 +1,4 @@
-[@helpvue/utils](../README.md) / [Exports](../modules.md) / [example](../modules/example.md) / MyInterface
+[@helpvue/utils](../README.md) / [example](../modules/example.md) / MyInterface
 
 # Interface: MyInterface
 
@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[libs/example.ts:19](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L19)
+[libs/example.ts:19](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L19)
 
 ___
 
@@ -35,4 +35,4 @@ ___
 
 #### Defined in
 
-[libs/example.ts:21](https://github.com/kgm0515/helpvue/blob/494f501/packages/utils/src/libs/example.ts#L21)
+[libs/example.ts:21](https://github.com/kgm0515/helpvue/blob/158e40d/packages/utils/src/libs/example.ts#L21)
