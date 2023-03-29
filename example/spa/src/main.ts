@@ -9,6 +9,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import Pvue from '@helpvue/pvue'
+import * as aaa from '@helpvue/pvue'
+
+console.log(aaa)
 
 // import { Button } from '@helpvue/pvue'
 // import '@helpvue/pvue/dist/style/base.css' // 引入基础样式

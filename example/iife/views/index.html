@@ -17,14 +17,14 @@
     <script defer>
       console.log('HelpUtils库', HelpUtils, HelpUtils.handleAdd(1, 2, 3))
       window.onload = function () {
-        console.log(Pvue)
+        console.log(HelpPvue)
         const vm = Vue.createApp({
           setup() {
             const count = Vue.ref(0)
             return { count, handleAdd: () => count.value++ }
           }
         })
-          .use(Pvue.Button, { prefix: 'pvue' })
+          .use(HelpPvue.Button, { prefix: 'pvue' })
           .mount('#app')
       }
       // window.onload = function () {
