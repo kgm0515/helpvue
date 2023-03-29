@@ -41,7 +41,7 @@ export default [
     input: './src/index.ts',
     external: ['vue'], // 指出哪些模块需要被视为外部引入, 'vue'库不打包
     output: [
-      { file: pkg.main, format: 'cjs' },
+      { file: `dist/index.cjs`, format: 'cjs' },
       { file: pkg.module, format: 'es' }
     ],
     plugins: [

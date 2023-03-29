@@ -66,9 +66,9 @@ packages:
 
 ```ts
 import type { Plugin, App } from 'vue'
-import { compInstall } from '../index'
+import { compInstall, IAppConfig } from '../index'
 import Component from './index.vue'
-Component.install = (app: App, config: { prefix: 'pvue' }) => compInstall(app, config, Component)
+Component.install = (app: App, config?: IAppConfig) => compInstall(app, config || {}, Component)
 export default Component as typeof Component & Plugin
 ```
 
@@ -76,7 +76,7 @@ export default Component as typeof Component & Plugin
 
 ```html
 <template>
-  <button :disabled="disabled" :class="getClass()">
+  <button :disabled="disabled" :class="getClass">
     <span class="pvue-button__content"><slot/></span>
   </button>
 </template>
@@ -110,13 +110,13 @@ export default defineComponent({
   setup(props) {
     const { type, size, disabled, text, bg } = props
     /** 组装样式 */
-    const getClass = () => {
+    const getClass = computed(() => {
       const tempList = ['pvue-button', `pvue-button--${type}`, `pvue-button--${size}`]
       if (disabled) tempList.push(`pvue-button--disabled`)
       if (text) tempList.push(`pvue-button--text`)
       if (bg) tempList.push(`pvue-button--bg`)
       return tempList.join(' ')
-    }
+    })
     return {getClass}
   }
 })
@@ -125,11 +125,17 @@ export default defineComponent({
 创建：`src/index.ts`
 
 ```ts
-import type { App } from 'vue'
+import type { App, Component, ComputedOptions, MethodOptions } from 'vue'
 import * as components from './components'
 export * from './components'
+
 // 从外部传入的配置对象
 export const appConfig = { prefix: 'pvue' }
+export interface IAppConfig {
+  prefix?: string
+  [p: string]: any
+}
+
 /**
  * 创建组件通用的install方法
  * @param app vue实例
@@ -137,7 +143,7 @@ export const appConfig = { prefix: 'pvue' }
  * @param comps 某一个组件
  * @returns
  */
-export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
+export function compInstall(app: App, config: IAppConfig, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
   Object.assign(appConfig, config || {}) // 修改appConfig的值
   let name = comps.name
   if (!(name && typeof name === 'string')) {
@@ -145,7 +151,7 @@ export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Compone
   }
   name = name.toLocaleLowerCase()
   // 前缀
-  const prefix = config && config.hasOwnProperty('prefix') ? config.prefix : 'pvue'
+  const prefix = config && config.hasOwnProperty('prefix') ? config?.prefix || '' : 'pvue'
   const upperPrefix = prefix.slice(0, 1).toUpperCase() + prefix.slice(1)
   // 大写的名字
   const upperName = name
@@ -161,7 +167,7 @@ export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Compone
 }
 
 export default {
-  install(app: App, config: { prefix: 'pvue' }) {
+  install(app: App, config?: IAppConfig) {
     for (const keyName in components) {
       const Comp = (components as any)[keyName]
       if (Comp.install) app.use(Comp, config)
@@ -572,7 +578,7 @@ import virtualModule from './plugins/rollup-plugin-virtual-module.js'
 
 const production = !process.env.ROLLUP_WATCH
 const pkg = {
-  main: './dist/index.cjs.js',
+  main: './dist/index.cjs',
   module: './dist/index.esm.js',
   browser: './dist/index.umd.js',
   iife: './dist/index.iife.js'
@@ -628,7 +634,7 @@ export default [
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "./dist/index.cjs.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/main.d.ts",
   "files": ["dist", "src", "package.json"],

@@ -1,10 +1,10 @@
 <template>
-  <button :disabled="disabled" :class="getClass()">
+  <button :disabled="disabled" :class="getClass">
     <span class="pvue-button__content"><slot /></span>
   </button>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType } from 'vue'
+  import { defineComponent, PropType, computed } from 'vue'
   export default defineComponent({
     name: 'Button',
     props: {
@@ -36,13 +36,13 @@
     setup(props) {
       const { type, size, disabled, text, bg } = props
       /** 组装样式 */
-      const getClass = () => {
+      const getClass = computed(() => {
         const tempList = ['pvue-button', `pvue-button--${type}`, `pvue-button--${size}`]
         if (disabled) tempList.push(`pvue-button--disabled`)
         if (text) tempList.push(`pvue-button--text`)
         if (bg) tempList.push(`pvue-button--bg`)
         return tempList.join(' ')
-      }
+      })
       return { getClass }
     }
   })

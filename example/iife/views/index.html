@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="./@helpvue/pvue/dist/style/index.css" />
+    <script src="./@helpvue/pvue/dist/index.umd.js"></script>
+    <script src="./@helpvue/utils/dist/index.iife.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <pvue-button type="success" size="small" @click="handleAdd">{{count}}</pvue-button>
+    </div>
+    <script defer>
+      console.log('HelpUtils库', HelpUtils, HelpUtils.handleAdd(1, 2, 3))
+      window.onload = function () {
+        console.log(Pvue)
+        const vm = Vue.createApp({
+          setup() {
+            const count = Vue.ref(0)
+            return { count, handleAdd: () => count.value++ }
+          }
+        })
+          .use(Pvue.default)
+          .mount('#app')
+      }
+    </script>
+  </body>
+</html>

@@ -22,12 +22,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build": "gulp clean && npm run build:lib && npm run build:css",
-    "build:lib": "vue-tsc --noEmit && vite build",
-    "build:css": "gulp compile",
-    "publish": "npm publish"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kgm0515/help-vue.git"
@@ -36,6 +30,12 @@
     "@helpvue/pvue",
     "vue组件库"
   ],
+  "scripts": {
+    "build": "gulp clean && npm run build:lib && npm run build:css",
+    "build:lib": "vue-tsc --noEmit && vite build",
+    "build:css": "gulp compile",
+    "publish": "npm publish"
+  },
   "author": "kgm0515 <498413945@qq.com>",
   "dependencies": {
     "vue": "^3.2.47"

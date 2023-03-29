@@ -8,5 +8,11 @@ vue 组件库，工具库
 
 ## 相关命令
 
-- 运行开发文档: `npm run dev:doc`
-- 部署开发文档: `npm run deploy:doc`
+在根目录启动开发文档：
+
+- `pnpm build:utils:doc`
+- `pnpm dev:doc`
+
+在根目录部署开发文档：
+
+- `pnpm deploy:doc`

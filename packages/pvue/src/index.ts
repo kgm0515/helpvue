@@ -4,6 +4,10 @@ export * from './components'
 
 // 从外部传入的配置对象
 export const appConfig = { prefix: 'pvue' }
+export interface IAppConfig {
+  prefix?: string
+  [p: string]: any
+}
 
 /**
  * 创建组件通用的install方法
@@ -12,7 +16,7 @@ export const appConfig = { prefix: 'pvue' }
  * @param comps 某一个组件
  * @returns
  */
-export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
+export function compInstall(app: App, config: IAppConfig, comps: Component<any, any, any, ComputedOptions, MethodOptions>) {
   Object.assign(appConfig, config || {}) // 修改appConfig的值
   let name = comps.name
   if (!(name && typeof name === 'string')) {
@@ -20,7 +24,7 @@ export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Compone
   }
   name = name.toLocaleLowerCase()
   // 前缀
-  const prefix = config && config.hasOwnProperty('prefix') ? config.prefix : 'pvue'
+  const prefix = config && config.hasOwnProperty('prefix') ? config?.prefix || '' : 'pvue'
   const upperPrefix = prefix.slice(0, 1).toUpperCase() + prefix.slice(1)
   // 大写的名字
   const upperName = name
@@ -36,7 +40,7 @@ export function compInstall(app: App, config: { prefix: 'pvue' }, comps: Compone
 }
 
 export default {
-  install(app: App, config: { prefix: 'pvue' }) {
+  install(app: App, config?: IAppConfig) {
     for (const keyName in components) {
       const Comp = (components as any)[keyName]
       if (Comp.install) app.use(Comp, config)
