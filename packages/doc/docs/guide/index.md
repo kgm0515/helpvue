@@ -18,6 +18,33 @@ vue 组件库，工具库
 - 磁盘空间利用率高
 - monorepo：方便版本管理，天然内置支持当仓库多包, 相互引用方便。
 
+### 原理：用 js 创建软连接
+
+创建测试目录`./example/testlink`，在测试目录下创建文件`./target/index.txt`
+
+创建测试脚本文件
+
+```js
+/** ./example/testlink/script.js */
+const path = require('path')
+const fs = require('fs')
+/**
+ * 创建某一个目录(是创建目录，不是文件)的软连接
+ * target 目标文件
+ * path 创建软链对应的地址
+ */
+fs.symlink(path.resolve(__dirname + '/target/'), path.resolve(__dirname + '/test'), (err) => {
+  console.log('error', err)
+})
+```
+
+以管理员身份运行命令行窗口并执行脚本：
+
+- 在系统桌面左下侧搜索栏输入 CMD 或者命令提示符，右键点击命令提示符在右键菜单中点击：以管理员身份运行，可以打开系统【管理员命令提示符】窗口。
+- 结果在`testlink`目录下创建了`test`目录，并且此目录下所有文件和`target`目录一模一样
+- 修改或者删除`test`目录下的文件，同样会修改或者删除`target`目录下的文件
+- 打开文件目录，可以看到`test`目录其实以一个快捷方式
+
 ## 开发 ui 组件库
 
 ### 初始化，安装依赖
@@ -794,3 +821,44 @@ module.exports = {
 在根目录部署开发文档：
 
 - `pnpm deploy:doc`
+
+## 包发布
+
+### 登陆 npm
+
+```sh
+npm adduser # 输入用户名密码邮箱
+npm login #输入用户名和密码和 Email, kgm0515、kgm1...、498413945@qq.com
+```
+
+### 包发布
+
+- 每一个子包需要单独发布。发布前先整理每一个子包下面的 package.json 文件, 以@helpvue/pvue 子仓库为例
+
+父仓库的 package.json
+
+```json
+{
+  "scripts": {
+    + "publish": "npm publish"
+  }
+}
+```
+
+子仓库的 package.json
+
+```json
+{
+  "scripts": {
+    + "publish": "pnpm publish:pvue && pnpm publish:utils",
+    + "publish:pvue": "cd ./packages/pvue && pnpm publish",
+    + "publish:utils": "cd ./packages/utils && pnpm publish"
+  }
+}
+```
+
+运行`npm run publish`发布所有子仓库，发布器必须先提交所有代码
+
+### 命令行查看包的发布状态
+
+`npm show @helpvue/pvue`
