@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Modules](../modules.md) / [example](../modules/example.md) / MyClass
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [exam](../modules/exam.md) / MyClass
 
 # Class: MyClass
 
-[example](../modules/example.md).MyClass
+[exam](../modules/exam.md).MyClass
 
 类
 
@@ -10,17 +10,17 @@
 
 ### Constructors
 
-- [constructor](example.MyClass.md#constructor)
+- [constructor](exam.MyClass.md#constructor)
 
 ### Properties
 
-- [prop1](example.MyClass.md#prop1)
+- [prop1](exam.MyClass.md#prop1)
 
 ### Methods
 
-- [privateMethod1](example.MyClass.md#privatemethod1)
-- [publicMethod](example.MyClass.md#publicmethod)
-- [staticMethod1](example.MyClass.md#staticmethod1)
+- [privateMethod1](exam.MyClass.md#privatemethod1)
+- [publicMethod](exam.MyClass.md#publicmethod)
+- [staticMethod1](exam.MyClass.md#staticmethod1)
 
 ## Constructors
 
@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[example.ts:28](https://github.com/kgm0515/helpvue/blob/e392d80/packages/utils/src/example.ts#L28)
+libs/example.ts:30
 
 ## Properties
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[example.ts:25](https://github.com/kgm0515/helpvue/blob/e392d80/packages/utils/src/example.ts#L25)
+libs/example.ts:27
 
 ## Methods
 
@@ -69,7 +69,7 @@
 
 #### Defined in
 
-[example.ts:47](https://github.com/kgm0515/helpvue/blob/e392d80/packages/utils/src/example.ts#L47)
+libs/example.ts:49
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[example.ts:52](https://github.com/kgm0515/helpvue/blob/e392d80/packages/utils/src/example.ts#L52)
+libs/example.ts:54
 
 ___
 
@@ -116,4 +116,4 @@ ___
 
 #### Defined in
 
-[example.ts:37](https://github.com/kgm0515/helpvue/blob/e392d80/packages/utils/src/example.ts#L37)
+libs/example.ts:39

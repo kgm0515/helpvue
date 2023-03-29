@@ -10,11 +10,13 @@ export const isOk = (eventName: string): string => `yes ${eventName || 'world'} 
  */
 export const myName = 'kgm'
 
+/** 类型 */
+export type MyType = 1 | 2 | 3 | 4
+
 /** 接口 */
 export interface MyInterface {
   /** 属性1 */
   key1: number
-
   /** 属性2 */
   key2: string
 }
@@ -54,11 +56,8 @@ export class MyClass {
   }
 }
 
-/** 类型 */
-export type MyType = 1 | 2 | 3 | 4
-
 /**
- * 函数
+ * 这是一个函数函数
  * @param param 参数
  */
 export function myFunction(param: MyInterface) {

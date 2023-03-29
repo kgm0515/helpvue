@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Modules](../modules.md) / [index](../modules/index.md) / handleMinus
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [calc](../modules/calc.md) / handleMinus
 
 # Function: handleMinus
 
-[index](../modules/index.md).handleMinus
+[calc](../modules/calc.md).handleMinus
 
 ▸ **handleMinus**(`num1`, `num2`): `number`
 
@@ -21,4 +21,4 @@
 
 #### Defined in
 
-[libs/minus.ts:7](https://github.com/kgm0515/helpvue/blob/e392d80/packages/utils/src/libs/minus.ts#L7)
+libs/calc.ts:7

@@ -5,7 +5,7 @@ const rename = require('gulp-rename')
 const { src, dest, series } = require('gulp')
 
 // 指定代码入口
-const entries = [rootPath('./src/index.ts'), rootPath('./src/example.ts')]
+const entries = [rootPath('./src/index.ts')]
 
 // 根目录
 function rootPath(...args) {
@@ -15,37 +15,47 @@ function rootPath(...args) {
 /** 生成 sidebar 目录配置项 */
 async function resolveConfig(jsonDir) {
   const result = []
-
   // 读取文档数据结构的 json 文件
   const buffer = await fs.promises.readFile(jsonDir, 'utf8')
   const data = JSON.parse(buffer.toString())
   if (!data.children || data.children.length <= 0) {
     return
   }
-
+  console.log(data, '==========')
   data.children.forEach((module) => {
-    if (module.kindString !== 'Module') {
-      return
-    }
-    // Module 作为一级导航
-    const moduleConfig = {
-      text: module.name,
-      items: [{ text: module.name, link: getModulePath(module.name) }]
-    }
-    module.children.forEach((sub) => {
-      // 类、接口、类型、函数作为二级导航
-      if (sub.kindString === 'Class') {
-        moduleConfig.items.push({ text: `类: ${sub.name}`, link: getClassPath(module.name, sub.name) })
-      } else if (sub.kindString === 'Interface') {
-        moduleConfig.items.push({ text: `接口: ${sub.name}`, link: getInterfacePath(module.name, sub.name) })
-      } else if (sub.kindString === 'Type alias') {
-        moduleConfig.items.push({ text: `类型: ${sub.name}`, link: getTypePath(module.name, sub.name) })
-      } else if (sub.kindString === 'Function') {
-        moduleConfig.items.push({ text: `函数: ${sub.name}`, link: getFunctionPath(module.name, sub.name) })
-      } else if (sub.kindString === 'Variable') {
-        moduleConfig.items.push({ text: `常量: ${sub.name}`, link: getVariablesPath(module.name, sub.name) })
+    let moduleConfig = {}
+    if (!['Module', 'Namespace'].includes(module.kindString)) {
+      // Module 作为一级导航
+      moduleConfig = { text: module.name, link: '' }
+      if (module.kindString === 'Class') {
+        moduleConfig = { text: `Class: ${module.name}`, link: getClassPath(module.name) }
+      } else if (module.kindString === 'Interface') {
+        moduleConfig = { text: `Interface: ${module.name}`, link: getInterfacePath(module.name) }
+      } else if (module.kindString === 'Type alias') {
+        moduleConfig = { text: `Type: ${module.name}`, link: getTypePath(module.name) }
+      } else if (module.kindString === 'Function') {
+        moduleConfig = { text: `Function: ${module.name}`, link: getFunctionPath(module.name) }
+      } else if (module.kindString === 'Variable') {
+        moduleConfig = { text: `Variable: ${module.name}`, link: getVariablesPath(module.name) }
       }
-    })
+    } else {
+      // Module 作为一级导航
+      moduleConfig = { text: `Namespace: ${module.name}`, collapsed: false, items: [{ text: `${module.name}`, link: getModulePath(module.name) }] }
+      module.children.forEach((sub) => {
+        // 类、接口、类型、函数作为二级导航
+        if (sub.kindString === 'Class') {
+          moduleConfig.items.push({ text: `Class: ${module.name}.${sub.name}`, link: getClassPath(module.name, sub.name) })
+        } else if (sub.kindString === 'Interface') {
+          moduleConfig.items.push({ text: `Interface: ${module.name}.${sub.name}`, link: getInterfacePath(module.name, sub.name) })
+        } else if (sub.kindString === 'Type alias') {
+          moduleConfig.items.push({ text: `Type: ${module.name}.${sub.name}`, link: getTypePath(module.name, sub.name) })
+        } else if (sub.kindString === 'Function') {
+          moduleConfig.items.push({ text: `Function: ${module.name}.${sub.name}`, link: getFunctionPath(module.name, sub.name) })
+        } else if (sub.kindString === 'Variable') {
+          moduleConfig.items.push({ text: `Variable: ${module.name}.${sub.name}`, link: getVariablesPath(module.name, sub.name) })
+        }
+      })
+    }
     result.push(moduleConfig)
   })
 
@@ -61,24 +71,24 @@ function getModulePath(name) {
   return path.join('/utils/modules', `${transformModuleName(name)}`).replace(/\\/g, '/')
 }
 
-function getClassPath(moduleName, className) {
-  return path.join('/utils/classes', `${transformModuleName(moduleName)}-${className}`).replace(/\\/g, '/')
+function getClassPath(moduleName, subName) {
+  return path.join('/utils/classes', `${transformModuleName(moduleName)}${subName ? '-' + subName : ''}`).replace(/\\/g, '/')
 }
 
-function getInterfacePath(moduleName, interfaceName) {
-  return path.join('/utils/interfaces', `${transformModuleName(moduleName)}-${interfaceName}`).replace(/\\/g, '/')
+function getInterfacePath(moduleName, subName) {
+  return path.join('/utils/interfaces', `${transformModuleName(moduleName)}${subName ? '-' + subName : ''}`).replace(/\\/g, '/')
 }
 
-function getTypePath(moduleName, typeName) {
-  return path.join('/utils/types', `${transformModuleName(moduleName)}-${typeName}`).replace(/\\/g, '/')
+function getTypePath(moduleName, subName) {
+  return path.join('/utils/types', `${transformModuleName(moduleName)}${subName ? '-' + subName : ''}`).replace(/\\/g, '/')
 }
 
-function getFunctionPath(moduleName, functionName) {
-  return path.join('/utils/functions', `${transformModuleName(moduleName)}-${functionName}`).replace(/\\/g, '/')
+function getFunctionPath(moduleName, subName) {
+  return path.join('/utils/functions', `${transformModuleName(moduleName)}${subName ? '-' + subName : ''}`).replace(/\\/g, '/')
 }
 
-function getVariablesPath(moduleName, functionName) {
-  return path.join('/utils/variables', `${transformModuleName(moduleName)}-${functionName}`).replace(/\\/g, '/')
+function getVariablesPath(moduleName, subName) {
+  return path.join('/utils/variables', `${transformModuleName(moduleName)}${subName ? '-' + subName : ''}`).replace(/\\/g, '/')
 }
 
 // 主函数

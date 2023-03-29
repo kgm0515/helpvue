@@ -1,8 +1,8 @@
-[@helpvue/utils](../README.md) / [Modules](../modules.md) / [example](../modules/example.md) / isOk
+[@helpvue/utils](../README.md) / [Exports](../modules.md) / [exam](../modules/exam.md) / isOk
 
 # Function: isOk
 
-[example](../modules/example.md).isOk
+[exam](../modules/exam.md).isOk
 
 ▸ **isOk**(`eventName`): `string`
 
@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[example.ts:6](https://github.com/kgm0515/helpvue/blob/e392d80/packages/utils/src/example.ts#L6)
+libs/example.ts:6

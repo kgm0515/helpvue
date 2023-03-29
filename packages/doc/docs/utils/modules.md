@@ -1,10 +1,15 @@
-[@helpvue/utils](README.md) / Modules
+[@helpvue/utils](README.md) / Exports
 
 # @helpvue/utils
 
 ## Table of contents
 
-### Modules
+### Namespaces
 
-- [example](modules/example.md)
-- [index](modules/index.md)
+- [exam](modules/exam.md)
+
+### Functions
+
+- [getNumber](functions/getNumber.md)
+- [handleAdd](functions/handleAdd.md)
+- [handleMinus](functions/handleMinus.md)

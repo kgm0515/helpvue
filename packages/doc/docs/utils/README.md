@@ -1,14 +1,35 @@
-@helpvue/utils / [Modules](modules.md)
+@helpvue/utils / [Exports](modules.md)
 
-# helpvue
+---
+title: 测试 Markdown 语法
+lang: en-US
+---
 
-vue 组件库，工具库
+# 快速开始
 
-文档地址：`https://kgm0515.github.io/helpvue/`
+## 介绍
 
-安装插件：`pnpm i`
+这里为您介绍常见开发模式下接入工具库的最基本方式。
 
-## 相关命令
+## 安装
 
-- 运行开发文档: `npm run dev:doc`
-- 部署开发文档: `npm run deploy:doc`
+### script 标签引入
+
+```html
+<div id="app"></div>
+<script src="./node_modules/@helpvue/utils/dist/index.iife.js"></script>
+<script>
+  // ...
+</script>
+```
+
+### Webpack/Vite 使用
+
+安装：`npm i @helpvue/utils -S`
+
+全局引入
+
+```ts
+import helpUtils from '@helpvue/utils'
+console.log(helpUtils)
+```
