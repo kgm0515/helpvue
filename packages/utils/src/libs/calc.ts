@@ -20,4 +20,4 @@ export const handleAdd = (...arg: number[]): number => {
  * @param {string} num 数字
  * @returns
  */
-export const getNumber = (num: string): string => `hello ${num || 'world'}`
+export const getNumber = (num: string): string => `the number is ${num}!`

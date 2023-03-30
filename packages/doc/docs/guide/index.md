@@ -193,14 +193,12 @@ export function compInstall(app: App, config: IAppConfig, comps: Component<any, 
   return app
 }
 
-export default {
-  install(app: App, config?: IAppConfig) {
-    for (const keyName in components) {
-      const Comp = (components as any)[keyName]
-      if (Comp.install) app.use(Comp, config)
-    }
-    return app
+export function install(app: App, config?: IAppConfig) {
+  for (const keyName in components) {
+    const Comp = (components as any)[keyName]
+    if (Comp.install) app.use(Comp, config)
   }
+  return app
 }
 ```
 
@@ -340,13 +338,9 @@ pnpm i @helpvue/pvue # 安装我们的ui组件库
 
 ```js
 import DefaultTheme from 'vitepress/theme'
-/** 引入方式一：引入源文件 */
-import Pvue from '../../../../pvue/src/index'
-import '../../../../pvue/style/index.less'
-/** 引入方式一：引入库文件
-import Pvue from '@helpvue/pvue'
+// 引入方式一：引入库文件
+import * as Pvue from '@helpvue/pvue'
 import '@helpvue/pvue/dist/style/index.css'
-* */
 export default {
   ...DefaultTheme,
   enhanceApp(ctx) {

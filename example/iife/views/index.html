@@ -17,14 +17,15 @@
     <script defer>
       window.onload = function () {
         console.log('HelpPvue库', HelpPvue)
-        console.log('HelpUtils库', HelpUtils, HelpUtils.handleAdd(1, 2, 3))
+        console.log('HelpUtils库', HelpUtils, HelpUtils.exam.myName, HelpUtils.getNumber(1))
         const vm = Vue.createApp({
           setup() {
             const count = Vue.ref(0)
             return { count, handleAdd: () => count.value++ }
           }
         })
-          .use(HelpPvue.Button, { prefix: 'pvue' })
+          .use(HelpPvue, { prefix: 'pvue' })
+          // .use(HelpPvue.Button, { prefix: 'pvue' })
           .mount('#app')
       }
     </script>
