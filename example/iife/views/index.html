@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@3.2.3/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="../node_modules/@helpvue/pvue/dist/style/index.css" />
+    <link rel="stylesheet" href="../node_modules/@helpvue/pvue/dist/es/style.css" />
     <script src="../node_modules/@helpvue/pvue/dist/index.iife.js" async></script>
     <script src="../node_modules/@helpvue/utils/dist/index.iife.js" async></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <div id="app">
+    <div id="app" v-cloak>
       <pvue-button type="success" size="small" @click="handleAdd">{{count}}</pvue-button>
     </div>
     <script defer>
