@@ -23,5 +23,5 @@
 </script>
 
 <style>
-  @import '@helpvue/pvue/dist/style/index.css';
+  @import '@helpvue/pvue/dist/es/style.css';
 </style>

@@ -22,7 +22,7 @@ lang: en-US
   const app = Vue.createApp({
     template: '<PvueButton>按钮</PvueButton>'
   })
-  app.use(Pvue).mount('#app')
+  app.use(HelpPvue).mount('#app')
 </script>
 ```
 
@@ -35,9 +35,9 @@ lang: en-US
 ```ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import Pvue from '@helpvue/pvue'
-import '@helpvue/pvue/dist/style/index.css'
-createApp(App).use(Pvue).mount('#app')
+import * as HelpPvue from '@helpvue/pvue'
+import '@helpvue/pvue/dist/style/es/style.css'
+createApp(App).use(HelpPvue).mount('#app')
 ```
 
 按需引入

@@ -1,7 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 import './base.css'
 import * as Pvue from '@helpvue/pvue'
-import '@helpvue/pvue/dist/style/index.css'
+import '@helpvue/pvue/dist/es/style.css'
 
 export default {
   ...DefaultTheme,
