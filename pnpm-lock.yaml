@@ -4,6 +4,7 @@ importers:
 
   .:
     specifiers:
+      minimist: ^1.2.8
       shelljs: ^0.8.5
       typescript: ^5.0.2
       vite: ^4.2.1
@@ -11,6 +12,7 @@ importers:
     dependencies:
       vue: 3.2.47
     devDependencies:
+      minimist: 1.2.8
       shelljs: 0.8.5
       typescript: 5.0.2
       vite: 4.2.1

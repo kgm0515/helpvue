@@ -3,6 +3,9 @@
   "private": true,
   "scripts": {
     "dev:doc": "cd ./packages/doc && pnpm docs:dev",
+    "dev:utils": "cd ./packages/utils && pnpm dev",
+    "dev:pvue:lib": "cd ./packages/pvue && pnpm dev:lib",
+    "dev:pvue:css": "cd ./packages/pvue && pnpm dev:css",
     "deploy:doc": "node ./scripts/deploySite.js",
     "build": "pnpm i && pnpm build:pvue && pnpm build:utils && pnpm build:utils:doc && pnpm build:doc",
     "build:doc": "cd ./packages/doc && pnpm docs:build",
@@ -17,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "minimist": "^1.2.8",
     "shelljs": "^0.8.5",
     "typescript": "^5.0.2",
     "vite": "^4.2.1"

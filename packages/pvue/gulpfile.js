@@ -1,4 +1,4 @@
-const { src, dest } = require('gulp')
+const { src, dest, watch } = require('gulp')
 const gulpLess = require('gulp-less')
 const autoPrefixer = require('gulp-autoprefixer')
 const cleanCss = require('gulp-clean-css')
@@ -16,4 +16,10 @@ function compile() {
   return src('./style/**/*.less').pipe(gulpLess()).pipe(autoPrefixer()).pipe(cleanCss()).pipe(dest('./dist/style'))
 }
 
-module.exports = { compile, clean }
+// 监听文件修改
+function serve() {
+  compile()
+  watch('./style/**/*.less', compile)
+}
+
+module.exports = { compile, clean, serve }

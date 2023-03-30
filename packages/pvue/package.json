@@ -31,6 +31,8 @@
     "vue组件库"
   ],
   "scripts": {
+    "dev:lib": "vue-tsc --noEmit && vite build --watch",
+    "dev:css": "gulp serve",
     "build": "gulp clean && npm run build:lib && npm run build:css",
     "build:lib": "vue-tsc --noEmit && vite build",
     "build:css": "gulp compile",
