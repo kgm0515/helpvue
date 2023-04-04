@@ -15,12 +15,3 @@
     }
   })
 </script>
-<style lang="less" scoped>
-  div {
-    color: red;
-    button {
-      color: inherit;
-      font-size: 50px;
-    }
-  }
-</style>
