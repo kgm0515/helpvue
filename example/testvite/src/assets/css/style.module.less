@@ -1,0 +1,12 @@
+.root {
+  background: var(--c-warning);
+  color: @mainColor;
+  padding: 20px / 2;
+  // 响应式布局：https://www.runoob.com/cssref/css-functions.html
+  width: clamp(100px, 50%, 200px);
+  user-select: none;
+  .root-title {
+    font-size: var(--fz-40);
+    filter: blur(2px);
+  }
+}
