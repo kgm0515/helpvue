@@ -1,8 +1,9 @@
-import path from 'path'
+// import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import vuePlugins from '@vitejs/plugin-vue'
 import postcssPresetEnv from 'postcss-preset-env'
-import { ViteAliases } from 'vite-aliases'
+// 配置路径别名的插件： import { ViteAliases } from 'vite-aliases'
+import { ViteAliases } from './plugins/vite-aliases'
 
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件

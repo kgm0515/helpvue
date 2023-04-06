@@ -1,7 +1,7 @@
 <template>
   <!-- 
   支持加载svg图片并修改尺寸和颜色
-  import LoadSvg from '@comp/load-svg/index.vue'
+  import LoadSvg from '@components/load-svg/index.vue'
   <LoadSvg svgName="arrow-right" color="green"/>
  -->
   <div ref="divRef" class="load-svg" v-if="svgHtml" v-html="svgHtml" :style="getStyle"></div>
