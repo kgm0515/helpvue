@@ -1,0 +1,43 @@
+{
+  "name": "@helpvue/cli",
+  "bin": {
+    "helpvue": "./lib/index.js"
+  },
+  "private": false,
+  "version": "1.0.4",
+  "description": "@helpvue/ui组件库的辅助命令行工具",
+  "homepage": "https://github.com/kgm0515/helpvue/tree/main/packages/cli",
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgm0515/helpvue.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rimraf ./lib/index.js && tsc",
+    "pub": "npm publish"
+  },
+  "keywords": [
+    "@helpvue/cli",
+    "@helpvue/cli辅助工具",
+    "helpvue命令行工具"
+  ],
+  "author": "kgm0515 <498413945@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.1",
+    "commander": "^9.2.0",
+    "fs-extra": "^10.1.0",
+    "ora": "5.4.0",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13"
+  }
+}
