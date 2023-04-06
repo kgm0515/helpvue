@@ -1,4 +1,9 @@
 <template>
+  <!-- 
+  支持加载svg图片并修改尺寸和颜色
+  import LoadSvg from './components/common/load-svg.vue'
+  <LoadSvg src="@assets/svg/arrow-right.svg" :color="count % 2 === 0 ? '#f00' : 'green'" class="obc" />
+ -->
   <div ref="divRef" class="load-svg" v-if="svgHtml" v-html="svgHtml" :style="getStyle"></div>
 </template>
 <script>
@@ -54,28 +59,26 @@
         console.log(props.src, processSrc)
         import(/*@vite-ignore*/ processSrc)
           .then((res) => {
-            svgHtml.value = res.default || ''
-            handleChange()
+            let tempDom = document.createElement('div')
+            tempDom.innerHTML = res.default || ''
+            let gDom = tempDom.querySelectorAll('g[fill]')
+            gDom.forEach((item) => {
+              const fill = item.getAttribute('fill')
+              if (fill !== 'none') {
+                item.setAttribute('fill', props.color)
+              }
+            })
+            const innerHTML = tempDom.innerHTML
+            svgHtml.value = innerHTML
+            tempDom = gDom = null
           })
           .catch((err) => {
             console.error('LoadSvg组件加载svg图片失败', err)
           })
       }
 
-      const handleChange = async () => {
-        setTimeout(() => {
-          if (!divRef.value) return
-          const gDom = document.body.querySelectorAll('g[fill]')
-          gDom.forEach((item) => {
-            const fill = item.getAttribute('fill')
-            if (fill !== 'none') {
-              item.setAttribute('fill', props.color)
-            }
-          })
-        })
-      }
       // 监听变化，修改颜色
-      watch(() => [props.src, props.color], handleChange)
+      watch(() => [props.src, props.color], handleLoad)
 
       onMounted(() => {
         handleLoad()
