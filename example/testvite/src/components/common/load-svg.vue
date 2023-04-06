@@ -3,6 +3,18 @@
 </template>
 <script>
   import { defineComponent, onMounted, ref, watch, computed } from 'vue'
+
+  // src的转换规则
+  const srcRepRegular = (url) => {
+    const repList = [
+      ['@assets', '/src/assets'],
+      ['@comp', '/src/components'],
+      ['@src', '/src']
+    ]
+    repList.forEach(([que, rep]) => (url = url.replace(que, rep)))
+    return url
+  }
+
   export default defineComponent({
     props: {
       // svg的地址
@@ -38,7 +50,8 @@
       // 异步加载svg
       const handleLoad = () => {
         if (!props.src) return
-        const processSrc = props.src + `?raw`
+        const processSrc = srcRepRegular(props.src) + `?raw`
+        console.log(props.src, processSrc)
         import(/*@vite-ignore*/ processSrc)
           .then((res) => {
             svgHtml.value = res.default || ''

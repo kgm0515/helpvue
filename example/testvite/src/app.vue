@@ -3,7 +3,7 @@
     <h1 :class="styleObj['root-title']">{{ count }}</h1>
     <button @click="getCount">click</button>
   </div>
-  <loadSvg src="/src/assets/svg/arrow-right.svg" :color="count % 2 === 0 ? '#f00' : 'green'" class="obc" />
+  <loadSvg src="@assets/svg/arrow-right.svg" :color="count % 2 === 0 ? '#f00' : 'green'" class="obc" />
 </template>
 <script>
   import { defineComponent, ref } from 'vue'
