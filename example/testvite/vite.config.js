@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
 import vuePlugins from '@vitejs/plugin-vue'
-import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
 import postcssPresetEnv from 'postcss-preset-env'
 import path from 'path'
 
@@ -19,8 +18,7 @@ export default defineConfig(({ command, mode }) => {
     /** 相关插件 */
     plugins: [
       // 支持import语法
-      vuePlugins(),
-      dynamicImportVars({ include: '/**/*.svg' })
+      vuePlugins()
     ],
     /** css相关配置 */
     css: {
