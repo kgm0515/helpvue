@@ -10,5 +10,6 @@ createApp(App).mount('#app')
 
 const img = document.createElement('img')
 img.src = mountainUrl
+img.width = 200
 console.log(mountainUrl, '-------')
 document.body.appendChild(img)

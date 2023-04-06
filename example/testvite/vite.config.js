@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vuePlugins from '@vitejs/plugin-vue'
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
 import postcssPresetEnv from 'postcss-preset-env'
 import path from 'path'
 
@@ -16,7 +17,11 @@ export default defineConfig(({ command, mode }) => {
       // exclude: ["lodash-es"], // vite不解析
     },
     /** 相关插件 */
-    plugins: [vuePlugins()],
+    plugins: [
+      // 支持import语法
+      vuePlugins(),
+      dynamicImportVars({ include: '/**/*.svg' })
+    ],
     /** css相关配置 */
     css: {
       /** css模块化相关配置,这个配置最终会传给postcss */
