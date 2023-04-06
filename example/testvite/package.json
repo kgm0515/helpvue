@@ -9,7 +9,8 @@
     "dev:prod": "vite --mode production",
     "build": "vite build --mode development",
     "build:test": "vite build --mode test",
-    "build:prod": "vite build --mode production"
+    "build:prod": "vite build --mode production",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",

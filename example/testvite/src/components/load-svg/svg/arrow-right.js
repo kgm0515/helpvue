@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+export default `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="9px" height="16px" viewBox="0 0 9 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>切图/删除@2x</title>
     <g id="1-1政策搜索——✅" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -17,3 +17,4 @@
         </g>
     </g>
 </svg>
+`

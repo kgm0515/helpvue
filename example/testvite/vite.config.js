@@ -62,6 +62,19 @@ export default defineConfig(({ command, mode }) => {
         '@assets': path.resolve(__dirname, './src/assets'),
         '@comp': path.resolve(__dirname, './src/components')
       }
+    },
+    /** 打包配置 */
+    build: {
+      // 配置rollup的构建策略
+      rollupOptions: {
+        // 控制输出
+        output: {
+          assetFileNames: '[name].[hash:4].[ext]' // 配置静态资源
+        }
+      }
+      // assetsDir: 'assets', // 静态资源目录
+      // outDir: 'dist', // 输出目录
+      // assetsInlineLimit: 409600 // 大图片转成base64，默认4096(4kb)
     }
   }
 })

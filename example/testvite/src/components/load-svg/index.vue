@@ -1,29 +1,18 @@
 <template>
   <!-- 
   支持加载svg图片并修改尺寸和颜色
-  import LoadSvg from './components/common/load-svg.vue'
-  <LoadSvg src="@assets/svg/arrow-right.svg" :color="count % 2 === 0 ? '#f00' : 'green'" class="obc" />
+  import LoadSvg from '@comp/load-svg/index.vue'
+  <LoadSvg svgName="arrow-right" color="green"/>
  -->
   <div ref="divRef" class="load-svg" v-if="svgHtml" v-html="svgHtml" :style="getStyle"></div>
 </template>
 <script>
   import { defineComponent, onMounted, ref, watch, computed } from 'vue'
-
-  // src的转换规则
-  const srcRepRegular = (url) => {
-    const repList = [
-      ['@assets', '/src/assets'],
-      ['@comp', '/src/components'],
-      ['@src', '/src']
-    ]
-    repList.forEach(([que, rep]) => (url = url.replace(que, rep)))
-    return url
-  }
-
+  const modules = import.meta.glob('./svg/*.js')
   export default defineComponent({
     props: {
       // svg的地址
-      src: {
+      svgName: {
         type: String,
         default: ''
       },
@@ -54,10 +43,9 @@
 
       // 异步加载svg
       const handleLoad = () => {
-        if (!props.src) return
-        const processSrc = srcRepRegular(props.src) + `?raw`
-        console.log(props.src, processSrc)
-        import(/*@vite-ignore*/ processSrc)
+        if (!props.svgName) return
+        const data = modules[`./svg/${props.svgName}.js`]
+        data()
           .then((res) => {
             let tempDom = document.createElement('div')
             tempDom.innerHTML = res.default || ''
