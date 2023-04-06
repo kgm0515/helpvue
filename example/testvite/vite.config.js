@@ -1,7 +1,8 @@
+import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
 import vuePlugins from '@vitejs/plugin-vue'
 import postcssPresetEnv from 'postcss-preset-env'
-import path from 'path'
+import { ViteAliases } from 'vite-aliases'
 
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
@@ -17,6 +18,8 @@ export default defineConfig(({ command, mode }) => {
     },
     /** 相关插件 */
     plugins: [
+      // 配置路径别名的插件
+      ViteAliases(),
       // 支持import语法
       vuePlugins()
     ],
@@ -53,14 +56,14 @@ export default defineConfig(({ command, mode }) => {
       }
     },
     /** 配置路径别名 */
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './'),
-        '@src': path.resolve(__dirname, './src'),
-        '@assets': path.resolve(__dirname, './src/assets'),
-        '@comp': path.resolve(__dirname, './src/components')
-      }
-    },
+    // resolve: {
+    //   alias: {
+    //     '@': path.resolve(__dirname, './'),
+    //     '@src': path.resolve(__dirname, './src'),
+    //     '@assets': path.resolve(__dirname, './src/assets'),
+    //     '@components': path.resolve(__dirname, './src/components')
+    //   }
+    // },
     /** 打包配置 */
     build: {
       // 配置rollup的构建策略

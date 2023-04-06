@@ -7,7 +7,7 @@
 </template>
 <script>
   import { defineComponent, ref } from 'vue'
-  import LoadSvg from '@comp/load-svg/index.vue'
+  import LoadSvg from '@components/load-svg/index.vue'
   import styleObj from './assets/css/style.module.less'
 
   export default defineComponent({
