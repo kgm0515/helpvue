@@ -70,6 +70,7 @@ export default defineConfig(({ command, mode }) => {
           assetFileNames: '[name].[hash:4].[ext]' // 配置静态资源
         }
       }
+      // emptyOutDir: true // 打包前清除dist目录
       // assetsDir: 'assets', // 静态资源目录
       // outDir: 'dist', // 输出目录
       // assetsInlineLimit: 409600 // 大图片转成base64，默认4096(4kb)
