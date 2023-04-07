@@ -5,10 +5,10 @@ import path from 'path'
 // 它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）
 const ViteAliases = () => ({
   name: 'vite-aliases',
-  config: (consfig, command) => {
+  config: (config, command) => {
     let srcPath = path.resolve(process.cwd(), 'src')
     let dirs = fs.readdirSync(srcPath)
-    const filterObj = dirs
+    const alias = dirs
       .map((dirName) => {
         const tempPath = path.join(srcPath, dirName)
         const isDir = fs.lstatSync(tempPath).isDirectory()
@@ -18,8 +18,7 @@ const ViteAliases = () => ({
       .filter((item) => !!item)
     return {
       resolve: {
-        alias: filterObj
-        // alias: [ {find: '@assets',replacement: 'D:/demo/helpvue/example/testvite/src/assets' } ]
+        alias // [ {find: '@assets',replacement: 'D:/demo/helpvue/example/testvite/src/assets' } ]
       }
     }
   }
