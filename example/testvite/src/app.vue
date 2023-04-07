@@ -1,22 +1,14 @@
 <template>
-  <div :class="styleObj.root">
-    <h1 :class="styleObj['root-title']">{{ count }}</h1>
-    <button @click="getCount">click</button>
-  </div>
-  <LoadSvg svgName="arrow-right" :color="count % 2 === 0 ? '#f00' : 'green'" class="obc" />
+  <TestCssModule />
 </template>
 <script>
   import { defineComponent, ref } from 'vue'
-  import LoadSvg from '@components/load-svg/index.vue'
-  import styleObj from './assets/css/style.module.less'
-
+  import LoadSvg from '@components/common/load-svg/index.vue'
+  import TestCssModule from '@components/test-css-module.vue'
   export default defineComponent({
-    components: { LoadSvg },
+    components: { LoadSvg, TestCssModule },
     setup() {
-      console.log(styleObj)
-      const count = ref(0)
-      const getCount = () => count.value++
-      return { styleObj, count, getCount }
+      return {}
     }
   })
 </script>

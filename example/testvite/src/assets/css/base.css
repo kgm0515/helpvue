@@ -1,6 +1,104 @@
-@import url(./var.css);
-* {
+:root {
+  /* 字体大小 */
+  --fz-sm: 12px;
+  --fz-md: 14px;
+  --fz-lg: 16px;
+  --fz-xl: 18px;
+  --fz-2xl: 20px;
+  --fz-22: 22px;
+  --fz-24: 24px;
+  --fz-26: 26px;
+  --fz-28: 28px;
+  --fz-30: 30px;
+  --fz-32: 32px;
+  --fz-34: 34px;
+  --fz-36: 36px;
+  --fz-38: 38px;
+  --fz-40: 40px;
+  --fz-30: 30px;
+  --fz-42: 42px;
+  --fz-44: 44px;
+  --fz-46: 46px;
+  --fz-48: 48px;
+  --fz-50: 50px;
+  --fz-60: 60px;
+  --fz-70: 70px;
+  --fz-80: 80px;
+  --fz-90: 90px;
+  --fz-100: 100px;
+  /* 字体颜色 */
+  --fc-primary: #0066ff;
+  --fc-default: #000;
+  --fc-white: #fff;
+  --fc-black: #000;
+  /* 字体大小 */
+  --round-none: 0px;
+  --round-sm: 2px;
+  --round-md: 4px;
+  --round-lg: 6px;
+  --round-xl: 8px;
+  --round-2xl: 10px;
+  --round-12: 12px;
+  --round-14: 14px;
+  --round-16: 16px;
+  --round-18: 18px;
+  --round-20: 20px;
+  --round-22: 22px;
+  --round-24: 24px;
+  --round-26: 26px;
+  --round-28: 28px;
+  --round-30: 30px;
+  --round-40: 40px;
+  --round-50: 50px;
+  /* 背景颜色 */
+  --bg-primary: #0066ff;
+  --bg-default: #d5dae1;
+  --bg-info: #8a96a7;
+  --bg-warning: #f3aa3e;
+  --bg-error: #f3aa3e;
+  --bg-white: #fff;
+  --bg-black: #000;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  -webkit-tap-highlight-color: transparent;
   margin: 0;
   padding: 0px;
-  font-size: 14px;
+  font-size: var(--fz-md);
+}
+
+button {
+  border: none;
+  outline: none;
 }

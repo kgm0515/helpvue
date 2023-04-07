@@ -11,7 +11,7 @@
   const modules = import.meta.glob('./svg/*.js')
   export default defineComponent({
     props: {
-      // svg的地址
+      // svg的的名称
       svgName: {
         type: String,
         default: ''
@@ -75,7 +75,7 @@
     }
   })
 </script>
-<style lang="less">
+<style lang="less" scoped>
   .load-svg {
     height: 20px;
     width: 20px;

@@ -1,12 +1,19 @@
-.root {
-  background: var(--c-warning);
+.btn {
+  background: var(--bg-primary);
+  border-radius: var(--round-md);
   color: @mainColor;
-  padding: 20px / 2;
-  // 响应式布局：https://www.runoob.com/cssref/css-functions.html
-  width: clamp(100px, 50%, 200px);
+  padding: 10px / 2 10px;
+  // width: clamp(50px, 50%, 100px); // 响应式布局：https://www.runoob.com/cssref/css-functions.html
   user-select: none;
-  .root-title {
-    font-size: var(--fz-40);
-    filter: blur(2px);
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  .btn-title {
+    font-size: var(--fz-md);
+    filter: blur(1px);
+  }
+  .btn-text {
+    margin-left: 5px;
   }
 }
