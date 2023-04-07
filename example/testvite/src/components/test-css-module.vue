@@ -1,7 +1,7 @@
 <template>
-  <div :class="styleObj.btn" @click="getCount">
-    <div :class="styleObj.btnTitle">{{ count }}</div>
-    <div :class="styleObj.btnText">click</div>
+  <div :class="styleObj.module" @click="getCount">
+    <div :class="styleObj.moduleTitle">{{ count }}</div>
+    <div :class="styleObj.moduleText">click</div>
     <LoadSvg svgName="arrow-right" color="#fff" class="arrow-icon" height="12px" width="12px" />
   </div>
   <img :src="imageUrl" alt="" width="20" height="20" />
