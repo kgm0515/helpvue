@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple template</title>
+    <link rel="stylesheet" href="./.comps/style.css" />
+    <script src="./.comps/index.iife.js"></script>
+  </head>
+  <body>
+    <h3>简单的水果案例</h3>
+    <div>
+      <show-list datalist="datalist"></show-list>
+      <div id="operate">
+        <button onclick="featchData()">请求数据</button>
+        <button onclick="handleAdd()">添加水果</button>
+        <button onclick="handleDelete(0)">删除第一个</button>
+        <button onclick="handleDelete()">删除全部</button>
+      </div>
+    </div>
+    <script defer>
+      /** 定义响应式数据 */
+      var datalist = Comps.Ref(null) // 水果列表数据
+      var btnVisible = Comps.Ref(false) // 是否显示操作栏
+
+      /** 副作用函数，监听datalist数据的变化*/
+      Comps.effect(function () {
+        console.log(`副作用函数执行了`)
+        if (datalist.value) {
+          btnVisible.value = true
+        } else {
+          btnVisible.value = false
+        }
+        // 如果datalist就隐藏操作按钮（operate是直接通过id获取的）
+        operate.style.display = btnVisible.value ? 'block' : 'none'
+      })
+      // 请求远程数据
+      function featchData() {
+        datalist.value = null
+        setTimeout(() => {
+          datalist.value = [
+            { label: '水果：苹果', value: 12 },
+            { label: '水果：梨子', value: 65 }
+          ]
+        }, 500)
+      }
+      // 添加水果
+      function handleAdd() {
+        console.log('添加水果-接收参数：')
+        var tempItem = { label: `水果：${parseInt(Math.random() * 100)}`, value: parseInt(Math.random() * 89 + 10) }
+        datalist.value = [...datalist.value, tempItem]
+      }
+      // 删除水果
+      function handleDelete(index) {
+        console.log('删除水果-接收参数：', arguments)
+        if (typeof index === 'number') {
+          if (!datalist.value || (datalist.value && datalist.value.length <= 0)) {
+            alert('无法删除当前元素')
+          } else {
+            datalist.value.splice(index, 1)
+            datalist.value = [...datalist.value]
+          }
+        } else {
+          datalist.value = []
+        }
+      }
+
+      // 初始化请求数据
+      featchData()
+    </script>
+  </body>
+</html>
