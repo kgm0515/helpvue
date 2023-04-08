@@ -26,6 +26,23 @@
     <Button ghost type="warning">warning</Button>
     <Button ghost type="danger">danger</Button>
   </div>
+  <div class="btn-group">
+    <Button link>default</Button>
+    <Button link type="info">info</Button>
+    <Button link type="primary">primary</Button>
+    <Button link type="success">success</Button>
+    <Button link type="warning">warning</Button>
+    <Button link type="danger">danger</Button>
+  </div>
+
+  <div class="btn-group">
+    <Button disabled>default</Button>
+    <Button disabled type="info">info</Button>
+    <Button disabled type="primary">primary</Button>
+    <Button disabled type="success">success</Button>
+    <Button disabled type="warning">warning</Button>
+    <Button disabled type="danger">danger</Button>
+  </div>
 </template>
 <script>
   import { defineComponent, ref } from 'vue'

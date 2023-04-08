@@ -28,6 +28,16 @@
       ghost: {
         type: Boolean,
         default: false
+      },
+      // 是否是幽灵按钮
+      link: {
+        type: Boolean,
+        default: false
+      },
+      // 是否是幽灵按钮
+      disabled: {
+        type: Boolean,
+        default: false
       }
     },
     setup(props) {
@@ -37,6 +47,8 @@
         classList.push(`pvue-btn--${props.size}`)
         props.round && classList.push(`pvue-btn--round`)
         props.ghost && classList.push(`pvue-btn--ghost`)
+        props.link && classList.push(`pvue-btn--link`)
+        props.disabled && classList.push(`pvue-btn--disabled`)
         return classList
       })
       return { getClass }
@@ -45,14 +57,16 @@
 </script>
 <style lang="less" scoped>
   .pvue-btn {
-    @h-sm: 26px;
+    @h-sm: 24px;
     @h-md: 30px;
-    @h-lg: 34px;
-    @h-xl: 38px;
+    @h-lg: 36px;
+    @h-xl: 40px;
     @px-sm: 8px;
     @px-md: 12px;
     @px-lg: 14px;
     @px-xl: 18px;
+    @color-gray-light: #f0f0f0;
+    @color-gray-medium: #dad8d8;
     @border-default-color: rgba(0, 0, 0, 0.2);
     --height: @h-md;
     --paddingX: @px-md;
@@ -75,7 +89,7 @@
     overflow: hidden;
     background-color: transparent;
     cursor: pointer;
-    transition: all 0.15s linear;
+    transition: all 0.1s linear;
     * {
       font-size: inherit;
     }
@@ -106,19 +120,15 @@
       --background: var(--bg-default);
       --borderColor: @border-default-color;
       &:hover {
-        color: var(--fc-primary);
+        --fontColor: var(--fc-primary);
         &::after {
-          opacity: var(--bg-opacity-lg);
-          --background: var(--bg-primary);
-          --borderColor: var(--bg-primary);
+          --borderColor: var(--fc-primary);
         }
       }
       &:active {
-        color: var(--fc-primary);
+        --fontColor: var(--fc-primary);
         &::after {
-          opacity: var(--bg-opacity-1);
-          --background: var(--bg-primary);
-          --borderColor: var(--bg-primary);
+          --borderColor: var(--fc-primary);
         }
       }
     }
@@ -180,49 +190,109 @@
     }
     &--ghost {
       --background: transparent;
-      &:hover {
-        &::after {
-          --background: var(--bg-primary);
-          opacity: var(--bg-opacity-1);
-          // --background: rgb(236, 236, 236);
-        }
-      }
-      &:active {
-        &::after {
-          --background: var(--bg-primary);
-          opacity: var(--bg-opacity-1);
-          // --background: rgb(236, 236, 236);
-        }
+      &::after {
+        opacity: var(--bg-opacity-8);
       }
     }
     &--ghost&--default {
       --fontColor: var(--fc-black);
-    }
-    &--ghost&--primary {
-      --fontColor: var(--bg-primary);
-    }
-    &--ghost&--success {
-      --fontColor: var(--bg-success);
-    }
-    &--ghost&--warning {
-      --fontColor: var(--bg-warning);
-    }
-    &--ghost&--info {
-      --fontColor: var(--bg-info);
-    }
-    &--ghost&--danger {
-      --fontColor: var(--bg-danger);
-    }
-    &--link {
-      --background: transparent;
       &:hover {
-        opacity: var(--bg-opacity-8);
-        --background: rgb(245, 245, 245);
+        &::after {
+          --background: @color-gray-light;
+          opacity: var(--bg-opacity-2);
+        }
       }
       &:active {
         &::after {
-          opacity: var(--bg-opacity-9);
-          --background: rgb(236, 236, 236);
+          --background: @color-gray-medium;
+          opacity: var(--bg-opacity-3);
+        }
+      }
+    }
+    &--ghost&--primary {
+      --fontColor: var(--bg-primary);
+      &:hover {
+        &::after {
+          --background: var(--bg-primary);
+          opacity: var(--bg-opacity-2);
+        }
+      }
+      &:active {
+        &::after {
+          --background: var(--bg-primary);
+          opacity: var(--bg-opacity-3);
+        }
+      }
+    }
+    &--ghost&--success {
+      --fontColor: var(--bg-success);
+      &:hover {
+        &::after {
+          --background: var(--bg-success);
+          opacity: var(--bg-opacity-2);
+        }
+      }
+      &:active {
+        &::after {
+          --background: var(--bg-success);
+          opacity: var(--bg-opacity-3);
+        }
+      }
+    }
+    &--ghost&--warning {
+      --fontColor: var(--bg-warning);
+      &:hover {
+        &::after {
+          --background: var(--bg-warning);
+          opacity: var(--bg-opacity-2);
+        }
+      }
+      &:active {
+        &::after {
+          --background: var(--bg-warning);
+          opacity: var(--bg-opacity-3);
+        }
+      }
+    }
+    &--ghost&--info {
+      --fontColor: var(--bg-info);
+      &:hover {
+        &::after {
+          --background: var(--bg-info);
+          opacity: var(--bg-opacity-2);
+        }
+      }
+      &:active {
+        &::after {
+          --background: var(--bg-info);
+          opacity: var(--bg-opacity-3);
+        }
+      }
+    }
+    &--ghost&--danger {
+      --fontColor: var(--bg-danger);
+      &:hover {
+        &::after {
+          --background: var(--bg-danger);
+          opacity: var(--bg-opacity-2);
+        }
+      }
+      &:active {
+        &::after {
+          --background: var(--bg-danger);
+          opacity: var(--bg-opacity-3);
+        }
+      }
+    }
+    &--link {
+      --background: transparent;
+      &::after {
+        --background: transparent !important;
+        --borderColor: transparent !important;
+      }
+      &:hover {
+        .pvue-btn__content {
+          text-decoration: underline;
         }
       }
     }
@@ -243,6 +313,23 @@
     }
     &--link&--danger {
       --fontColor: var(--bg-danger);
+    }
+    &--disabled {
+      opacity: var(--bg-opacity-8);
+      cursor: not-allowed;
+      &::after {
+        --bgOpacity: var(--bg-opacity-7);
+      }
+      &:hover {
+        &::after {
+          --bgOpacity: var(--bg-opacity-7);
+        }
+      }
+      &:active {
+        &::after {
+          --bgOpacity: var(--bg-opacity-7);
+        }
+      }
     }
   }
 </style>
