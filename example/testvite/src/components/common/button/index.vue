@@ -87,7 +87,7 @@
     border-radius: var(--round-md);
     font-size: var(--fz-md);
     color: var(--main-color);
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
@@ -100,6 +100,9 @@
       font-size: inherit;
       color: inherit;
       opacity: var(--main-opacity);
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
     }
     &__board {
       width: 100%;

@@ -3,7 +3,9 @@ import { defineConfig, loadEnv } from 'vite'
 import vuePlugins from '@vitejs/plugin-vue'
 import postcssPresetEnv from 'postcss-preset-env'
 // 配置路径别名的插件： import { ViteAliases } from 'vite-aliases'
+// 处理html文件的插件： import { createHtmlPlugin } from 'vite-plugin-html'
 import { ViteAliases } from './plugins/vite-aliases'
+import { createHtmlPlugin } from './plugins/vite-plugin-html'
 
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
@@ -22,7 +24,16 @@ export default defineConfig(({ command, mode }) => {
       // 配置路径别名的插件
       ViteAliases(),
       // 支持import语法
-      vuePlugins()
+      vuePlugins(),
+      // 处理html文件
+      createHtmlPlugin({
+        inject: {
+          data: {
+            title: '这是网站标题',
+            link: 'asdasdas'
+          }
+        }
+      })
     ],
     /** css相关配置 */
     css: {
