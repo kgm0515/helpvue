@@ -1,0 +1,45 @@
+{
+  "name": "@helpvue/pvue",
+  "private": false,
+  "version": "0.0.1",
+  "description": "pc端vue组件库",
+  "homepage": "https://github.com/kgm0515/help-vue/tree/main/packages/pvue",
+  "files": [
+    "dist",
+    "types",
+    "package.json"
+  ],
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/es/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/es/index.js"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kgm0515/help-vue.git"
+  },
+  "keywords": [
+    "@helpvue/pvue",
+    "vue组件库"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "dev:comps": "vite build --watch",
+    "build:comps": "vite build"
+  },
+  "author": "kgm0515 <498413945@qq.com>",
+  "dependencies": {},
+  "devDependencies": {
+    "less": "^4.1.3",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}

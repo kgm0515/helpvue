@@ -1,47 +1,60 @@
 <template>
-  <button :disabled="disabled" :class="getClass">
-    <span class="pvue-button__content"><slot /></span>
+  <button :class="getClass" :disabled="disabled">
+    <div class="pvue-button__board">
+      <div class="pvue-button__backg"></div>
+      <div class="pvue-button__edge"></div>
+    </div>
+    <div class="pvue-button__main">
+      <slot></slot>
+    </div>
   </button>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType, computed } from 'vue'
+  import { defineComponent, computed } from 'vue'
   export default defineComponent({
     name: 'Button',
     props: {
       // 按钮类型
       type: {
-        type: String as PropType<'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'>,
-        default: 'default'
+        type: String,
+        default: 'default' // default, info, primary,success, warning, danger
       },
-      // 按钮尺寸
+      // 按钮大小
       size: {
-        type: String as PropType<'small' | 'middle' | 'large'>,
-        default: 'middle'
+        type: String,
+        default: 'middle' // small, middle, large, extra
       },
-      // 是否可点击
-      disabled: {
-        type: Boolean
-      },
-      // 是否是文字按钮
-      text: {
+      // 是否是圆形按钮
+      round: {
         type: Boolean,
         default: false
       },
-      // 文字按钮是否带背景
-      bg: {
+      // 是否是幽灵按钮
+      ghost: {
+        type: Boolean,
+        default: false
+      },
+      // 是否是按钮链接
+      link: {
+        type: Boolean,
+        default: false
+      },
+      // 是否禁止点击
+      disabled: {
         type: Boolean,
         default: false
       }
     },
     setup(props) {
-      const { type, size, disabled, text, bg } = props
-      /** 组装样式 */
       const getClass = computed(() => {
-        const tempList = ['pvue-button', `pvue-button--${type}`, `pvue-button--${size}`]
-        if (disabled) tempList.push(`pvue-button--disabled`)
-        if (text) tempList.push(`pvue-button--text`)
-        if (bg) tempList.push(`pvue-button--bg`)
-        return tempList.join(' ')
+        const classList = ['pvue-button']
+        classList.push(`pvue-button--${props.type}`)
+        classList.push(`pvue-button--${props.size}`)
+        props.round && classList.push(`pvue-button--round`)
+        props.ghost && classList.push(`pvue-button--ghost`)
+        props.link && classList.push(`pvue-button--link`)
+        props.disabled && classList.push(`pvue-button--disabled`)
+        return classList
       })
       return { getClass }
     }

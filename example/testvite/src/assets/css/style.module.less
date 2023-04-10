@@ -1,0 +1,19 @@
+.module {
+  background: var(--bg-primary);
+  border-radius: var(--round-md);
+  color: @mainColor;
+  padding: 10px / 2 10px;
+  // width: clamp(50px, 50%, 100px); // 响应式布局：https://www.runoob.com/cssref/css-functions.html
+  user-select: none;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  .module-title {
+    font-size: var(--fz-md);
+    filter: blur(1px);
+  }
+  .module-text {
+    margin-left: 5px;
+  }
+}
