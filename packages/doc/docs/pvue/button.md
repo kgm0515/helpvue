@@ -14,7 +14,7 @@ lang: en-US
 ## 按钮类型
 
 <div class="children-space10">
-  <PvueButton>默认按钮</PvueButton>
+  <PvueButton>default</PvueButton>
   <PvueButton type="primary" @click="handleClick">primary</PvueButton>
   <PvueButton type="success">success</PvueButton>
   <PvueButton type="info">info</PvueButton>
@@ -23,7 +23,7 @@ lang: en-US
 </div>
 
 ```vue
-<PvueButton>默认按钮</PvueButton>
+<PvueButton>default</PvueButton>
 <PvueButton type="primary" @click="handleClick">primary</PvueButton>
 <PvueButton type="success">success</PvueButton>
 <PvueButton type="info">info</PvueButton>
@@ -31,42 +31,92 @@ lang: en-US
 <PvueButton type="danger">danger</PvueButton>
 ```
 
-## 文字按钮
-
-<div class="children-space10">
-  <PvueButton type="default" :text="true">文字按钮</PvueButton>
-  <PvueButton type="warning" :text="true" :bg="true">文字按钮</PvueButton>
-</div>
-
-```vue
-<PvueButton type="default" :text="true">文字按钮</PvueButton>
-<PvueButton type="warning" :text="true" :bg="true">文字按钮</PvueButton>
-```
-
-## 禁用状态
-
-<div class="children-space10">
-  <PvueButton type="default" disabled>禁用按钮</PvueButton>
-  <PvueButton type="danger" disabled>禁用按钮</PvueButton>
-</div>
-
-```vue
-<PvueButton type="default" disabled>禁用按钮</PvueButton>
-<PvueButton type="danger" disabled>禁用按钮</PvueButton>
-```
-
 ## 按钮大小
 
 <div class="children-space10">
-  <PvueButton size="small">small</PvueButton>
-  <PvueButton size="middle">middle</PvueButton>
-  <PvueButton size="large">large</PvueButton>
+  <PvueButton type="primary" size="small">small</PvueButton>
+  <PvueButton type="primary" size="middle">middle</PvueButton>
+  <PvueButton type="primary" size="large">large</PvueButton>
+  <PvueButton type="primary" size="extra">extra</PvueButton>
 </div>
 
 ```vue
-<PvueButton size="small">禁用按钮</PvueButton>
-<PvueButton size="middle">middle</PvueButton>
-<PvueButton size="large">large</PvueButton>
+<PvueButton type="primary" size="small">small</PvueButton>
+<PvueButton type="primary" size="middle">middle</PvueButton>
+<PvueButton type="primary" size="large">large</PvueButton>
+<PvueButton type="primary" size="extra">extra</PvueButton>
+```
+
+## 圆角按钮
+
+<div class="children-space10">
+  <PvueButton type="primary" round>round</PvueButton>
+  <PvueButton>default</PvueButton>
+</div>
+
+```vue
+<PvueButton type="primary" round>round</PvueButton>
+<PvueButton>default</PvueButton>
+```
+
+## 幽灵按钮
+
+<div class="children-space10">
+  <PvueButton ghost>ghost</PvueButton>
+  <PvueButton ghost type="primary">ghost</PvueButton>
+  <PvueButton ghost type="success">ghost</PvueButton>
+  <PvueButton ghost type="info">ghost</PvueButton>
+  <PvueButton ghost type="warning">ghost</PvueButton>
+  <PvueButton ghost type="danger">ghost</PvueButton>
+</div>
+
+```vue
+<PvueButton ghost>ghost</PvueButton>
+<PvueButton ghost type="primary">ghost</PvueButton>
+<PvueButton ghost type="success">ghost</PvueButton>
+<PvueButton ghost type="info">ghost</PvueButton>
+<PvueButton ghost type="warning">ghost</PvueButton>
+<PvueButton ghost type="danger">ghost</PvueButton>
+```
+
+## 文字按钮
+
+<div class="children-space10">
+  <PvueButton link>link</PvueButton>
+  <PvueButton link type="primary">link</PvueButton>
+  <PvueButton link type="success">link</PvueButton>
+  <PvueButton link type="info">link</PvueButton>
+  <PvueButton link type="warning">link</PvueButton>
+  <PvueButton link type="danger">link</PvueButton>
+</div>
+
+```vue
+<PvueButton link>link</PvueButton>
+<PvueButton link type="primary">link</PvueButton>
+<PvueButton link type="success">link</PvueButton>
+<PvueButton link type="info">link</PvueButton>
+<PvueButton link type="warning">link</PvueButton>
+<PvueButton link type="danger">link</PvueButton>
+```
+
+## 禁用按钮
+
+<div class="children-space10">
+  <PvueButton disabled>disabled</PvueButton>
+  <PvueButton disabled type="primary">disabled</PvueButton>
+  <PvueButton disabled type="success">disabled</PvueButton>
+  <PvueButton disabled type="info">disabled</PvueButton>
+  <PvueButton disabled type="warning">disabled</PvueButton>
+  <PvueButton disabled type="danger">disabled</PvueButton>
+</div>
+
+```vue
+<PvueButton disabled>disabled</PvueButton>
+<PvueButton disabled type="primary">disabled</PvueButton>
+<PvueButton disabled type="success">disabled</PvueButton>
+<PvueButton disabled type="info">disabled</PvueButton>
+<PvueButton disabled type="warning">disabled</PvueButton>
+<PvueButton disabled type="danger">disabled</PvueButton>
 ```
 
 ## API
@@ -78,10 +128,11 @@ PvueButton props
 | 参数     |                             说明                              |    类型 |  默认值 |
 | -------- | :-----------------------------------------------------------: | ------: | ------: |
 | type     | 类型: `default`,`primary`,`info`,`success`,`warning`,`danger` |  string | default |
-| size     |                尺寸: `small`,`middle`,`large`                 |  string |  middle |
-| disabled |                          是否可点击                           | boolean |   false |
-| text     |                        是否是文字按钮                         | boolean |   false |
-| bg       |                     是文字按钮否是有背景                      | boolean |   false |
+| size     |            尺寸: `small`,`middle`,`large` ,`extra`            |  string |  middle |
+| round    |                        是否是圆角按钮                         | boolean |   false |
+| ghost    |                        是否是幽灵按钮                         | boolean |   false |
+| link     |                        是否是文字按钮                         | boolean |   false |
+| disabled |                        是否是禁用按钮                         | boolean |   false |
 
 ### 事件
 

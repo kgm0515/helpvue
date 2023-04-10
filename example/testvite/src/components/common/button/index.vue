@@ -12,6 +12,7 @@
 <script>
   import { defineComponent, computed } from 'vue'
   export default defineComponent({
+    name: 'Button',
     props: {
       // 按钮类型
       type: {

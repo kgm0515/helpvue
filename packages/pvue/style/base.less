@@ -2,13 +2,13 @@
 @fontSize-small: 12px;
 @fontSize-middle: 14px;
 @fontSize-large: 16px;
-
 // 定义图标大小变量
 @is-small: 16px;
 @is-middle: 18px;
 @is-large: 20px;
-
 // 定义颜色变量
+@color-transparent: transparent;
+@color-black: #000;
 @color-body: #fff;
 @color-text: #333;
 @color-primary: #3a7afe;
@@ -18,26 +18,92 @@
 @color-danger: #f44336;
 @color-disabled: #e0e0e0;
 @color-text-disabled: #aaa;
-
 :root {
-  // 定义文字大小
-  --fontSize-small: @fontSize-small;
-  --fontSize-middle: @fontSize-middle;
-  --fontSize-large: @fontSize-large;
-  // 定义图标大小
-  --is-small: @is-small;
-  --is-middle: @is-middle;
-  --is-large: @is-large;
-  // 定义颜色
-  --color-body: @color-body;
-  --color-text: @color-text;
-  --color-primary: @color-primary;
-  --color-info: @color-info;
-  --color-success: @color-success;
-  --color-warning: @color-warning;
-  --color-danger: @color-danger;
-  --color-disabled: @color-disabled;
-  --color-text-disabled: @color-text-disabled;
+  /* 字体大小 */
+  --fz-none: 0px;
+  --fz-sm: @fontSize-small;
+  --fz-md: @fontSize-middle;
+  --fz-lg: @fontSize-large;
+  --fz-xl: 18px;
+  --fz-20: 20px;
+  --fz-22: 22px;
+  --fz-24: 24px;
+  --fz-26: 26px;
+  --fz-28: 28px;
+  --fz-30: 30px;
+  --fz-32: 32px;
+  --fz-34: 34px;
+  --fz-36: 36px;
+  --fz-38: 38px;
+  --fz-40: 40px;
+  --fz-30: 30px;
+  --fz-42: 42px;
+  --fz-44: 44px;
+  --fz-46: 46px;
+  --fz-48: 48px;
+  --fz-50: 50px;
+  --fz-60: 60px;
+  --fz-70: 70px;
+  --fz-80: 80px;
+  --fz-90: 90px;
+  --fz-100: 100px;
+  /* 圆角大小 */
+  --round-none: 0px;
+  --round-sm: 2px;
+  --round-md: 4px;
+  --round-lg: 5px;
+  --round-xl: 6px;
+  --round-10: 10px;
+  --round-12: 12px;
+  --round-14: 14px;
+  --round-16: 16px;
+  --round-18: 18px;
+  --round-20: 20px;
+  --round-22: 22px;
+  --round-24: 24px;
+  --round-26: 26px;
+  --round-28: 28px;
+  --round-30: 30px;
+  --round-40: 40px;
+  --round-50: 50px;
+  --round-full: 100%;
+  /** 不透明度 */
+  --bg-opacity: 1;
+  --bg-opacity-0: 0;
+  --bg-opacity-sm: 0.02;
+  --bg-opacity-md: 0.04;
+  --bg-opacity-lg: 0.06;
+  --bg-opacity-xl: 0.08;
+  --bg-opacity-1: 0.1;
+  --bg-opacity-2: 0.2;
+  --bg-opacity-3: 0.3;
+  --bg-opacity-4: 0.4;
+  --bg-opacity-5: 0.5;
+  --bg-opacity-6: 0.6;
+  --bg-opacity-7: 0.7;
+  --bg-opacity-8: 0.8;
+  --bg-opacity-9: 0.9;
+  --bg-opacity-10: 1;
+  /* 字体颜色 */
+  --fc-default: @color-text;
+  --fc-info: @color-info;
+  --fc-primary: @color-primary;
+  --fc-success: @color-success;
+  --fc-warning: @color-warning;
+  --fc-danger: @color-danger;
+  --fc-white: @color-body;
+  --fc-black: @color-black;
+  --fc-disabled: @color-text-disabled;
+  /* 背景颜色 */
+  --bg-default: @color-transparent;
+  --bg-info: @color-info;
+  --bg-primary: @color-primary;
+  --bg-success: @color-success;
+  --bg-warning: @color-warning;
+  --bg-danger: @color-danger;
+  --bg-white: @color-body;
+  --bg-black: @color-black;
+  --bg-disabled: @color-disabled;
 }
 .pvue {
   &--box {

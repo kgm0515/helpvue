@@ -1,149 +1,240 @@
 :root {
-  --button-radius-small: 2px;
-  --button-radius-middle: 4px;
-  --button-radius-large: 6px;
-  --button-border-color-default: rgba(0, 0, 0, 0.1);
+  --button-backg-color: transparent;
+  --button-backg-opacity: 1;
+  --button-edge-color: transparent;
+  --button-edge-opacity: 1;
+  --button-main-color: var(--fc-black);
+  --buttin-main-opacity: 1;
 }
-
 .pvue-button {
-  outline: none;
-  border: none;
-  transition: all 0.1s ease;
+  @h-sm: 24px;
+  @h-md: 30px;
+  @h-lg: 36px;
+  @h-xl: 40px;
+  @px-sm: 8px;
+  @px-md: 12px;
+  @px-lg: 14px;
+  @px-xl: 18px;
+  @color-gray-light: #f0f0f0;
+  @color-gray-medium: #dad8d8;
+  @border-grey-color: rgb(231, 231, 231);
+  @bg-disabled: #e0e0e0;
+  height: @h-md;
+  padding: 0 @px-md;
+  border-radius: var(--round-md);
+  font-size: var(--fz-md);
+  color: var(--button-main-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  color: #fff;
-  &__content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    .pvue-icon {
-      color: inherit !important;
-      margin-right: 5px;
-    }
+  transition: all 0.1s linear;
+  background: transparent;
+  &__main {
+    font-size: inherit;
+    color: inherit;
+    opacity: var(--buttin-main-opacity);
   }
+  &__board {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    z-index: -1;
+    border-radius: inherit;
+  }
+  &__backg,
+  &__edge {
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: inherit;
+  }
+  &__backg {
+    background: var(--button-backg-color);
+    opacity: var(--button-backg-opacity);
+    z-index: -2;
+  }
+  &__edge {
+    border: 1px solid var(--button-edge-color);
+    opacity: var(--button-edge-opacity);
+    z-index: -1;
+  }
+  &:hover {
+    --button-backg-opacity: var(--bg-opacity-8);
+    --button-edge-opacity: var(--bg-opacity-0);
+  }
+  &:active {
+    --button-backg-opacity: var(--bg-opacity-9);
+  }
+  /** 开始按钮 */
   &--default {
-    color: var(--color-text);
-    background-color: #fff;
-    border: 1px solid var(--button-border-color-default);
+    --button-main-color: var(--fc-black);
+    --button-backg-color: var(--bg-default);
+    --button-edge-color: @border-grey-color;
     &:hover {
-      color: var(--color-primary);
-      background: #f3f7ff;
-      border-color: #adc9ff;
+      --button-backg-color: var(--bg-primary);
+      --button-edge-color: var(--bg-primary);
+      --button-backg-opacity: var(--bg-opacity-md);
+      --button-edge-opacity: var(--bg-opacity-5);
+      --button-main-color: var(--fc-primary);
     }
     &:active {
-      border-color: var(--color-primary);
+      --button-backg-opacity: var(--bg-opacity-1);
     }
   }
   &--primary {
-    background-color: var(--color-primary);
-    &:hover {
-      background: #5b8fff;
-    }
-    &:active {
-      background: #1b47a8;
-    }
+    --button-main-color: var(--fc-white);
+    --button-backg-color: var(--bg-primary);
+    --button-edge-color: var(--bg-primary);
   }
   &--success {
-    background-color: var(--color-success);
-    &:hover {
-      background: #43c5a2;
-    }
-    &:active {
-      background: #21705b;
-    }
-  }
-  &--info {
-    background-color: var(--color-info);
-    &:hover {
-      background: #4fc3ed;
-    }
-    &:active {
-      background: #3687a4;
-    }
+    --button-main-color: var(--fc-white);
+    --button-backg-color: var(--bg-success);
+    --button-edge-color: var(--bg-success);
   }
   &--warning {
-    background-color: var(--color-warning);
-    &:hover {
-      background: #faba52;
-    }
-    &:active {
-      background: #b38235;
-    }
+    --button-main-color: var(--fc-white);
+    --button-backg-color: var(--bg-warning);
+    --button-edge-color: var(--bg-warning);
+  }
+  &--info {
+    --button-main-color: var(--fc-white);
+    --button-backg-color: var(--bg-info);
+    --button-edge-color: var(--bg-info);
   }
   &--danger {
-    background-color: var(--color-danger);
-    &:hover {
-      background: #f97e75;
-    }
-    &:active {
-      background: #af5751;
-    }
+    --button-main-color: var(--fc-white);
+    --button-backg-color: var(--bg-danger);
+    --button-edge-color: var(--bg-danger);
   }
-
-  // 大小
   &--small {
-    font-size: var(--fontSize-small);
-    line-height: 24px;
-    height: 24px;
-    padding: 0 12px;
-    border-radius: var(--button-radius-small);
+    height: @h-sm;
+    border-radius: var(--round-sm);
+    padding: 0 @px-sm;
+    font-size: var(--fz-sm);
   }
   &--middle {
-    font-size: var(--fontSize-middle);
-    line-height: 32px;
-    height: 32px;
-    padding: 0 14px;
-    border-radius: var(--button-radius-middle);
+    height: @h-md;
+    border-radius: var(--round-md);
+    padding: 0 @px-md;
+    font-size: var(--fz-md);
   }
   &--large {
-    font-size: var(--fontSize-large);
-    line-height: 40px;
-    height: 40px;
-    padding: 0 20px;
-    border-radius: var(--button-radius-large);
+    height: @h-lg;
+    border-radius: var(--round-lg);
+    padding: 0 @px-lg;
+    font-size: var(--fz-lg);
   }
-  // disabled------------------------------------------------------------
+  &--extra {
+    height: @h-xl;
+    border-radius: var(--round-xl);
+    padding: 0 @px-xl;
+    font-size: var(--fz-xl);
+  }
+  &--round {
+    border-radius: 100px;
+  }
+  &--ghost {
+    --button-backg-color: transparent;
+
+    &:hover {
+      --button-backg-opacity: var(--bg-opacity-lg);
+      --button-edge-opacity: var(--bg-opacity-10);
+      --button-edge-color: @border-grey-color;
+    }
+    &:active {
+      --button-backg-opacity: var(--bg-opacity-1);
+    }
+  }
+  &--ghost&--default {
+    --button-main-color: var(--fc-black);
+    &:hover {
+      --button-backg-color: var(--fc-black);
+    }
+  }
+  &--ghost&--primary {
+    --button-main-color: var(--bg-primary);
+    &:hover {
+      --button-edge-color: var(--bg-primary);
+      --button-backg-color: var(--bg-primary);
+    }
+  }
+  &--ghost&--success {
+    --button-main-color: var(--bg-success);
+    &:hover {
+      --button-edge-color: var(--bg-success);
+      --button-backg-color: var(--bg-success);
+    }
+  }
+  &--ghost&--warning {
+    --button-main-color: var(--bg-warning);
+    &:hover {
+      --button-edge-color: var(--bg-warning);
+      --button-backg-color: var(--bg-warning);
+    }
+  }
+  &--ghost&--info {
+    --button-main-color: var(--bg-info);
+    &:hover {
+      --button-edge-color: var(--bg-info);
+      --button-backg-color: var(--bg-info);
+    }
+  }
+  &--ghost&--danger {
+    --button-main-color: var(--bg-danger);
+    &:hover {
+      --button-edge-color: var(--bg-danger);
+      --button-backg-color: var(--bg-danger);
+    }
+  }
+  &--link {
+    background: transparent;
+    --button-backg-color: transparent;
+    --button-edge-color: transparent;
+    &:hover {
+      --button-backg-color: transparent;
+      --button-edge-color: transparent;
+      text-decoration: underline;
+    }
+  }
+  &--link&--default {
+    --button-main-color: var(--fc-black);
+  }
+  &--link&--primary {
+    --button-main-color: var(--bg-primary);
+  }
+  &--link&--success {
+    --button-main-color: var(--bg-success);
+  }
+  &--link&--warning {
+    --button-main-color: var(--bg-warning);
+  }
+  &--link&--info {
+    --button-main-color: var(--bg-info);
+  }
+  &--link&--danger {
+    --button-main-color: var(--bg-danger);
+  }
   &--disabled {
+    --button-backg-opacity: var(--bg-opacity-5);
+    --button-edge-opacity: var(--bg-opacity-0);
     cursor: not-allowed;
-    pointer-events: none;
-    opacity: 0.7;
-  }
-  // text文字按钮----------------------------------------------------------
-  &--text {
-    border: none;
-    background-color: #fff;
     &:hover {
-      background: #f9f9f9;
+      --button-backg-opacity: var(--bg-opacity-5);
+      --button-edge-opacity: var(--bg-opacity-0);
     }
     &:active {
-      background: #eee;
+      --button-backg-opacity: var(--bg-opacity-5);
     }
   }
-  &--text&--bg {
-    background: #f9f9f9;
-    &:hover {
-      background: #f4f4f4;
-    }
-    &:active {
-      background: #eee;
-    }
-  }
-  &--text&--default {
-    color: var(--color-text);
-  }
-  &--text&--primary {
-    color: var(--color-primary);
-  }
-  &--text&--success {
-    color: var(--color-success);
-  }
-  &--text&--info {
-    color: var(--color-info);
-  }
-  &--text&--warning {
-    color: var(--color-warning);
-  }
-  &--text&--danger {
-    color: var(--color-danger);
+  &--disabled&--default {
+    --button-backg-color: var(--bg-disabled);
+    --button-edge-opacity: var(--bg-opacity-0);
+    --button-main-color: var(--fc-disabled);
   }
 }
