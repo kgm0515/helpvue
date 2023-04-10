@@ -1,5 +1,10 @@
-const createHtmlPlugin = (options = { inject: { data: {} } }) => ({
-  name: 'vite-plugin-html',
+/**
+ * 用于模拟接口数据
+ * @param {*} options
+ * @returns
+ */
+const viteMockServe = (options = { inject: { data: {} } }) => ({
+  name: 'vite-plugin-mock',
   transformIndexHtml: {
     enforce: 'pre', // 强制提前执行
     transform(html, ctx) {
@@ -11,4 +16,4 @@ const createHtmlPlugin = (options = { inject: { data: {} } }) => ({
   }
 })
 
-export { createHtmlPlugin }
+export { viteMockServe }

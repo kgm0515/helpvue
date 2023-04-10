@@ -43,6 +43,9 @@
     <Button disabled type="warning">disabled</Button>
     <Button disabled type="danger">disabled</Button>
   </div>
+  <ul>
+    <li v-for="item in userList" :key="item.id">{{ item.name }}</li>
+  </ul>
 </template>
 <script>
   import { defineComponent, ref } from 'vue'
@@ -52,7 +55,25 @@
   export default defineComponent({
     components: { LoadSvg, TestCssModule, Button },
     setup() {
-      return {}
+      const userList = ref([])
+      const fetchUserData = () => {
+        fetch('/api/users', {
+          method: 'post',
+          body: {
+            name: 'alice'
+          }
+        })
+          .then(async (response) => {
+            const res = await response.json()
+            userList.value = res.data
+          })
+          .catch((err) => {
+            console.error(err)
+          })
+      }
+
+      fetchUserData()
+      return { userList }
     }
   })
 </script>

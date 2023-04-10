@@ -4,6 +4,7 @@ import vuePlugins from '@vitejs/plugin-vue'
 import postcssPresetEnv from 'postcss-preset-env'
 // 配置路径别名的插件： import { ViteAliases } from 'vite-aliases'
 // 处理html文件的插件： import { createHtmlPlugin } from 'vite-plugin-html'
+import { viteMockServe } from 'vite-plugin-mock'
 import { ViteAliases } from './plugins/vite-aliases'
 import { createHtmlPlugin } from './plugins/vite-plugin-html'
 
@@ -30,9 +31,14 @@ export default defineConfig(({ command, mode }) => {
         inject: {
           data: {
             title: '这是网站标题',
-            link: 'asdasdas'
+            description: 'Where the GPU for the Web work happens! Contribute to gpuweb/gpuweb development by creating an account on GitHub.'
           }
         }
+      }),
+      // 模拟数据
+      viteMockServe({
+        mockPath: 'mock', // 接口文件夹目录名
+        localEnabled: command === 'serve' // 只在开发环境下面才启用
       })
     ],
     /** css相关配置 */
