@@ -15,7 +15,7 @@
     <Button type="warning" size="extra">extra Large</Button>
   </div>
   <div class="btn-group">
-    <Button type="primary">small</Button>
+    <Button type="primary">rectangle</Button>
     <Button type="primary" round>round</Button>
   </div>
   <div class="btn-group">
@@ -60,7 +60,7 @@
   .btn-group {
     display: flex;
     flex-wrap: wrap;
-    :deep(.pvue-btn) {
+    :deep(.pvue-button) {
       margin-right: 4px;
       margin-bottom: 5px;
     }

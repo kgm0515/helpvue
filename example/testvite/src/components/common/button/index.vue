@@ -1,12 +1,12 @@
 <template>
-  <button :class="getClass">
-    <div class="pvue-btn__content">
+  <button :class="getClass" :disabled="disabled">
+    <div class="pvue-button__content">
       <slot></slot>
     </div>
   </button>
 </template>
 <script>
-  import { defineComponent, onMounted, ref, watch, computed } from 'vue'
+  import { defineComponent, computed } from 'vue'
   export default defineComponent({
     props: {
       // 按钮类型
@@ -29,7 +29,7 @@
         type: Boolean,
         default: false
       },
-      // 是否是幽灵按钮
+      // 是否是按钮链接
       link: {
         type: Boolean,
         default: false
@@ -42,13 +42,13 @@
     },
     setup(props) {
       const getClass = computed(() => {
-        const classList = ['pvue-btn']
-        classList.push(`pvue-btn--${props.type}`)
-        classList.push(`pvue-btn--${props.size}`)
-        props.round && classList.push(`pvue-btn--round`)
-        props.ghost && classList.push(`pvue-btn--ghost`)
-        props.link && classList.push(`pvue-btn--link`)
-        props.disabled && classList.push(`pvue-btn--disabled`)
+        const classList = ['pvue-button']
+        classList.push(`pvue-button--${props.type}`)
+        classList.push(`pvue-button--${props.size}`)
+        props.round && classList.push(`pvue-button--round`)
+        props.ghost && classList.push(`pvue-button--ghost`)
+        props.link && classList.push(`pvue-button--link`)
+        props.disabled && classList.push(`pvue-button--disabled`)
         return classList
       })
       return { getClass }
@@ -56,7 +56,7 @@
   })
 </script>
 <style lang="less" scoped>
-  .pvue-btn {
+  .pvue-button {
     @h-sm: 24px;
     @h-md: 30px;
     @h-lg: 36px;
@@ -67,12 +67,13 @@
     @px-xl: 18px;
     @color-gray-light: #f0f0f0;
     @color-gray-medium: #dad8d8;
-    @border-default-color: rgba(0, 0, 0, 0.2);
+    @border-grey-color: rgba(0, 0, 0, 0.2);
+    @bg-disabled: #e0e0e0;
     --height: @h-md;
     --paddingX: @px-md;
     --fontColor: var(--fc-black);
     --background: var(--bg-default);
-    --borderColor: @border-default-color;
+    --borderColor: @border-grey-color;
     --borderRadius: var(--round-md);
     --bgOpacity: var(--bg-opacity);
     --fontSize: var(--fz-md);
@@ -118,7 +119,7 @@
     &--default {
       --fontColor: var(--fc-black);
       --background: var(--bg-default);
-      --borderColor: @border-default-color;
+      --borderColor: @border-grey-color;
       &:hover {
         --fontColor: var(--fc-primary);
         &::after {
@@ -291,7 +292,7 @@
         --borderColor: transparent !important;
       }
       &:hover {
-        .pvue-btn__content {
+        .pvue-button__content {
           text-decoration: underline;
         }
       }
@@ -317,17 +318,35 @@
     &--disabled {
       opacity: var(--bg-opacity-8);
       cursor: not-allowed;
+      background-color: @bg-disabled;
       &::after {
-        --bgOpacity: var(--bg-opacity-7);
+        --bgOpacity: var(--bg-opacity-8);
       }
       &:hover {
         &::after {
-          --bgOpacity: var(--bg-opacity-7);
+          --bgOpacity: var(--bg-opacity-8);
         }
       }
       &:active {
         &::after {
-          --bgOpacity: var(--bg-opacity-7);
+          --bgOpacity: var(--bg-opacity-8);
+        }
+      }
+    }
+    &--disabled&--default {
+      --fontColor: var(--fc-black);
+      --borderColor: @border-grey-color;
+      opacity: var(--bg-opacity-6);
+      &:hover {
+        --fontColor: var(--fc-black);
+        &::after {
+          --borderColor: @border-grey-color;
+        }
+      }
+      &:active {
+        --fontColor: var(--fc-black);
+        &::after {
+          --borderColor: @border-grey-color;
         }
       }
     }
