@@ -1,6 +1,10 @@
 <template>
   <button :class="getClass" :disabled="disabled">
-    <div class="pvue-button__content">
+    <div class="pvue-button__board">
+      <div class="pvue-button__backg"></div>
+      <div class="pvue-button__edge"></div>
+    </div>
+    <div class="pvue-button__main">
       <slot></slot>
     </div>
   </button>
@@ -56,6 +60,14 @@
   })
 </script>
 <style lang="less" scoped>
+  :root {
+    --backg-color: transparent;
+    --backg-opacity: 1;
+    --edge-color: transparent;
+    --edge-opacity: 1;
+    --main-color: var(--fc-black);
+    --main-opacity: 1;
+  }
   .pvue-button {
     @h-sm: 24px;
     @h-md: 30px;
@@ -67,288 +79,225 @@
     @px-xl: 18px;
     @color-gray-light: #f0f0f0;
     @color-gray-medium: #dad8d8;
-    @border-grey-color: rgba(0, 0, 0, 0.2);
+    @border-grey-color: rgb(231, 231, 231);
     @bg-disabled: #e0e0e0;
-    --height: @h-md;
-    --paddingX: @px-md;
-    --fontColor: var(--fc-black);
-    --background: var(--bg-default);
-    --borderColor: @border-grey-color;
-    --borderRadius: var(--round-md);
-    --bgOpacity: var(--bg-opacity);
-    --fontSize: var(--fz-md);
+    height: @h-md;
+    padding: 0 @px-md;
+    border-radius: var(--round-md);
+    font-size: var(--fz-md);
+    color: var(--main-color);
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
-    color: var(--fontColor);
-    border-radius: var(--round-md);
-    height: var(--height);
-    padding: 0 var(--paddingX);
-    font-size: var(--fontSize);
     position: relative;
     overflow: hidden;
-    background-color: transparent;
     cursor: pointer;
     transition: all 0.1s linear;
-    * {
+    background: transparent;
+    &__main {
       font-size: inherit;
+      color: inherit;
+      opacity: var(--main-opacity);
     }
-    &::after {
-      content: '';
+    &__board {
       width: 100%;
-      box-sizing: border-box;
       height: inherit;
       position: absolute;
-      background-color: var(--background);
       z-index: -1;
-      opacity: var(--bgOpacity);
-      border: 1px solid var(--borderColor);
-      border-radius: var(--round-md);
+      border-radius: inherit;
+    }
+    &__backg,
+    &__edge {
+      width: 100%;
+      height: inherit;
+      border-radius: inherit;
+      position: absolute;
+      box-sizing: border-box;
+      border-radius: inherit;
+    }
+    &__backg {
+      background: var(--backg-color);
+      opacity: var(--backg-opacity);
+      z-index: -2;
+    }
+    &__edge {
+      border: 1px solid var(--edge-color);
+      opacity: var(--edge-opacity);
+      z-index: -1;
     }
     &:hover {
-      &::after {
-        --bgOpacity: var(--bg-opacity-8);
-      }
+      --backg-opacity: var(--bg-opacity-8);
+      --edge-opacity: var(--bg-opacity-0);
     }
     &:active {
-      &::after {
-        --bgOpacity: var(--bg-opacity-9);
-      }
+      --backg-opacity: var(--bg-opacity-9);
     }
+    /** 开始按钮 */
     &--default {
-      --fontColor: var(--fc-black);
-      --background: var(--bg-default);
-      --borderColor: @border-grey-color;
+      --main-color: var(--fc-black);
+      --backg-color: var(--bg-default);
+      --edge-color: @border-grey-color;
       &:hover {
-        --fontColor: var(--fc-primary);
-        &::after {
-          --borderColor: var(--fc-primary);
-        }
+        --backg-color: var(--bg-primary);
+        --edge-color: var(--bg-primary);
+        --backg-opacity: var(--bg-opacity-md);
+        --edge-opacity: var(--bg-opacity-5);
+        --main-color: var(--fc-primary);
       }
       &:active {
-        --fontColor: var(--fc-primary);
-        &::after {
-          --borderColor: var(--fc-primary);
-        }
+        --backg-opacity: var(--bg-opacity-1);
       }
     }
     &--primary {
-      --fontColor: var(--fc-white);
-      --background: var(--bg-primary);
-      --borderColor: var(--bg-primary);
+      --main-color: var(--fc-white);
+      --backg-color: var(--bg-primary);
+      --edge-color: var(--bg-primary);
     }
     &--success {
-      --fontColor: var(--fc-white);
-      --background: var(--bg-success);
-      --borderColor: var(--bg-success);
+      --main-color: var(--fc-white);
+      --backg-color: var(--bg-success);
+      --edge-color: var(--bg-success);
     }
     &--warning {
-      --fontColor: var(--fc-white);
-      --background: var(--bg-warning);
-      --borderColor: var(--bg-warning);
+      --main-color: var(--fc-white);
+      --backg-color: var(--bg-warning);
+      --edge-color: var(--bg-warning);
     }
     &--info {
-      --fontColor: var(--fc-white);
-      --background: var(--bg-info);
-      --borderColor: var(--bg-info);
+      --main-color: var(--fc-white);
+      --backg-color: var(--bg-info);
+      --edge-color: var(--bg-info);
     }
     &--danger {
-      --fontColor: var(--fc-white);
-      --background: var(--bg-danger);
-      --borderColor: var(--bg-danger);
+      --main-color: var(--fc-white);
+      --backg-color: var(--bg-danger);
+      --edge-color: var(--bg-danger);
     }
     &--small {
-      --height: @h-sm;
-      --borderRadius: var(--round-sm);
-      --paddingX: @px-sm;
-      --fontSize: var(--fz-sm);
+      height: @h-sm;
+      border-radius: var(--round-sm);
+      padding: 0 @px-sm;
+      font-size: var(--fz-sm);
     }
     &--middle {
-      --height: @h-md;
-      --borderRadius: var(--round-md);
-      --paddingX: @px-md;
-      --fontSize: var(--fz-md);
+      height: @h-md;
+      border-radius: var(--round-md);
+      padding: 0 @px-md;
+      font-size: var(--fz-md);
     }
     &--large {
-      --height: @h-lg;
-      --borderRadius: var(--round-lg);
-      --paddingX: @px-lg;
-      --fontSize: var(--fz-lg);
+      height: @h-lg;
+      border-radius: var(--round-lg);
+      padding: 0 @px-lg;
+      font-size: var(--fz-lg);
     }
     &--extra {
-      --height: @h-xl;
-      --borderRadius: var(--round-xl);
-      --paddingX: @px-xl;
-      --fontSize: var(--fz-xl);
+      height: @h-xl;
+      border-radius: var(--round-xl);
+      padding: 0 @px-xl;
+      font-size: var(--fz-xl);
     }
     &--round {
-      --round-sm: 100px;
-      --round-md: 100px;
-      --round-lg: 100px;
-      --round-xl: 100px;
-      --borderRadius: 100px;
+      border-radius: 100px;
     }
     &--ghost {
-      --background: transparent;
-      &::after {
-        opacity: var(--bg-opacity-8);
+      --backg-color: transparent;
+
+      &:hover {
+        --backg-opacity: var(--bg-opacity-lg);
+        --edge-opacity: var(--bg-opacity-10);
+        --edge-color: @border-grey-color;
+      }
+      &:active {
+        --backg-opacity: var(--bg-opacity-1);
       }
     }
     &--ghost&--default {
-      --fontColor: var(--fc-black);
+      --main-color: var(--fc-black);
       &:hover {
-        &::after {
-          --background: @color-gray-light;
-          opacity: var(--bg-opacity-2);
-        }
-      }
-      &:active {
-        &::after {
-          --background: @color-gray-medium;
-          opacity: var(--bg-opacity-3);
-        }
+        --backg-color: var(--fc-black);
       }
     }
     &--ghost&--primary {
-      --fontColor: var(--bg-primary);
+      --main-color: var(--bg-primary);
       &:hover {
-        &::after {
-          --background: var(--bg-primary);
-          opacity: var(--bg-opacity-2);
-        }
-      }
-      &:active {
-        &::after {
-          --background: var(--bg-primary);
-          opacity: var(--bg-opacity-3);
-        }
+        --edge-color: var(--bg-primary);
+        --backg-color: var(--bg-primary);
       }
     }
     &--ghost&--success {
-      --fontColor: var(--bg-success);
+      --main-color: var(--bg-success);
       &:hover {
-        &::after {
-          --background: var(--bg-success);
-          opacity: var(--bg-opacity-2);
-        }
-      }
-      &:active {
-        &::after {
-          --background: var(--bg-success);
-          opacity: var(--bg-opacity-3);
-        }
+        --edge-color: var(--bg-success);
+        --backg-color: var(--bg-success);
       }
     }
     &--ghost&--warning {
-      --fontColor: var(--bg-warning);
+      --main-color: var(--bg-warning);
       &:hover {
-        &::after {
-          --background: var(--bg-warning);
-          opacity: var(--bg-opacity-2);
-        }
-      }
-      &:active {
-        &::after {
-          --background: var(--bg-warning);
-          opacity: var(--bg-opacity-3);
-        }
+        --edge-color: var(--bg-warning);
+        --backg-color: var(--bg-warning);
       }
     }
     &--ghost&--info {
-      --fontColor: var(--bg-info);
+      --main-color: var(--bg-info);
       &:hover {
-        &::after {
-          --background: var(--bg-info);
-          opacity: var(--bg-opacity-2);
-        }
-      }
-      &:active {
-        &::after {
-          --background: var(--bg-info);
-          opacity: var(--bg-opacity-3);
-        }
+        --edge-color: var(--bg-info);
+        --backg-color: var(--bg-info);
       }
     }
     &--ghost&--danger {
-      --fontColor: var(--bg-danger);
+      --main-color: var(--bg-danger);
       &:hover {
-        &::after {
-          --background: var(--bg-danger);
-          opacity: var(--bg-opacity-2);
-        }
-      }
-      &:active {
-        &::after {
-          --background: var(--bg-danger);
-          opacity: var(--bg-opacity-3);
-        }
+        --edge-color: var(--bg-danger);
+        --backg-color: var(--bg-danger);
       }
     }
     &--link {
-      --background: transparent;
-      &::after {
-        --background: transparent !important;
-        --borderColor: transparent !important;
-      }
+      background: transparent;
+      --backg-color: transparent;
+      --edge-color: transparent;
       &:hover {
-        .pvue-button__content {
-          text-decoration: underline;
-        }
+        --backg-color: transparent;
+        --edge-color: transparent;
+        text-decoration: underline;
       }
     }
     &--link&--default {
-      --fontColor: var(--fc-black);
+      --main-color: var(--fc-black);
     }
     &--link&--primary {
-      --fontColor: var(--bg-primary);
+      --main-color: var(--bg-primary);
     }
     &--link&--success {
-      --fontColor: var(--bg-success);
+      --main-color: var(--bg-success);
     }
     &--link&--warning {
-      --fontColor: var(--bg-warning);
+      --main-color: var(--bg-warning);
     }
     &--link&--info {
-      --fontColor: var(--bg-info);
+      --main-color: var(--bg-info);
     }
     &--link&--danger {
-      --fontColor: var(--bg-danger);
+      --main-color: var(--bg-danger);
     }
     &--disabled {
-      opacity: var(--bg-opacity-8);
+      --backg-opacity: var(--bg-opacity-5);
+      --edge-opacity: var(--bg-opacity-0);
       cursor: not-allowed;
-      background-color: @bg-disabled;
-      &::after {
-        --bgOpacity: var(--bg-opacity-8);
-      }
       &:hover {
-        &::after {
-          --bgOpacity: var(--bg-opacity-8);
-        }
+        --backg-opacity: var(--bg-opacity-5);
+        --edge-opacity: var(--bg-opacity-0);
       }
       &:active {
-        &::after {
-          --bgOpacity: var(--bg-opacity-8);
-        }
+        --backg-opacity: var(--bg-opacity-5);
       }
     }
     &--disabled&--default {
-      --fontColor: var(--fc-black);
-      --borderColor: @border-grey-color;
-      opacity: var(--bg-opacity-6);
-      &:hover {
-        --fontColor: var(--fc-black);
-        &::after {
-          --borderColor: @border-grey-color;
-        }
-      }
-      &:active {
-        --fontColor: var(--fc-black);
-        &::after {
-          --borderColor: @border-grey-color;
-        }
-      }
+      --backg-color: var(--bg-disabled);
+      --edge-opacity: var(--bg-opacity-0);
+      --main-color: var(--fc-disabled);
     }
   }
 </style>

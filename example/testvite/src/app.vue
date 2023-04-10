@@ -27,21 +27,20 @@
     <Button ghost type="danger">danger</Button>
   </div>
   <div class="btn-group">
-    <Button link>default</Button>
-    <Button link type="info">info</Button>
-    <Button link type="primary">primary</Button>
-    <Button link type="success">success</Button>
-    <Button link type="warning">warning</Button>
-    <Button link type="danger">danger</Button>
+    <Button link>link</Button>
+    <Button link type="info">link</Button>
+    <Button link type="primary">link</Button>
+    <Button link type="success">link</Button>
+    <Button link type="warning">link</Button>
+    <Button link type="danger">link</Button>
   </div>
-
   <div class="btn-group">
-    <Button disabled>default</Button>
-    <Button disabled type="info">info</Button>
-    <Button disabled type="primary">primary</Button>
-    <Button disabled type="success">success</Button>
-    <Button disabled type="warning">warning</Button>
-    <Button disabled type="danger">danger</Button>
+    <Button disabled>disabled</Button>
+    <Button disabled type="info">disabled</Button>
+    <Button disabled type="primary">disabled</Button>
+    <Button disabled type="success">disabled</Button>
+    <Button disabled type="warning">disabled</Button>
+    <Button disabled type="danger">disabled</Button>
   </div>
 </template>
 <script>
@@ -57,6 +56,9 @@
   })
 </script>
 <style lang="less" scoped>
+  body {
+    background-color: #f00;
+  }
   .btn-group {
     display: flex;
     flex-wrap: wrap;
