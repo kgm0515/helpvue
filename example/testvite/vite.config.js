@@ -10,6 +10,7 @@ import { ViteAliases } from './plugins/vite-aliases'
 import { createHtmlPlugin } from './plugins/vite-plugin-html'
 import { viteMockServe } from './plugins/vite-plugin-mock'
 import { checker } from 'vite-plugin-checker'
+import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig(({ command, mode }) => {
   return {
@@ -28,10 +29,7 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       vuePlugins(),
       // ts报错提示
-      checker({
-        // e.g. use TypeScript check
-        typescript: true
-      }),
+      checker({ typescript: true }),
       // 配置路径别名的插件
       ViteAliases(),
       // 处理html文件
@@ -48,6 +46,8 @@ export default defineConfig(({ command, mode }) => {
         mockPath: 'mock', // 接口文件夹目录名
         localEnabled: command === 'serve' // 只在开发环境下面才启用
       }),
+      // gzip压缩
+      viteCompression(),
       /** vite独有的钩子 */
       {
         config(config, { command }) {
@@ -151,8 +151,7 @@ export default defineConfig(({ command, mode }) => {
       rollupOptions: {
         // 配置多入口
         input: {
-          main: path.resolve(__dirname, './index.html'),
-          prod: path.resolve(__dirname, './prod.html')
+          main: path.resolve(__dirname, './index.html')
         },
         // 控制输出
         output: {
