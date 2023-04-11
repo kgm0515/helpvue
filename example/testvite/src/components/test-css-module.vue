@@ -1,10 +1,10 @@
 <template>
   <div :class="styleObj.module" @click="getCount">
+    <img :src="imageUrl" alt="" width="20" height="20" :style="{ marginRight: '10px' }" />
     <div :class="styleObj.moduleTitle">{{ count }}</div>
     <div :class="styleObj.moduleText">click</div>
     <LoadSvg svgName="arrow-right" color="#fff" class="arrow-icon" height="12px" width="12px" />
   </div>
-  <img :src="imageUrl" alt="" width="20" height="20" />
 </template>
 <script>
   import { defineComponent, ref } from 'vue'

@@ -1,79 +1,18 @@
 <template>
   <TestCssModule />
-  <div class="btn-group">
-    <Button>default</Button>
-    <Button type="info">info</Button>
-    <Button type="primary">primary</Button>
-    <Button type="success">success</Button>
-    <Button type="warning">warning</Button>
-    <Button type="danger">danger</Button>
-    <Button type="primary">info<LoadSvg svgName="arrow-right" color="#fff" height="12px" width="12px" /></Button>
-  </div>
-  <div class="btn-group">
-    <Button type="info" size="small">small</Button>
-    <Button type="info" size="middle">middle</Button>
-    <Button type="primary" size="large">large</Button>
-    <Button type="warning" size="extra">extra Large</Button>
-  </div>
-  <div class="btn-group">
-    <Button type="primary">rectangle</Button>
-    <Button type="primary" round>round</Button>
-  </div>
-  <div class="btn-group">
-    <Button ghost>default</Button>
-    <Button ghost type="info">info</Button>
-    <Button ghost type="primary">primary</Button>
-    <Button ghost type="success">success</Button>
-    <Button ghost type="warning">warning</Button>
-    <Button ghost type="danger">danger</Button>
-  </div>
-  <div class="btn-group">
-    <Button link>link</Button>
-    <Button link type="info">link</Button>
-    <Button link type="primary">link</Button>
-    <Button link type="success">link</Button>
-    <Button link type="warning">link</Button>
-    <Button link type="danger">link</Button>
-  </div>
-  <div class="btn-group">
-    <Button disabled>disabled</Button>
-    <Button disabled type="info">disabled</Button>
-    <Button disabled type="primary">disabled</Button>
-    <Button disabled type="success">disabled</Button>
-    <Button disabled type="warning">disabled</Button>
-    <Button disabled type="danger">disabled</Button>
-  </div>
-  <ul>
-    <li v-for="item in userList" :key="item.id">{{ item.name }}</li>
-  </ul>
+  <TestUi />
+  <TestFetch />
 </template>
 <script>
-  import { defineComponent, ref } from 'vue'
+  import { defineComponent } from 'vue'
   import LoadSvg from '@components/common/load-svg/index.vue'
   import TestCssModule from '@components/test-css-module.vue'
-  import Button from '@components/common/button/index.vue'
+  import TestUi from '@components/test-ui.vue'
+  import TestFetch from '@components/test-fetch.vue'
   export default defineComponent({
-    components: { LoadSvg, TestCssModule, Button },
+    components: { TestCssModule, TestUi, TestFetch },
     setup() {
-      const userList = ref([])
-      const fetchUserData = () => {
-        fetch('/api/users', {
-          method: 'post',
-          body: {
-            name: 'alice'
-          }
-        })
-          .then(async (response) => {
-            const res = await response.json()
-            userList.value = res.data
-          })
-          .catch((err) => {
-            console.error(err)
-          })
-      }
-
-      fetchUserData()
-      return { userList }
+      return {}
     }
   })
 </script>
@@ -87,6 +26,40 @@
     :deep(.pvue-button) {
       margin-right: 4px;
       margin-bottom: 5px;
+    }
+  }
+  .userlist {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    .userlist__item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      padding: 5px 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      &:hover {
+        background-color: #fefef9;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      .userlist__img {
+        height: 30px;
+        width: 30px;
+        background-color: #f4f4f4;
+      }
+      .userlist__name {
+        margin-left: 10px;
+        margin-right: 20px;
+        flex: 1;
+      }
+      .userlist__time {
+        color: #999;
+      }
     }
   }
 </style>
