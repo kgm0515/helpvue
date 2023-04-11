@@ -10,13 +10,14 @@ import { createHtmlPlugin } from './plugins/vite-plugin-html'
 import { viteMockServe } from './plugins/vite-plugin-mock'
 
 export default defineConfig(({ command, mode }) => {
-  // 根据当前工作目录中的 `mode` 加载 .env 文件
-  // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
-  const defineObject = {}
-  Object.entries(loadEnv(mode, 'env', 'VITE_')).forEach(([k, v]) => (defineObject[`import.meta.env.${k}`] = JSON.stringify(v)))
   return {
     /** 定义全局变量, 通过: import.meta.env.xxx 获取*/
-    define: defineObject,
+    // 根据当前工作目录中的 `mode` 加载 .env 文件
+    // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
+    define: Object.entries(loadEnv(mode, 'env', 'VITE_')).reduce((prev, [k, v]) => {
+      prev[`import.meta.env.${k}`] = JSON.stringify(v)
+      return prev
+    }, {}),
     /** 优化选项 */
     optimizeDeps: {
       // exclude: ["lodash-es"], // vite不解析
@@ -40,7 +41,61 @@ export default defineConfig(({ command, mode }) => {
       viteMockServe({
         mockPath: 'mock', // 接口文件夹目录名
         localEnabled: command === 'serve' // 只在开发环境下面才启用
-      })
+      }),
+      /** vite独有的钩子 */
+      {
+        config(config, { command }) {
+          // 返回部分配置（推荐）
+          // 在解析 Vite 配置前调用。钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量，包含正在使用的 mode 和 command。
+          // 它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
+          return {}
+        },
+        configureServer(server) {
+          // 是用于配置开发服务器的钩子。最常见的用例是在内部 connect 应用程序中添加自定义中间件:
+          server.middlewares.use((req, res, next) => {
+            // 自定义请求处理...
+            next()
+          })
+        },
+        transformIndexHtml(html) {
+          // 转换 index.html 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露ViteDevServer实例，在构建期间暴露 Rollup 输出的包。
+          return html
+        },
+        configResolved(options) {
+          // 每个配置文件的解析流程完毕后执行的钩子
+          // console.log('配置解析完成', options)
+        },
+        configurePreviewServer(server) {
+          // 返回一个钩子，会在其他中间件安装完成后调用
+          // 与 configureServer 相同但是作为预览服务器。它提供了一个 connect 服务器实例及其底层的 http server。
+          // 与 configureServer 类似，configurePreviewServer 这个钩子也是在其他中间件安装前被调用的。
+          // 如果你想要在其他中间件 之后 安装一个插件，你可以从 configurePreviewServer 返回一个函数，它将会在内部中间件被安装之后再调用：
+          return () => {
+            server.middlewares.use((req, res, next) => {
+              // 自定义处理请求 ...
+            })
+          }
+        },
+        handleHotUpdate({ server }) {
+          // 热更新相关。执行自定义 HMR 更新处理。钩子接收一个带有以下签名的上下文对象：
+          // server.ws.send({ type: 'custom', event: 'special-update', data: {} })
+          return []
+        }
+      },
+      /** rollup的钩子 */
+      // 在开发中，Vite 开发服务器会创建一个插件容器来调用 Rollup 构建钩子，与 Rollup 如出一辙
+      {
+        /** 以下钩子在服务器启动时被调用 */
+        options(rollupOptions) {
+          // 配置的是：`build.rollupOptions` 这个对象
+          // console.log('rollupOptions', rollupOptions)
+        },
+        buildStart(fullOptions) {
+          // 配置对象完成后调用，作用同`configResolved`
+          // 配置的是：build.rollupOptions 这个对象
+          // console.log('fullOptions', fullOptions)
+        }
+      }
     ],
     /** css相关配置 */
     css: {

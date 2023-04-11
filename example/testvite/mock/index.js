@@ -5,7 +5,7 @@ module.exports = [
     method: 'post',
     url: '/api/users',
     response: (res) => {
-      console.log(res)
+      // console.log(res)
       // {
       //   url: '/api/users',
       //   body: { name: '匡光淼', age: 12 },
