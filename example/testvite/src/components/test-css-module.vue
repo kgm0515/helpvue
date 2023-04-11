@@ -15,7 +15,7 @@
   export default defineComponent({
     components: { LoadSvg },
     setup() {
-      console.log(styleObj)
+      // console.log(styleObj)
       const count = ref(0)
       const getCount = () => count.value++
       return { styleObj, count, getCount, imageUrl }

@@ -3,9 +3,8 @@
   <TestUi />
   <TestFetch />
 </template>
-<script>
+<script lang="ts">
   import { defineComponent } from 'vue'
-  import LoadSvg from '@components/common/load-svg/index.vue'
   import TestCssModule from '@components/test-css-module.vue'
   import TestUi from '@components/test-ui.vue'
   import TestFetch from '@components/test-fetch.vue'

@@ -8,6 +8,7 @@ import postcssPresetEnv from 'postcss-preset-env'
 import { ViteAliases } from './plugins/vite-aliases'
 import { createHtmlPlugin } from './plugins/vite-plugin-html'
 import { viteMockServe } from './plugins/vite-plugin-mock'
+import { checker } from 'vite-plugin-checker'
 
 export default defineConfig(({ command, mode }) => {
   return {
@@ -24,10 +25,14 @@ export default defineConfig(({ command, mode }) => {
     },
     /** 相关插件 */
     plugins: [
+      vuePlugins(),
+      // ts报错提示
+      checker({
+        // e.g. use TypeScript check
+        typescript: true
+      }),
       // 配置路径别名的插件
       ViteAliases(),
-      // 支持import语法
-      vuePlugins(),
       // 处理html文件
       createHtmlPlugin({
         inject: {
