@@ -11,6 +11,7 @@ import { createHtmlPlugin } from './plugins/vite-plugin-html'
 import { viteMockServe } from './plugins/vite-plugin-mock'
 import { checker } from 'vite-plugin-checker'
 import viteCompression from 'vite-plugin-compression'
+import PluginImportToCDN from 'vite-plugin-cdn-import'
 
 export default defineConfig(({ command, mode }) => {
   return {
@@ -48,6 +49,16 @@ export default defineConfig(({ command, mode }) => {
       }),
       // gzip压缩
       viteCompression(),
+      // 配置cdn加速（内部改了配置rollupOptions.external:['lodash']）
+      PluginImportToCDN({
+        modules: [
+          {
+            name: 'lodash',
+            var: '_',
+            path: 'https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js'
+          }
+        ]
+      }),
       /** vite独有的钩子 */
       {
         config(config, { command }) {
