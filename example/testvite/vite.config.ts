@@ -49,7 +49,16 @@ export default defineConfig(({ command, mode }) => {
       }),
       // gzip压缩
       viteCompression(),
-      // 配置cdn加速（内部改了配置rollupOptions.external:['lodash']）
+      /**
+       * 配置cdn加速（内部改了配置）
+       * rollupOptions:{
+       *  external:['lodash'],
+       *  externalGlobal:{
+       *    var:'_',
+       *    path:'https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js'
+       *  }
+       * }
+       */
       PluginImportToCDN({
         modules: [
           {
