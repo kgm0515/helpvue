@@ -36,7 +36,7 @@
           }
         })
       }
-      fetchUserDataGet()
+      fetchUserDataPost()
         .then(async (response) => {
           const res = await response.json()
           userList.value = res.data
