@@ -1,5 +1,6 @@
 // import path from 'path'
 import { defineConfig, loadEnv } from 'vite'
+import path from 'path'
 import vuePlugins from '@vitejs/plugin-vue'
 import postcssPresetEnv from 'postcss-preset-env'
 // import { ViteAliases } from 'vite-aliases'// 配置路径别名的插件：
@@ -145,11 +146,21 @@ export default defineConfig(({ command, mode }) => {
     // },
     /** 打包配置 */
     build: {
+      minify: ['production'].includes(mode) && command == 'build', // 打包是否压缩
       // 配置rollup的构建策略
       rollupOptions: {
+        // 配置多入口
+        input: {
+          main: path.resolve(__dirname, './index.html'),
+          prod: path.resolve(__dirname, './prod.html')
+        },
         // 控制输出
         output: {
-          assetFileNames: '[name].[hash:4].[ext]' // 配置静态资源
+          assetFileNames: '[name].[hash:4].[ext]', // 配置静态资源
+          // 给公共插件分包
+          manualChunks: (id) => {
+            if (id.includes('/node_modules/')) return 'vendor'
+          }
         }
       }
       // emptyOutDir: true // 打包前清除dist目录

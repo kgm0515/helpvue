@@ -1,14 +1,12 @@
 import { createApp } from 'vue'
 import App from './app.vue'
 import './assets/css/index.less'
-// import { forEach } from 'lodash'
-import { forEach } from 'lodash-es'
+// import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 console.log('环境变量: ', import.meta.env)
 
 createApp(App).mount('#app')
 
-let arr = [1, 2, 3]
+let obj = { name: 'hahah' }
 
-forEach(arr, (a, b) => {
-  console.log(a, b)
-})
+console.log(cloneDeep(obj))
