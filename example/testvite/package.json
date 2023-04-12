@@ -11,7 +11,8 @@
     "build:test": "tsc --noEmit && vite build --mode test",
     "build:prod": "tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
-    "test": "vitest -u md-to-vue"
+    "test": "vitest -u md-to-vue",
+    "build:plugin": "tsup"
   },
   "keywords": [],
   "author": "",
@@ -19,9 +20,11 @@
   "devDependencies": {
     "@types/lodash": "^4.14.192",
     "@vitejs/plugin-vue": "^4.1.0",
+    "esbuild": "^0.17.16",
     "less": "^4.1.3",
     "mockjs": "^1.1.0",
     "postcss-preset-env": "^8.3.0",
+    "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "vite": "^4.2.1",
     "vite-aliases": "^0.11.0",

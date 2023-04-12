@@ -17,3 +17,4 @@
 /packages/utils/typedoc/utils
 /packages/utils/typedoc/_utilsSidebar.js
 /packages/cli/lib
+/example/testvite/.plugins

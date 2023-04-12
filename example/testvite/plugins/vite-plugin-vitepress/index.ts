@@ -16,7 +16,7 @@ const VitePluginVitePress = (options?: UserOptions): PluginOption => {
       await parser.setupRender()
     },
     async transform(code: string, id: string) {
-      return await parser.transform(code, id)
+      if (parser) return await parser.transform(code, id)
     }
   }
 }
