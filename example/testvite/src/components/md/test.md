@@ -1,48 +1,37 @@
-# hello world
+# this is markdown component
 
 this is test md to vue
-
-## m2
-
-### m3
-
-### m4
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
 
 ::: danger
 This is a dangerous warning.
 :::
 
-::: details
-This is a details block.
-:::
+::: details view code
 
 ```vue
+<template>
+  <div>count: {{ count }}</div>
+  <button @click="handleAdd">add</button>
+</template>
 <script setup>
   import { ref } from 'vue'
-  const a = 1
+  const count = ref(1)
+  const handleAdd = () => (count.value += 1)
 </script>
 ```
 
+:::
+
 <script setup>
   import {ref} from 'vue'
-  const a = 1
+  const count = ref(1)
+  const handleAdd = () => count.value += 1
 </script>
-
 <style>
   a{
     color:red;
     fontSize: 15px;
   }
 </style>
+<div>count: {{ count }}</div>
+<button @click="handleAdd">add</button>
