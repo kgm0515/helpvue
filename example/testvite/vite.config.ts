@@ -9,7 +9,7 @@ import postcssPresetEnv from 'postcss-preset-env'
 import { ViteAliases } from './plugins/vite-aliases'
 import { createHtmlPlugin } from './plugins/vite-plugin-html'
 import { viteMockServe } from './plugins/vite-plugin-mock'
-import { VItePluginVitePress } from './plugins/vite-plugin-vitepress'
+import { VitePluginVitePress } from './plugins/vite-plugin-vitepress'
 import { checker } from 'vite-plugin-checker'
 import viteCompression from 'vite-plugin-compression'
 import PluginImportToCDN from 'vite-plugin-cdn-import'
@@ -49,8 +49,12 @@ export default defineConfig(({ command, mode }) => {
     },
     /** 相关插件 */
     plugins: [
-      VItePluginVitePress(),
-      vuePlugins(),
+      // 解析md文件成vue
+      VitePluginVitePress(),
+      vuePlugins({
+        // 需要解析md文件
+        include: [/\.vue$/, /\.md$/]
+      }),
       // 插件调试工具-localhost:5173/__inspect/
       Inspect(),
       // ts报错提示

@@ -5,5 +5,5 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vite.config.ts", "./plugins/vite-plugin-vitepress.ts"]
+  "include": ["vite.config.ts", "./plugins/**/*.ts"]
 }
