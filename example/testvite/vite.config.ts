@@ -9,9 +9,11 @@ import postcssPresetEnv from 'postcss-preset-env'
 import { ViteAliases } from './plugins/vite-aliases'
 import { createHtmlPlugin } from './plugins/vite-plugin-html'
 import { viteMockServe } from './plugins/vite-plugin-mock'
+import { VItePluginVitePress } from './plugins/vite-plugin-vitepress'
 import { checker } from 'vite-plugin-checker'
 import viteCompression from 'vite-plugin-compression'
 import PluginImportToCDN from 'vite-plugin-cdn-import'
+import Inspect from 'vite-plugin-inspect'
 
 export default defineConfig(({ command, mode }) => {
   return {
@@ -22,13 +24,35 @@ export default defineConfig(({ command, mode }) => {
       prev[`import.meta.env.${k}`] = JSON.stringify(v)
       return prev
     }, {}),
+    // 在开发服务器的配置
+    server: {
+      // 配置跨域
+      proxy: {
+        // string shorthand
+        '/foo': 'http://localhost:4567/foo',
+        // with options
+        // '/api': {
+        //   target: 'http://jsonplaceholder.typicode.com',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/api/, '')
+        // }
+        '/otherApi': {
+          target: 'https://www.360.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/otherApi/, '')
+        }
+      }
+    },
     /** 优化选项 */
     optimizeDeps: {
       // exclude: ["lodash-es"], // vite不解析
     },
     /** 相关插件 */
     plugins: [
+      VItePluginVitePress(),
       vuePlugins(),
+      // 插件调试工具-localhost:5173/__inspect/
+      Inspect(),
       // ts报错提示
       checker({ typescript: true }),
       // 配置路径别名的插件
@@ -53,10 +77,7 @@ export default defineConfig(({ command, mode }) => {
        * 配置cdn加速（内部改了配置）
        * rollupOptions:{
        *  external:['lodash'],
-       *  externalGlobal:{
-       *    var:'_',
-       *    path:'https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js'
-       *  }
+       *  externalGlobal:{ var:'_', path:'https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js' }
        * }
        */
       PluginImportToCDN({

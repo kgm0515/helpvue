@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const { normalizePath } = require('vite')
 
 // 判断路径是否是目录
 const pathIsDirectory = (path = '') => {
@@ -16,10 +17,10 @@ const pathIsFile = (path = '') => {
  * @returns
  */
 const getFolderChildren = (folderName = 'src') => {
-  let srcPath = path.resolve(process.cwd(), folderName)
+  let srcPath = normalizePath(path.resolve(process.cwd(), folderName))
   const nameList = fs.readdirSync(srcPath)
   return nameList.map((tempName) => {
-    const tempPath = path.join(srcPath, tempName)
+    const tempPath = normalizePath(path.join(srcPath, tempName))
     return { name: tempName, path: tempPath, isDir: pathIsDirectory(tempPath) }
   })
 }
@@ -36,8 +37,7 @@ const ViteAliases = (
   config: (config, command) => {
     const folderDirs = getFolderChildren().filter((item) => item.isDir)
     const alias = folderDirs.map((info) => ({ find: `${arg.keyName}${info.name}`, replacement: info.path }))
-    // {resolve:{alias:[ {find: '@assets',replacement: 'D:/demo/helpvue/example/testvite/src/assets' } ]}}
-    return { resolve: { alias } }
+    return { resolve: { alias } } // {resolve:{alias:[ {find: '@assets',replacement: 'D:/demo/helpvue/example/testvite/src/assets' } ]}}
   }
 })
 

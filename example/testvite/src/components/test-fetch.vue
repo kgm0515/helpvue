@@ -44,6 +44,19 @@
         .catch((err) => {
           console.error(err)
         })
+
+      // 验证跨域
+      const fetch360 = () => {
+        // fetch(`https://www.360.com`, {
+        fetch(`/otherApi`, {
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(async (response) => {})
+      }
+
+      fetch360()
       return { userList }
     }
   })

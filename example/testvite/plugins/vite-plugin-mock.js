@@ -1,6 +1,7 @@
 const url = require('url')
 const fs = require('fs')
 const path = require('path')
+const { normalizePath } = require('vite')
 
 /**
  * 用于模拟接口数据
@@ -16,9 +17,9 @@ const viteMockServe = (
   name: 'vite-plugin-mock',
   configureServer(server) {
     // 加载全部mock数据
-    const mockPath = path.resolve(process.cwd(), options.mockPath)
+    const mockPath = normalizePath(path.resolve(process.cwd(), options.mockPath))
     const mockStat = fs.statSync(mockPath).isDirectory()
-    const mockList = mockStat ? require(path.resolve(mockPath, 'index.js')) : []
+    const mockList = mockStat ? require(normalizePath(path.resolve(mockPath, 'index.js'))) : []
     server.middlewares.use((req, res, next) => {
       if (options.localEnabled && req.url.startsWith('/api')) {
         // 判断是否走模拟接口
