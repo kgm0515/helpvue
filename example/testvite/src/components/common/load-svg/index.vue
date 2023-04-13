@@ -8,7 +8,8 @@
 </template>
 <script>
   import { defineComponent, onMounted, ref, watch, computed } from 'vue'
-  const modules = import.meta.glob('./svg/*.js')
+  const modules = import.meta.glob('./svg/*.svg')
+  console.log(modules)
   export default defineComponent({
     props: {
       // svg的的名称
@@ -44,7 +45,7 @@
       // 异步加载svg
       const handleLoad = () => {
         if (!props.svgName) return
-        const data = modules[`./svg/${props.svgName}.js`]
+        const data = modules[`./svg/${props.svgName}.svg`]
         data()
           .then((res) => {
             let tempDom = document.createElement('div')

@@ -6,6 +6,7 @@ import postcssPresetEnv from 'postcss-preset-env'
 // import { ViteAliases } from 'vite-aliases'// 配置路径别名的插件：
 // import { createHtmlPlugin } from 'vite-plugin-html'// 处理html文件的插件：
 // import { viteMockServe } from 'vite-plugin-mock' // 处理拦截数据请求：
+import { createSvgPlugin } from './plugins/vite-plugin-svg'
 import { ViteAliases } from './plugins/vite-aliases'
 import { createHtmlPlugin } from './plugins/vite-plugin-html'
 import { viteMockServe } from './plugins/vite-plugin-mock'
@@ -93,6 +94,16 @@ export default defineConfig(({ command, mode }) => {
           }
         ]
       }),
+      // 导入svg图片，转化默认导出为js文件
+      createSvgPlugin({ matchReg: /common\/load-svg\/svg\/(.+)\.svg$/ }),
+      // {
+      //   transform(code, id, options) {
+      //     if (/common\/load-svg\/svg\/(.+)\.svg$/.test(id)) {
+      //       const svgCode = fs.readFileSync(id)
+      //       return `export default \`${svgCode}\``
+      //     }
+      //   }
+      // },
       /** vite独有的钩子 */
       {
         config(config, { command }) {
