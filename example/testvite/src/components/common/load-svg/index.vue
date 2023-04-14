@@ -4,7 +4,7 @@
   import LoadSvg from '@components/load-svg/index.vue'
   <LoadSvg svgName="arrow-right" color="green"/>
  -->
-  <div ref="divRef" class="load-svg" v-if="svgHtml" v-html="svgHtml" :style="getStyle"></div>
+  <div ref="divRef" class="load-svg" v-html="svgHtml" :style="getStyle"></div>
 </template>
 <script>
   import { defineComponent, onMounted, ref, watch, computed } from 'vue'
@@ -53,9 +53,12 @@
             let gDom = tempDom.querySelectorAll('g[fill]')
             gDom.forEach((item) => {
               const fill = item.getAttribute('fill')
-              if (fill !== 'none') {
-                item.setAttribute('fill', props.color)
-              }
+              if (!['none', 'transparent'].includes(fill)) item.setAttribute('fill', props.color)
+            })
+            gDom = tempDom.querySelectorAll('g[stroke]')
+            gDom.forEach((item) => {
+              const fill = item.getAttribute('stroke')
+              if (!['none', 'transparent'].includes(fill)) item.setAttribute('stroke', props.color)
             })
             const innerHTML = tempDom.innerHTML
             svgHtml.value = innerHTML

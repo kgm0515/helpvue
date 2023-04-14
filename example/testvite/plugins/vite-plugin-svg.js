@@ -8,12 +8,20 @@ import fs from 'fs'
 const createSvgPlugin = (options = { matchReg: '' }) => {
   return {
     name: 'vite-plugin-svg',
-    transform(code, id) {
+    enforce: 'pre',
+    load(id) {
       if (options.matchReg.test(id)) {
         const svgCode = fs.readFileSync(id)
         return `export default \`${svgCode}\``
       }
     }
+    // transform(code, id) {
+    //   if (options.matchReg.test(id)) {
+    //     console.log('----------------', code)
+    //     const svgCode = fs.readFileSync(id)
+    //     return `export default \`${svgCode}\``
+    //   }
+    // }
   }
 }
 

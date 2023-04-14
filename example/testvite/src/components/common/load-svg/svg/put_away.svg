@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-卡片收起@2x</title>
+    <g id="员工端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5查看已添加" transform="translate(-32.000000, -845.000000)">
+            <g id="icon-卡片收起" transform="translate(32.000000, 845.000000)">
+                <rect id="矩形" x="0" y="0" width="44" height="44"></rect>
+                <g id="编组" transform="translate(0.000000, 0.000000)" stroke="#2E2E2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                    <g id="icon/顶部导航/备用icon" transform="translate(22.000000, 22.000000) rotate(-90.000000) translate(-22.000000, -22.000000) ">
+                        <g id="二级导航-返回" transform="translate(12.000000, 4.000000)">
+                            <polyline id="路径" points="18.5 0.5 0.458984375 18 18.5 35.7485352"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

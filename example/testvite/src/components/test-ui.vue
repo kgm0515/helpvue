@@ -6,7 +6,8 @@
     <Button type="success">success</Button>
     <Button type="warning">warning</Button>
     <Button type="danger">danger</Button>
-    <Button type="primary">info<LoadSvg svgName="arrow-right" color="#fff" height="12px" width="12px" /></Button>
+    <!-- <Button type="primary">info<LoadSvg svgName="arrow-right" color="#fff" height="12px" width="12px" /></Button> -->
+    <Button type="primary">info<LoadSvg svgName="put_away" color="#fff" height="12px" width="12px" /></Button>
   </div>
   <div class="btn-group">
     <Button type="info" size="small">small</Button>
