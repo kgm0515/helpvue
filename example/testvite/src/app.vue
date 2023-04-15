@@ -10,7 +10,6 @@
   import TestUi from '@components/test-ui.vue'
   import TestFetch from '@components/test-fetch.vue'
   import Test from '@components/md/test.md'
-  import '../plugins/vite-plugin-vitepress/theme'
   export default defineComponent({
     components: { TestCssModule, TestUi, TestFetch, Test },
     setup() {

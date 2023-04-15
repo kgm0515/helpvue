@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import App from './app.vue'
 import './assets/css/index.less'
 import { forEach } from 'lodash'
+import '../plugins/vite-plugin-vitepress/theme'
+
 // import { forEach } from 'lodash-es'
 console.log('环境变量: ', import.meta.env)
 
