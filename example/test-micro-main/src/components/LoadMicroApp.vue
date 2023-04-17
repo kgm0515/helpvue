@@ -7,6 +7,7 @@
   onMounted(() => {
     try {
       import(/* @vite-ignore */ `${props.appUrl}/src/main.ts?t=${Date.now()}&micro`).then((res) => {
+        // import(/* @vite-ignore */ `http://127.0.0.1:8080/main.js`).then((res) => {
         const result = res.default
         microApp = result(microRef.value)
         microApp?.mount()

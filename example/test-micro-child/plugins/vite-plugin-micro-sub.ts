@@ -15,22 +15,23 @@ export const vitePluginMicroSub = (
 ): PluginOption => {
   return {
     name: 'vite-plugins-micro',
+    enforce: 'post',
     config() {
       return {
         build: {
           // es2020 支持 import.meta 语法
           target: 'es2020',
           // 打包为一个 CSS 文件，通过 main.js 自行插入，不自动插入到 header 中
-          cssCodeSplit: true,
+          cssCodeSplit: false,
           rollupOptions: {
-            // external: ['vue'], // 指出哪些模块需要被视为外部引入, 'vue'库不打包
+            external: ['vue'], // 指出哪些模块需要被视为外部引入, 'vue'库不打包
             // 用于控制 Rollup 尝试确保入口块与基础入口模块具有相同的导出
             preserveEntrySignatures: 'allow-extension',
-            // input: normalizePath(path.resolve(process.cwd(), './src/main.ts'))
+            input: normalizePath(path.resolve(process.cwd(), './src/main.ts'))
             // 配置多入口
-            input: {
-              main: normalizePath(path.resolve(process.cwd(), './index.html'))
-            }
+            // input: {
+            //   main: normalizePath(path.resolve(process.cwd(), './index.html'))
+            // }
           }
         }
       }
