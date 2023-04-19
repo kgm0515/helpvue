@@ -1,5 +1,6 @@
 import { DefaultTheme, defineConfig } from 'vitepress'
 import utilsSidebar from './_utilsSidebar'
+import { componentPreview, containerPreview } from '@vitepress-demo-preview/plugin'
 
 /** 顶部导航栏 */
 const nav: DefaultTheme.NavItem[] = [
@@ -47,6 +48,15 @@ const sidebar: DefaultTheme.Sidebar = {
 }
 
 export default defineConfig({
+  markdown: {
+    theme: 'material-theme-palenight',
+    // theme: { light: 'vitesse-light', dark: 'vitesse-dark' },
+    // lineNumbers: true,
+    config(md) {
+      md.use(componentPreview)
+      md.use(containerPreview)
+    }
+  },
   title: '帮助文档',
   description: '用于辅助vue开发的工具库和组件库',
   lang: 'cn-ZH',
@@ -64,10 +74,6 @@ export default defineConfig({
   // 路径重写
   rewrites: {
     // 'components/:pkg/:page': ':pkg/:page'
-  },
-  markdown: {
-    // theme: { light: 'vitesse-light', dark: 'vitesse-dark' }
-    theme: 'material-theme-palenight'
   },
   themeConfig: {
     logo: '/img/logo.jpg',

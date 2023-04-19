@@ -6,13 +6,17 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "register:components": "vitepress-rc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.63"
+    "@vitepress-demo-preview/component": "^2.3.0",
+    "@vitepress-demo-preview/plugin": "^1.1.9",
+    "vitepress": "^1.0.0-alpha.63",
+    "vitepress-theme-demoblock": "^2.0.2"
   },
   "dependencies": {
     "@helpvue/pvue": "workspace:^"

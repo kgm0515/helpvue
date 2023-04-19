@@ -13,23 +13,7 @@ lang: en-US
 
 ## 按钮类型
 
-<div class="children-space10">
-  <PvueButton>default</PvueButton>
-  <PvueButton type="primary" @click="handleClick">primary</PvueButton>
-  <PvueButton type="success">success</PvueButton>
-  <PvueButton type="info">info</PvueButton>
-  <PvueButton type="warning">warning</PvueButton>
-  <PvueButton type="danger">danger</PvueButton>
-</div>
-
-```vue
-<PvueButton>default</PvueButton>
-<PvueButton type="primary" @click="handleClick">primary</PvueButton>
-<PvueButton type="success">success</PvueButton>
-<PvueButton type="info">info</PvueButton>
-<PvueButton type="warning">warning</PvueButton>
-<PvueButton type="danger">danger</PvueButton>
-```
+<preview path="../demos/button/button-type.vue" title="按钮类型" description="定义了按钮的颜色"></preview>
 
 ## 按钮大小
 
@@ -149,3 +133,5 @@ PvueButton Slots
 | 插槽名  |   说明   | 参数 |
 | ------- | :------: | ---: |
 | default | 按钮内容 |    - |
+
+:::demo 使用`type`，`plain`，`round`来定义 Button 的样式
