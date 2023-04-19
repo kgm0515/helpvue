@@ -7,7 +7,7 @@
     "dev:pvue": "cd ./packages/pvue && pnpm dev:lib",
     "deploy:doc": "node ./scripts/deploySite.js",
     "build": "pnpm i && pnpm build:pvue && pnpm build:utils && pnpm build:utils:doc && pnpm build:doc",
-    "build:doc": "cd ./packages/doc && pnpm docs:build",
+    "build:doc": "cd ./packages/doc && pnpm i &&  pnpm docs:build",
     "build:pvue": "cd ./packages/pvue && pnpm build",
     "build:utils": "cd ./packages/utils && pnpm build",
     "build:utils:doc": "cd ./packages/utils && pnpm doc",

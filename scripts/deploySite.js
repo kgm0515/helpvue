@@ -6,12 +6,12 @@ if (!shell.which('git')) {
   shell.exit(1)
 }
 // 执行`npm run build`打包命令
-// if (shell.exec('npm run build').code !== 0) {
-//   shell.echo('Error: npm run build 打包失败')
-//   shell.exit(1)
-// } else {
-//   shell.echo('Success: npm run build 打包成功...')
-// }
+if (shell.exec('npm run build').code !== 0) {
+  shell.echo('Error: npm run build 打包失败')
+  shell.exit(1)
+} else {
+  shell.echo('Success: npm run build 打包成功...')
+}
 // 进入文档
 shell.cd('packages/doc/public')
 
