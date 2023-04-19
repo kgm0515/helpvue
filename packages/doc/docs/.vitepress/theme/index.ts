@@ -1,7 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 import './base.css'
 import * as Pvue from '@helpvue/pvue'
-import '@helpvue/pvue/dist/index.css'
+import '@helpvue/pvue/dist/style/index.css'
 // 支持代码块写法
 import { AntDesignContainer } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
