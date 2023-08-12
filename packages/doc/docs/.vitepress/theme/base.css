@@ -31,7 +31,7 @@
 }
 .VPNavBar {
   border-bottom-color: var(--vp-c-gutter) !important;
-  &.has-sidebar .curtain::before {
-    background: transparent !important;
-  }
+}
+.VPNavBar.has-sidebar .curtain::before {
+  background: transparent !important;
 }
