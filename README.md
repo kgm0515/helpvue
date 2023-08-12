@@ -1,6 +1,6 @@
 # helpvue
 
-vue 组件库，工具库
+vue 组件库，工具库,
 
 文档地址：`https://kgm0515.github.io/helpvue/`
 
@@ -20,4 +20,5 @@ pnpm dev:doc # 启动开发文档
 
 ```sh
 pnpm deploy:doc # 部署线上文档
+
 ```
