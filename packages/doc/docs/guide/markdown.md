@@ -1,9 +1,35 @@
 ---
 title: 测试 Markdown 语法
 lang: en-US
+lastUpdated: false
 ---
 
 # 测试 Markdown 语法
+
+## arkdown 常用解析头
+
+```
+<!--  -->
+// 首页专用
+layout: home
+page: true
+lang: en-US
+title: 前端学习文档
+// 没有左侧菜单栏
+sidebar: false
+// 没有右侧定位
+aside: false
+// 没有广告
+ads: false
+// 没有底部github链接
+editLink: false
+// 没有赞助商
+sponsors: false
+// 没有上次更新
+lastUpdated: false
+// 好像没用
+footer: false
+```
 
 ## GitHub-Style Tables
 

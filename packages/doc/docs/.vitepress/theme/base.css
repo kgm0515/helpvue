@@ -5,3 +5,33 @@
 .children-space10 > [class^='pvue-'] {
   margin: 0 10px 5px 0;
 }
+/* 覆盖vitepress */
+@media (min-width: 1440px) {
+  .VPDoc:not(.has-sidebar) .container {
+    max-width: calc(var(--vp-layout-max-width) - 64px) !important;
+  }
+}
+.VPDoc:not(.has-sidebar) .content {
+  max-width: 100% !important;
+}
+.VPDoc.has-aside .content-container {
+  max-width: 100% !important;
+}
+.vp-doc div[class*='language-'] {
+  margin: 16px 0px !important;
+}
+.VPNav {
+  background: var(--vp-nav-bg-color) !important;
+}
+.VPSidebar {
+  background: var(--vp-nav-bg-color) !important;
+}
+.VPNavBarTitle.has-sidebar .title {
+  border-bottom: none !important;
+}
+.VPNavBar {
+  border-bottom-color: var(--vp-c-gutter) !important;
+  &.has-sidebar .curtain::before {
+    background: transparent !important;
+  }
+}

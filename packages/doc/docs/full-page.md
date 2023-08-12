@@ -6,6 +6,7 @@ ads: false
 editLink: false
 sponsors: false
 aside: false
+lastUpdated: false
 ---
 
 <script setup>

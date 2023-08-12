@@ -1,6 +1,7 @@
 ---
 title: 在 Markdown 中使用 vue
 lang: en-US
+lastUpdated: false
 ---
 
 # 在 Markdown 中使用 vue
@@ -31,7 +32,7 @@ import Button from '../../../pvue/src/button/index.vue'
 const { page } = useData()
 </script>
 
-<Button>haha</Button>
+<Button>hello</Button>
 
 <pre>{{ page }}</pre>
 
@@ -39,7 +40,7 @@ const { page } = useData()
 
 ```vue
 <template>
-  <div class="nice-div">2222222222</div>
+  <div class="nice-div">hello</div>
 </template>
 <script lang="ts" setup>
   console.log(123)

@@ -11,7 +11,7 @@ const nav: DefaultTheme.NavItem[] = [
     items: [
       { text: '使用规则', link: '/guide/markdown' },
       { text: '使用vue', link: '/guide/useVue' },
-      { text: '加载资源', link: '/guide/loadResource' }
+      { text: '加载资源', link: '/guide/resource' }
     ]
   }
 ]
@@ -81,17 +81,17 @@ export default defineConfig({
     outlineTitle: 'On this page',
     // socialLinks: [{ icon: 'github', link: 'https://github.com/kgm0515/helpvue' }],
     lastUpdatedText: 'Updated Date',
-    editLink: {
-      pattern: 'https://github.com/kgm0515/helpvue/tree/main/packages/doc/docs/:path',
-      text: 'Edit this page on GitHub'
-    },
+    // editLink: {
+    //   pattern: 'https://github.com/kgm0515/helpvue/tree/main/packages/doc/docs/:path',
+    //   text: 'Edit this page on GitHub'
+    // },
     nav,
     sidebar,
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2023-present Evan You'
-    }
-    // docFooter: { prev: '上一页', next: '下一页' }
+    },
+    docFooter: { prev: '上一页', next: '下一页' }
     // carbonAds: { code: 'your-carbon-code', placement: 'your-carbon-placement' }
   }
 })

@@ -1,41 +1,18 @@
-vitepress 解析头
+## vitepress 解析头
 
 ---
 
+layout: home
 page: true
+lang: en-US
 title: 前端学习文档
 sidebar: false
 ads: false
 editLink: false
 sponsors: false
 aside: false
-
----
-
----
-
-page: true
+lastUpdated: false
 footer: false
-
----
-
-## vitepress 解析头
-
-sidebar: false
-ads: false
-editLink: false
-sponsors: false
-aside: false
-
----
-
----
-
-footer: false
-sidebar: true
-sponsors: false
-ads: false
-editLink: false
 
 ---
 
