@@ -27,31 +27,31 @@ async function resolveConfig(jsonDir) {
       // Module 作为一级导航
       moduleConfig = { text: module.name, link: '' }
       if (module.kindString === 'Class') {
-        moduleConfig = { text: `Class: ${module.name}`, link: getClassPath(module.name) }
+        moduleConfig = { text: `类: ${module.name}`, link: getClassPath(module.name) }
       } else if (module.kindString === 'Interface') {
-        moduleConfig = { text: `Interface: ${module.name}`, link: getInterfacePath(module.name) }
+        moduleConfig = { text: `接口: ${module.name}`, link: getInterfacePath(module.name) }
       } else if (module.kindString === 'Type alias') {
-        moduleConfig = { text: `Type: ${module.name}`, link: getTypePath(module.name) }
+        moduleConfig = { text: `类型: ${module.name}`, link: getTypePath(module.name) }
       } else if (module.kindString === 'Function') {
-        moduleConfig = { text: `Function: ${module.name}`, link: getFunctionPath(module.name) }
+        moduleConfig = { text: `函数: ${module.name}`, link: getFunctionPath(module.name) }
       } else if (module.kindString === 'Variable') {
-        moduleConfig = { text: `Variable: ${module.name}`, link: getVariablesPath(module.name) }
+        moduleConfig = { text: `变量: ${module.name}`, link: getVariablesPath(module.name) }
       }
     } else {
       // Module 作为一级导航
-      moduleConfig = { text: `Namespace: ${module.name}`, collapsed: false, items: [{ text: `${module.name}`, link: getModulePath(module.name) }] }
+      moduleConfig = { text: `模块: ${module.name}`, collapsed: false, items: [{ text: `${module.name}`, link: getModulePath(module.name) }] }
       module.children.forEach((sub) => {
         // 类、接口、类型、函数作为二级导航
         if (sub.kindString === 'Class') {
-          moduleConfig.items.push({ text: `Class: ${sub.name}`, link: getClassPath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `类: ${sub.name}`, link: getClassPath(module.name, sub.name) })
         } else if (sub.kindString === 'Interface') {
-          moduleConfig.items.push({ text: `Interface: ${sub.name}`, link: getInterfacePath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `接口: ${sub.name}`, link: getInterfacePath(module.name, sub.name) })
         } else if (sub.kindString === 'Type alias') {
-          moduleConfig.items.push({ text: `Type: ${sub.name}`, link: getTypePath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `类型: ${sub.name}`, link: getTypePath(module.name, sub.name) })
         } else if (sub.kindString === 'Function') {
-          moduleConfig.items.push({ text: `Function: ${sub.name}`, link: getFunctionPath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `函数: ${sub.name}`, link: getFunctionPath(module.name, sub.name) })
         } else if (sub.kindString === 'Variable') {
-          moduleConfig.items.push({ text: `Variable: ${sub.name}`, link: getVariablesPath(module.name, sub.name) })
+          moduleConfig.items.push({ text: `变量: ${sub.name}`, link: getVariablesPath(module.name, sub.name) })
         }
       })
     }

@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: utils工具库
       link: /utils/
+    - theme: alt
+      text: 开发指引
+      link: /develop-guide
 features:
   - icon: 🧩
     title: PC端组件库：@helpvue/pvue

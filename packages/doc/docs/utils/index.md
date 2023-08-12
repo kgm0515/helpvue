@@ -17,7 +17,17 @@ lang: en-US
 <div id="app"></div>
 <script src="./node_modules/@helpvue/utils/dist/index.iife.js"></script>
 <script>
-  // ...
+  console.log('HelpUtils库', HelpUtils)
+  /**
+  HelpUtils库 
+    calc: 
+      handleAdd: (...e)=>e.reduce(((e,t)=>e+t),0)
+      handleMinus: (e,t)=>e-t
+    exam: 
+      AUTHOR_NAME: "kuangguangmiao"
+      Person: class
+      genAnimalInfo: ƒ (e,t)
+   */
 </script>
 ```
 

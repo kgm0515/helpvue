@@ -31,6 +31,7 @@
     "build": "rollup -c",
     "start": "serve",
     "doc": "cd ./typedoc && npm run doc",
+    "doc:dev": "typedoc -W",
     "publish": "npm publish"
   },
   "license": "ISC",

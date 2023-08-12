@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@3.2.3/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="../node_modules/@helpvue/pvue/dist/es/style.css" />
+    <link rel="stylesheet" href="../node_modules/@helpvue/pvue/dist/style/index.css" />
     <script src="../node_modules/@helpvue/pvue/dist/index.iife.js" async></script>
     <script src="../node_modules/@helpvue/utils/dist/index.iife.js" async></script>
     <style>
+      button {
+        border: none;
+      }
       [v-cloak] {
         display: none;
       }
@@ -17,16 +20,21 @@
   </head>
   <body>
     <div id="app" v-cloak>
-      <pvue-button type="success" size="small" @click="handleAdd">{{count}}</pvue-button>
+      <pvue-button type="success">{{dog.name}}今年{{dog.age+count}}岁了</pvue-button>
+      <pvue-button size="small" @click="handleMinus">-</pvue-button>
+      <pvue-button size="small" @click="handleAdd">+</pvue-button>
     </div>
     <script defer>
       window.onload = function () {
         console.log('HelpPvue库', HelpPvue)
-        console.log('HelpUtils库', HelpUtils, HelpUtils.exam.myName, HelpUtils.getNumber(1))
+        console.log('HelpUtils库', HelpUtils)
         const vm = Vue.createApp({
           setup() {
             const count = Vue.ref(0)
-            return { count, handleAdd: () => count.value++ }
+            const dog = new HelpUtils.exam.Person('小黄', 12)
+            const handleAdd = () => count.value++
+            const handleMinus = () => count.value--
+            return { count, dog, handleAdd, handleMinus }
           }
         })
           .use(HelpPvue, { prefix: 'pvue' })

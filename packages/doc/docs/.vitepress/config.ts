@@ -7,10 +7,9 @@ const nav: DefaultTheme.NavItem[] = [
   { text: 'pc组件库', link: '/pvue/' },
   { text: 'utils工具库', link: '/utils/' },
   {
-    text: '项目指引',
+    text: 'markdown',
     items: [
-      { text: '指引', link: '/guide/' },
-      { text: '使用markdown', link: '/guide/markdown' },
+      { text: '使用规则', link: '/guide/markdown' },
       { text: '使用vue', link: '/guide/useVue' },
       { text: '加载资源', link: '/guide/loadResource' }
     ]
@@ -80,7 +79,7 @@ export default defineConfig({
     siteTitle: '帮助文档',
     outline: [1, 3],
     outlineTitle: 'On this page',
-    socialLinks: [{ icon: 'github', link: 'https://github.com/kgm0515/helpvue' }],
+    // socialLinks: [{ icon: 'github', link: 'https://github.com/kgm0515/helpvue' }],
     lastUpdatedText: 'Updated Date',
     editLink: {
       pattern: 'https://github.com/kgm0515/helpvue/tree/main/packages/doc/docs/:path',

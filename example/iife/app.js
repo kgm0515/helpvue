@@ -11,9 +11,9 @@ const path = require('path')
 const app = express()
 const port = 9392
 // 引入插件
-const HelpVue = require('@helpvue/utils')
+const HelpVueutils = require('@helpvue/utils')
 
-console.log('引入插件', HelpVue)
+console.log('引入插件', HelpVueutils)
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.engine('html', require('ejs').renderFile)

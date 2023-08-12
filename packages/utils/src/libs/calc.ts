@@ -14,10 +14,3 @@ export const handleMinus = (num1: number, num2: number): number => num1 - num2
 export const handleAdd = (...arg: number[]): number => {
   return arg.reduce((prev, next) => prev + next, 0)
 }
-
-/**
- * 获取数字
- * @param {string} num 数字
- * @returns
- */
-export const getNumber = (num: string): string => `the number is ${num}!`
