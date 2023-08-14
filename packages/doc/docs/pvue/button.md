@@ -16,7 +16,7 @@ aside: true
 
 ## 按钮类型
 
-<preview path="../demos/button/button-type.vue" title="按钮类型" description="定义了按钮的颜色"></preview>
+<preview path="../demos/ui/button/button-type.vue" title="按钮类型" description="定义了按钮的颜色"></preview>
 
 ## 按钮大小
 

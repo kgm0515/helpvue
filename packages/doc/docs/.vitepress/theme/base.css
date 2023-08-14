@@ -1,6 +1,6 @@
-/* .vp-doc [class*='language-'] pre {
+.vp-doc [class*='language-'] pre {
   background: #000;
-} */
+}
 /* 子组件间隔20px */
 .children-space10 > [class^='pvue-'] {
   margin: 0 10px 5px 0;
