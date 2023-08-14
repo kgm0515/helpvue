@@ -1,6 +1,7 @@
 ---
 title: 测试 Markdown 语法
 lang: en-US
+aside: true
 lastUpdated: false
 ---
 

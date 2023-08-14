@@ -1,6 +1,7 @@
 ---
 title: 在 Markdown 中使用 vue
 lang: en-US
+aside: true
 lastUpdated: false
 ---
 
@@ -8,23 +9,23 @@ lastUpdated: false
 
 部署案例: https://juejin.cn/post/7129201521295622152
 
-## Templating
+## 直接渲染vue模板
 
 Each Markdown file is first compiled into HTML and then passed on as a Vue component to the Vite process pipeline. This means you can use Vue-style interpolation in text:
 
 <div>{{ 1 + 1 }}</div>
 
-## Directives
+## 在vue中使用指令
 
-<div v-for="i in 3">{{ i }}</div>
+<div v-for="i in 3">这里渲染第{{ i }}个元素</div>
 
-## Input
+## 把文字渲染成pre标签
 
 ::: v-pre
 `{{ This will be displayed as-is }}`
 :::
 
-## Access to Site & Page Data & Using Components
+## 在组件中使用站点数据
 
 <script setup>
 import { useData } from 'vitepress'

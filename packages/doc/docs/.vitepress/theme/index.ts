@@ -1,6 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 // import './tailwind.css'
 import './base.css'
+import './response.css'
 import * as Pvue from '@helpvue/pvue'
 import '@helpvue/pvue/dist/style/index.css'
 // 支持代码块写法
