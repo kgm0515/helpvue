@@ -3,9 +3,12 @@ const fs = require('fs')
 const path = require('path')
 
 // 读取css源文件
-const resCss = fs.readFileSync(path.join(__dirname, './response_base.css')).toString()
+const resCss = fs.readFileSync(path.join(__dirname, './response.txt')).toString()
 // 按照行分割成数组
-const resCssLines = resCss.split('\r\n').filter(item => !!item).map(item=> item.replaceAll(' ', ' '))
+const resCssLines = resCss
+  .split('\r\n')
+  .filter((item) => !!item)
+  .map((item) => item.replaceAll(' ', ' '))
 
 // 定义基本的没提查询变量
 const originStr = `
@@ -19,19 +22,19 @@ const originStr = `
 // 开始--------------------------------------
 ${resCssLines.join('\r\n')}
 @media (min-width: 370px) {
-${resCssLines.map(item => ' .sm\\:'+item.slice('1')).join('\r\n')}
+${resCssLines.map((item) => '  .sm\\:' + item.slice('1')).join('\r\n')}
 }
 @media (min-width: 576px) {
-${resCssLines.map(item => ' .md\\:'+item.slice('1')).join('\r\n')}
+${resCssLines.map((item) => '  .md\\:' + item.slice('1')).join('\r\n')}
 }
 @media (min-width: 768px) {
-${resCssLines.map(item => ' .lg\\:'+item.slice('1')).join('\r\n')}
+${resCssLines.map((item) => '  .lg\\:' + item.slice('1')).join('\r\n')}
 }
 @media (min-width: 960px) {
-${resCssLines.map(item => ' .xl\\:'+item.slice('1')).join('\r\n')}
+${resCssLines.map((item) => '  .xl\\:' + item.slice('1')).join('\r\n')}
 }
 @media (min-width: 1280px) {
-${resCssLines.map(item => ' .el\\:'+item.slice('1')).join('\r\n')}
+${resCssLines.map((item) => '  .el\\:' + item.slice('1')).join('\r\n')}
 }
 `
 console.log(originStr)

@@ -2,7 +2,7 @@
   background: #000;
 }
 /* 子组件间隔20px */
-.children-space10 > [class^='pvue-'] {
+.children-space10 > * {
   margin: 0 10px 5px 0;
 }
 @media (min-width: 960px) {
@@ -69,6 +69,9 @@
     padding-right: 0 !important;
     padding-bottom: 50px !important;
   }
+}
+.VPDoc {
+  padding-bottom: 50px !important;
 }
 /* 左侧固定栏 */
 #VPSidebarNav {
