@@ -2,6 +2,8 @@
 title: button按钮
 lang: en-US
 lastUpdated: false
+sidebar: true
+aside: true
 ---
 
 # 介绍
