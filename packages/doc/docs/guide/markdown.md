@@ -6,10 +6,11 @@ lastUpdated: false
 
 # 测试 Markdown 语法
 
-## arkdown 常用解析头
+这里 markdown 的语法使用
+
+## markdown 常用解析头
 
 ```
-<!--  -->
 // 首页专用
 layout: home
 page: true

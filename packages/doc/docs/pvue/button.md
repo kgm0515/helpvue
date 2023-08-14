@@ -1,6 +1,7 @@
 ---
 title: button按钮
 lang: en-US
+lastUpdated: false
 ---
 
 # 介绍
@@ -134,4 +135,6 @@ PvueButton Slots
 | ------- | :------: | ---: |
 | default | 按钮内容 |    - |
 
-:::demo 使用`type`，`plain`，`round`来定义 Button 的样式
+::: info
+使用`type`，`plain`，`round`来定义 Button 的样式
+:::

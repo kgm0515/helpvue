@@ -1,6 +1,7 @@
 ---
 title: 测试 Markdown 语法
 lang: en-US
+lastUpdated: false
 ---
 
 # 快速开始
