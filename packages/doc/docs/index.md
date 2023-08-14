@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: 帮助文档
+  name: 前端博客
   text: JavaScript 开发库
   tagline: pc端组件库、app组件库、工具库
   image:
@@ -16,7 +16,7 @@ hero:
       text: utils工具库
       link: /utils/
     - theme: alt
-      text: 开发指引
+      text: 本库开发指引
       link: /develop-guide
 features:
   - icon: 🧩

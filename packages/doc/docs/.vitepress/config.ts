@@ -56,7 +56,7 @@ export default defineConfig({
       md.use(containerPreview)
     }
   },
-  title: '帮助文档',
+  title: '前端博客',
   description: '用于辅助vue开发的工具库和组件库',
   lang: 'cn-ZH',
   base: '/helpvue/', // 公共基础路径，打包或所有资源会添加这个路径
@@ -76,7 +76,7 @@ export default defineConfig({
   },
   themeConfig: {
     logo: '/img/logo.jpg',
-    siteTitle: '帮助文档',
+    siteTitle: '前端博客',
     outline: [1, 3],
     outlineTitle: 'On this page',
     // socialLinks: [{ icon: 'github', link: 'https://github.com/kgm0515/helpvue' }],
